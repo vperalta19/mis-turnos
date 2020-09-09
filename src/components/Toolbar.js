@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import "./../assets/css/toolbar.css";
 
-class Toolbar extends Component{
+class Toolbar extends Component {
 	render() {
+		let name = "Juan Manuel Belgrano";
+
 		return(
 			<div className="header-area">
 				<div  className="header-top_area d-none d-lg-block">
@@ -9,7 +12,7 @@ class Toolbar extends Component{
 						<div className="row">
 							<div className="col">
 								<div className="usuario">
-									<div>Juan Manuel Belgrano</div>
+									<div>{name}</div>
 								</div>
 							</div>
 							<div className="col">
@@ -25,7 +28,7 @@ class Toolbar extends Component{
 					<div className="container">
 						<div className="row align-items-center">
 							<div className="col-lg-3 col-4">
-								<img src="css/img/logo.png" alt="logo"/>
+								<img src="mis-turnos/src/assets/img/logo.png" alt="logo"/>
 							</div>
 							<div className="col-lg-6 d-none d-lg-block text-center">
 								<div className="toolbar">
@@ -46,7 +49,7 @@ class Toolbar extends Component{
 							<div className="col-8 d-lg-none" >
 								<div id="mySidebar" className="sidebar">
 									<div onclick="closeNav()"><i className="fas fa-times-circle"></i></div>
-									<div>Juan Manuel Belgrano</div>
+									<div>{name}</div>
 									<div>INICIO</div>
 									<div>CALENDARIO</div>
 									<div>MI CUENTA</div>
@@ -92,7 +95,7 @@ export default Toolbar
 					<div className="row">
 						<div className="col">
 							<div className="usuario">
-								<div>Juan Manuel Belgrano</div>
+								<div>{name}</div>
 							</div>
 						</div>
 						<div className="col">
