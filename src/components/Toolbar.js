@@ -1,79 +1,92 @@
-import React, {Component} from 'react';
-import "./../assets/css/toolbar.css";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import './../assets/css/toolbar.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from './../assets/img/logo.png'
 
-class Toolbar extends Component {
-	render() {
-		let name = "Juan Manuel Belgrano";
+function openNav() {
+	document.getElementById("mySidebar").style.width = "250px";
+	document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+function closeNav() {
+	document.getElementById("mySidebar").style.width = "0";
+	document.getElementById("main").style.marginLeft= "0";
+}
 
-		return(
-			<div className="header-area">
-				<div  className="header-top_area d-none d-lg-block">
-					<div className="container">
-						<div className="row">
-							<div className="col">
-								<div className="usuario">
-									<div>{name}</div>
-								</div>
+export default function Toolbar() {
+	let name = "Juan Manuel Belgrano";
+
+	return(
+		<div className="header-area">
+			<div  className="header-top_area d-none d-lg-block">
+				<div className="container">
+					<div className="row">
+						<div className="col">
+							<div className="usuario">
+								{name}
 							</div>
-							<div className="col">
-								<div className="cerrarSesion">
-									<div>CERRAR SESION</div>
-								</div>
+						</div>
+						<div className="col">
+							<div className="cerrarSesion">
+								<div>CERRAR SESION</div>
+							</div>
 								
-							</div>
 						</div>
 					</div>
 				</div>
-				<div id="main-header" className="main-header-area">
-					<div className="container">
-						<div className="row align-items-center">
-							<div className="col-lg-3 col-4">
-								<img src="mis-turnos/src/assets/img/logo.png" alt="logo"/>
+			</div>
+			<div id="main-header" className="main-header-area">
+				<div className="container">
+					<div className="row align-items-center">
+						<div className="col-lg-3 col-4">
+							<img src={logo} alt="logo"/>
+						</div>
+						<div className="col-lg-6 d-none d-lg-block text-center">
+							<div className="toolbar">
+								<ul>
+									<li className="seccion">
+										INICIO
+									</li>
+									<li className="seccion">
+										CALENDARIO
+									</li>
+									<li className="seccion">
+										MI CUENTA
+									</li>
+								</ul>
 							</div>
-							<div className="col-lg-6 d-none d-lg-block text-center">
-								<div className="toolbar">
-									<ul>
-										<li>
-											<div>INICIO</div>
-										</li>
-										<li>
-											<div>CALENDARIO</div>
-										</li>
-										<li>
-											<div>MI CUENTA</div>
-										</li>
-									</ul>
-								</div>
-							</div>
+						</div>
 
-							<div className="col-8 d-lg-none" >
-								<div id="mySidebar" className="sidebar">
-									<div onclick="closeNav()"><i className="fas fa-times-circle"></i></div>
-									<div>{name}</div>
-									<div>INICIO</div>
-									<div>CALENDARIO</div>
-									<div>MI CUENTA</div>
-									<div>CERRAR SESION</div>
-								</div>
-								<div id="main">
-									<div onclick="openNav()">☰</div>
-								</div>
-								
+						<div className="col-8 d-lg-none" >
+							<div id="mySidebar" className="sidebar">
+								<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
+								<div className="usuario">{name}</div>
+								<div className="seccionSideBar">INICIO</div>
+								<div className="seccionSideBar">CALENDARIO</div>
+								<div className="seccionSideBar">MI CUENTA</div>
+								<div className="seccionSideBar">CERRAR SESION</div>
 							</div>
-							<div className="col-lg-3 col-12" id="pedirTurno">
-								<div className="pedirTurno">
-									<div>PEDIR TURNO</div>
-								</div>
+							<div id="main">
+								<div onClick={openNav}>☰</div>
+							</div>
+							
+						</div>
+						<div className="col-lg-3 col-12" id="pedirTurno">
+							<div className="pedirTurno">
+								<div>PEDIR TURNO</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
-export default Toolbar
+
+
 
 //HTML
 
@@ -165,32 +178,20 @@ export default Toolbar
 window.onscroll = function() {stickyHeader()};
 
 // Get the navbar
-var navbar = document.getElementById("main-header");
-var pedirTurno = document.getElementById("pedirTurno");
+var navbar = getElementById("main-header");
+var pedirTurno = getElementById("pedirTurno");
 
 // Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+
 
 // Add the sticky className to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function stickyHeader() {
-	if (window.pageYOffset >= sticky) {
-		navbar.classNameList.add("sticky"); 
-		pedirTurno.classNameList.add("d-none");
-		pedirTurno.classNameList.add("d-lg-block");
-		medio.classNameList.add("margen");
+	if (window.pageYOffset >= window.innerHeight) {
+		navbar.classList.add("sticky"); 
+		pedirTurno.classList.add("d-none d-lg-block");
 	} else {
-		navbar.classNameList.remove("sticky");
-		pedirTurno.classNameList.remove("d-none");
-		medio.classNameList.remove("margen");
+		navbar.classList.remove("sticky");
+		pedirTurno.classList.remove("d-none");
 	}
-}
+}*/
 
-function openNav() {
-	document.getElementById("mySidebar").style.width = "250px";
-	document.getElementById("main").style.marginLeft = "250px";
-  }
-  
-function closeNav() {
-	document.getElementById("mySidebar").style.width = "0";
-	document.getElementById("main").style.marginLeft= "0";
-} */
