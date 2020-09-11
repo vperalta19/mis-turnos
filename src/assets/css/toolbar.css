@@ -14,7 +14,7 @@
     background: #D8EBF2;
 }
 
-.header-area .header-top_area .cerrarSesion a{
+.header-area .header-top_area .cerrarSesion{
     font-size: 10px;
     background-color: #ffffff;
     color: #2E4559;
@@ -25,15 +25,22 @@
     font-weight: 700;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
+    cursor: pointer;
 }
 
-.header-area .header-top_area .usuario a{
+.header-area .header-top_area .usuario{
     text-decoration: none;
     color: #A2A2A2;
     font-family: 'Roboto', bold;
+    float: left;
+    cursor: pointer;
 }
 
-.header-area .header-top_area .cerrarSesion a:hover {
+.header-area .header-top_area .usuario:hover {
+    color: rgb(70, 70, 70);
+}
+
+.header-area .header-top_area .cerrarSesion:hover {
     background-color: #2E4559;
     color: #ffffff;
 }
@@ -48,6 +55,7 @@
 
 .header-area .main-header-area img{
     width: 200px;
+    cursor: pointer;
 }
 
 .header-area .main-header-area .toolbar ul {
@@ -62,7 +70,7 @@
 
 }
   
-.header-area .main-header-area .toolbar ul li a {
+.header-area .main-header-area .toolbar ul li.seccion {
     color: #A2A2A2;
     font-size: 15px;
     text-transform: capitalize;
@@ -70,55 +78,21 @@
     font-family: "Poppins", sans-serif;
     text-align: center;
     text-decoration: none;
+    cursor: pointer;
   }
   
-.header-area .main-header-area .toolbar ul li a:hover {
+.header-area .main-header-area .toolbar ul li.seccion:hover {
     color: rgb(70, 70, 70);
 }
 
-.header-area .main-header-area .toolbar ul li a:hover {
-    color: rgb(70, 70, 70);
-}
-  
-.header-area .main-header-area .toolbar ul li .submenu {
-    position: absolute;
-    left: 0;
-    top: 160%;
-    background: #fff;
-    width: 200px;
-    z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
-    opacity: 0;
-    visibility: hidden;
-    text-align: left;
-    transition: 0.3s;
-}
 
-.header-area .main-header-area .toolbar ul li:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    top: 150%;
-}
-
-.header-area .main-header-area .toolbar ul li .submenu li a {
-    padding: 10px 15px;
-    transition: 0.3s;
-    display: block;
-    color: #A2A2A2;
-}
-
-.header-area .main-header-area .toolbar ul li .submenu li a:hover{
-    color: rgb(80, 80, 80);
-}
-
-
-.header-area .main-header-area .pedirTurno a{
+.header-area .main-header-area .pedirTurno{
     font-size: 15px;
     background-color: #04ADBF;
     color: #ffffff;
     float: right;
     text-decoration: none;
-
+    cursor: pointer;
     width: 100%;
     font-weight: 700;
     border-radius: 4px;
@@ -127,7 +101,7 @@
     
 }
 
-.header-area .main-header-area .pedirTurno a:hover {
+.header-area .main-header-area .pedirTurno:hover {
     background-color: #ffffff;
     border-color: #04ADBF;
     color: #04ADBF;
@@ -147,51 +121,65 @@
 }
 
   
-.header-area .main-header-area .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
+.header-area .main-header-area .sidebar .seccionSideBar  {
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
+    cursor: pointer;
+    float: left;
+    margin-left: 35px;
   }
   
-.header-area .main-header-area .sidebar a:hover {
+.header-area .main-header-area .sidebar .seccionSideBar:hover {
+    color: #3b3b3b;
+  }
+
+  .header-area .main-header-area .sidebar .usuario  {
+    font-size: 15px;
+    margin-top: 30px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    float: left;
+    margin-left: 35px;
+  }
+  
+.header-area .main-header-area .sidebar .seccionSideBar:hover {
     color: #3b3b3b;
   }
   
-.header-area .main-header-area .sidebar .fa-times-circle {
+.header-area .main-header-area .sidebar .x {
     color: #818181;
     position: absolute;
     top: 50px;
     right: 25px;
     font-size: 25px;
+    cursor: pointer;
+}
+
+.header-area .main-header-area .sidebar .x:hover {
+    color: #3b3b3b;
 }
   
-.header-area .main-header-area #main a {
+.header-area .main-header-area #main {
     font-size: 30px;
-    cursor: pointer;
-    
     color: #2E4559;
-    padding: 10px 15px;
     border: none;
     float: right;
     cursor: pointer;
   }
   
-.header-area .main-header-area #main a:hover {
+.header-area .main-header-area #main:hover {
     color: rgb(94, 115, 122);
-  }
-  
-.header-area .main-header-area .sidebar a i {
-    font-size: 15px;
 }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
 
 .sticky{
     position: fixed;

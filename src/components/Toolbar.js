@@ -174,24 +174,27 @@ export default function Toolbar() {
 </html> */
 
 //JS
-/*// When the user scrolls the page, execute myFunction 
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyHeader() {
+	// Get the navbar
+	var navbar = document.getElementById("main-header");
+	var pedirTurno = document.getElementById("pedirTurno");
+
+	// Get the offset position of the navbar
+	var sticky = navbar.offsetTop;
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky"); 
+        pedirTurno.classList.add("d-none");
+        pedirTurno.classList.add("d-lg-block");
+        
+    } else {
+        navbar.classList.remove("sticky");
+        pedirTurno.classList.remove("d-none");
+    }
+}
+
+// When the user scrolls the page, execute myFunction 
 window.onscroll = function() {stickyHeader()};
 
-// Get the navbar
-var navbar = getElementById("main-header");
-var pedirTurno = getElementById("pedirTurno");
-
-// Get the offset position of the navbar
-
-
-// Add the sticky className to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyHeader() {
-	if (window.pageYOffset >= window.innerHeight) {
-		navbar.classList.add("sticky"); 
-		pedirTurno.classList.add("d-none d-lg-block");
-	} else {
-		navbar.classList.remove("sticky");
-		pedirTurno.classList.remove("d-none");
-	}
-}*/
 
