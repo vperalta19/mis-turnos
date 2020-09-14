@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.medio{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    background-image: url(./../img/DrOscuro.jpg);
+}
+
+.medio .textoInicio{
+    font-family: "Poppins", italic;
+    margin: 200px;
+    color: white;
+}
+
+.medio .textoInicio h3{
+    font-size: 70px;
+}
+
+.medio .textoInicio h3 span{
+    font-size: 50px;
+}
+
+@media (max-width: 1200px) {
+    .medio .textoInicio{margin: 150px;} 
+}
+
+@media (max-width: 991px) {
+    .medio .textoInicio{margin: 75px;}
+    .medio .textoInicio h3{font-size: 60px;}
+    .medio .textoInicio h3 span{font-size: 45px;}
+    
+}
+@media (max-width: 768px) {
+    .medio .textoInicio{margin: 40px;}
+    .medio .textoInicio h3{font-size: 50px;}
+    .medio .textoInicio h3 span{font-size: 35px;}
+}
+
+@media (max-width: 578px) {
+    .medio .textoInicio{margin: 30px;}
+    .medio .textoInicio h3{font-size: 40px;}
+    .medio .textoInicio h3 span{font-size: 25px;}
+    
+  }
+
+.pasos{
+    background-color: rgb(139, 205, 230);
+}
+
+.pasos .paso-individual{
+    padding: 40px 30px;
+}
+
+.pasos .paso-individual .icon{
+    text-align: center;
+}
+
+.pasos .paso-individual .icon img {
+    width: 100px;
+    
+}
+
+.pasos .paso-individual .letras{
+    text-align: center;
+}
+
+.pasos .paso-individual h3{
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.pasos .paso-individual span{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #fff;
+}
+
+.pasos .col-xl-4:nth-child(2) .paso-individual {
+    background: rgb(94, 172, 201);
+    height: 100%;
+}
+
+.copy-right_text {
+    padding-bottom: 5px;
+    background: rgb(255, 255, 255);
+}
+
+.copy-right_text .copy_right {
+    font-size: 16px;
+    color: #04ADBF;
+    margin-bottom: 0;
+    font-weight: 400;
+    }
+
+.text-center{
+    text-align: center;
+}
+
+.p-covid{
+    width: 100%;
+    height: auto;
+}
