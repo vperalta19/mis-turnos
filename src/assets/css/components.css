@@ -1,0 +1,204 @@
+.body{
+    box-sizing: border-box;
+}
+.header-area {
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+}
+
+.header-area .header-top_area {
+    padding: 5px;
+    background: #D8EBF2;
+}
+
+.header-area .header-top_area .cerrarSesion{
+    font-size: 10px;
+    background-color: #ffffff;
+    color: #2E4559;
+    opacity: 50%;
+    float: right;
+    text-decoration: none;
+    padding: 6px 13px;
+    font-weight: 700;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.header-area .header-top_area .usuario{
+    text-decoration: none;
+    color: #A2A2A2;
+    font-family: 'Roboto', bold;
+    float: left;
+    cursor: pointer;
+}
+
+.header-area .header-top_area .usuario:hover {
+    color: rgb(70, 70, 70);
+}
+
+.header-area .header-top_area .cerrarSesion:hover {
+    background-color: #2E4559;
+    color: #ffffff;
+}
+
+
+
+.header-area .main-header-area {
+    padding: 5px 15px;
+    background: #fff;
+    z-index: 99;
+}
+
+.header-area .main-header-area img{
+    width: 200px;
+    cursor: pointer;
+}
+
+.header-area .main-header-area .toolbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.header-area .main-header-area .toolbar ul li{
+    display: inline;
+    margin: 20px;
+
+}
+  
+.header-area .main-header-area .toolbar ul li.seccion {
+    color: #A2A2A2;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+.header-area .main-header-area .toolbar ul li.seccion:hover {
+    color: rgb(70, 70, 70);
+}
+
+
+.header-area .main-header-area .pedirTurno{
+    font-size: 15px;
+    background-color: #04ADBF;
+    color: #ffffff;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 700;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid transparent;
+    
+}
+
+.header-area .main-header-area .pedirTurno:hover {
+    background-color: #ffffff;
+    border-color: #04ADBF;
+    color: #04ADBF;
+}
+
+.header-area .main-header-area .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #D8EBF2;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+  
+.header-area .main-header-area .sidebar .seccionSideBar  {
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    float: left;
+    margin-left: 35px;
+  }
+  
+.header-area .main-header-area .sidebar .seccionSideBar:hover {
+    color: #3b3b3b;
+  }
+
+  .header-area .main-header-area .sidebar .usuario  {
+    font-size: 15px;
+    margin-top: 30px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    float: left;
+    margin-left: 35px;
+  }
+  
+.header-area .main-header-area .sidebar .seccionSideBar:hover {
+    color: #3b3b3b;
+  }
+  
+.header-area .main-header-area .sidebar .x {
+    color: #818181;
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.header-area .main-header-area .sidebar .x:hover {
+    color: #3b3b3b;
+}
+  
+.header-area .main-header-area #main {
+    font-size: 30px;
+    color: #2E4559;
+    border: none;
+    float: right;
+    cursor: pointer;
+  }
+  
+.header-area .main-header-area #main:hover {
+    color: rgb(94, 115, 122);
+}
+  
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+.sticky{
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.margen{
+    margin-top: 95px;
+}
+
+.card{
+    box-shadow: rgb(70, 70, 70, 5);
+    width: 100%;
+    height: 100%;
+    margin: 15px;
+}
+
+.imagen{
+    width: 100%;
+    height: auto;
+}

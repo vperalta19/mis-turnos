@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-import './../assets/css/toolbar.css'
+import './../assets/css/components.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './../assets/img/logo.png'
 
@@ -15,28 +15,36 @@ function closeNav() {
 	document.getElementById("main").style.marginLeft= "0";
 }
 
-export default function Toolbar() {
-	let name = "Juan Manuel Belgrano";
 
+
+export default function Toolbar(props) {
+	let name = props.toolbarInfo.nombre;
 	return(
 		<div className="header-area">
-			<div  className="header-top_area d-none d-lg-block">
-				<div className="container">
-					<div className="row">
-						<div className="col">
-							<div className="usuario">
-								{name}
+			{(() => {
+              if (name){
+                  return (
+					<div  className="header-top_area d-none d-lg-block">
+						<div className="container">
+							<div className="row">
+								<div className="col">
+									<div className="usuario">
+										{name}
+									</div>
+								</div>
+								<div className="col">
+									<div className="cerrarSesion">
+										<div>CERRAR SESION</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div className="col">
-							<div className="cerrarSesion">
-								<div>CERRAR SESION</div>
-							</div>
-								
 						</div>
 					</div>
-				</div>
-			</div>
+                  )
+              }
+              
+              return null;
+            })()}
 			<div id="main-header" className="main-header-area">
 				<div className="container">
 					<div className="row align-items-center">
@@ -44,38 +52,71 @@ export default function Toolbar() {
 							<img src={logo} alt="logo"/>
 						</div>
 						<div className="col-lg-6 d-none d-lg-block text-center">
-							<div className="toolbar">
-								<ul>
-									<li className="seccion">
-										INICIO
-									</li>
-									<li className="seccion">
-										CALENDARIO
-									</li>
-									<li className="seccion">
-										MI CUENTA
-									</li>
-								</ul>
-							</div>
+							{(() => {
+								if (name){
+									return (
+										<div className="toolbar">
+											<ul>
+												<li className="seccion">
+													INICIO
+												</li>
+												<li className="seccion">
+													CALENDARIO
+												</li>
+												<li className="seccion">
+													MI CUENTA
+												</li>
+											</ul>
+										</div>
+									)
+								}
+								
+								return null;
+							})()}
+							
 						</div>
 
 						<div className="col-8 d-lg-none" >
-							<div id="mySidebar" className="sidebar">
-								<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
-								<div className="usuario">{name}</div>
-								<div className="seccionSideBar">INICIO</div>
-								<div className="seccionSideBar">CALENDARIO</div>
-								<div className="seccionSideBar">MI CUENTA</div>
-								<div className="seccionSideBar">CERRAR SESION</div>
-							</div>
-							<div id="main">
-								<div onClick={openNav}>☰</div>
-							</div>
+							{(() => {
+								if (name){
+									return (
+										<div>
+											<div id="mySidebar" className="sidebar">
+												<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
+												<div className="usuario">{name}</div>
+												<div className="seccionSideBar">INICIO</div>
+												<div className="seccionSideBar">CALENDARIO</div>
+												<div className="seccionSideBar">MI CUENTA</div>
+												<div className="seccionSideBar">CERRAR SESION</div>
+											</div>
+											<div id="main">
+												<div onClick={openNav}>☰</div>
+											</div>
+										</div>
+									)
+								}
+								
+								return null;
+							})()}
+							
 							
 						</div>
 						<div className="col-lg-3 col-12" id="pedirTurno">
 							<div className="pedirTurno">
-								<div>PEDIR TURNO</div>
+							{(() => {
+								if (name){
+									return (
+										<div>PEDIR TURNO</div>
+									)
+								}
+								else{
+									return (
+										<div>INICIAR SESION</div>
+									)
+								}
+								
+							})()}
+								
 							</div>
 						</div>
 					</div>
@@ -174,24 +215,27 @@ export default function Toolbar() {
 </html> */
 
 //JS
-/*// When the user scrolls the page, execute myFunction 
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyHeader() {
+	// Get the navbar
+	var navbar = document.getElementById("main-header");
+	var pedirTurno = document.getElementById("pedirTurno");
+
+	// Get the offset position of the navbar
+	var sticky = navbar.offsetTop;
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky"); 
+        pedirTurno.classList.add("d-none");
+        pedirTurno.classList.add("d-lg-block");
+        
+    } else {
+        navbar.classList.remove("sticky");
+        pedirTurno.classList.remove("d-none");
+    }
+}
+
+// When the user scrolls the page, execute myFunction 
 window.onscroll = function() {stickyHeader()};
 
-// Get the navbar
-var navbar = getElementById("main-header");
-var pedirTurno = getElementById("pedirTurno");
-
-// Get the offset position of the navbar
-
-
-// Add the sticky className to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyHeader() {
-	if (window.pageYOffset >= window.innerHeight) {
-		navbar.classList.add("sticky"); 
-		pedirTurno.classList.add("d-none d-lg-block");
-	} else {
-		navbar.classList.remove("sticky");
-		pedirTurno.classList.remove("d-none");
-	}
-}*/
 
