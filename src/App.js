@@ -6,7 +6,7 @@ import LandingPage from './components/LandingPage.js';
 
 function App() {
 	const toolbar = {
-		nombre: ''
+		nombre: 'Juan Manuel Belgrano'
 	}
 	return (
 		<div className="App">
