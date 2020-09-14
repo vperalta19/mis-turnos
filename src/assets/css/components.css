@@ -191,110 +191,14 @@
     margin-top: 95px;
 }
 
-.medio{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.card{
+    box-shadow: rgb(70, 70, 70, 5);
+    width: 100%;
     height: 100%;
-    /*background-image: url(./../img/DrOscuro.jpg);*/
+    margin: 15px;
 }
 
-
-.medio .textoInicio{
-    font-family: "Poppins", italic;
-    margin: 200px;
-    color: white;
-}
-
-.medio .textoInicio h3{
-    font-size: 70px;
-}
-
-.medio .textoInicio h3 span{
-    font-size: 50px;
-}
-
-@media (max-width: 1200px) {
-    .medio .textoInicio{margin: 150px;} 
-}
-
-@media (max-width: 991px) {
-    .medio .textoInicio{margin: 75px;}
-    .medio .textoInicio h3{font-size: 60px;}
-    .medio .textoInicio h3 span{font-size: 45px;}
-    
-}
-@media (max-width: 768px) {
-    .medio .textoInicio{margin: 30px;}
-    .medio .textoInicio h3{font-size: 60px;}
-    .medio .textoInicio h3 span{font-size: 45px;}
-}
-
-@media (max-width: 578px) {
-    .medio .textoInicio{margin: 30px;}
-    .medio .textoInicio h3{font-size: 50px;}
-    .medio .textoInicio h3 span{font-size: 35px;}
-    
-  }
-
-.pasos{
-    background-color: rgb(139, 205, 230);
-}
- 
-.pasos .p-0{
-    padding: 0;
-}
-
-.pasos .p-0 .no-margin{
-    margin: 0;
-}
-
-.pasos .p-0 .no-margin .paso-individual{
-    padding: 40px 30px;
-}
-
-.pasos .p-0 .no-margin .paso-individual .icon{
-    text-align: center;
-}
-
-.pasos .p-0 .no-margin .paso-individual .icon img {
-    width: 100px;
-    
-}
-
-.pasos .p-0 .no-margin .paso-individual .letras{
-    text-align: center;
-}
-
-.pasos .p-0 .no-margin .paso-individual h3{
-    font-size: 30px;
-    font-weight: 500;
-    color: #fff;
-}
-
-.pasos .p-0 .no-margin .paso-individual span{
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    color: #fff;
-}
-
-.pasos .col-xl-4:nth-child(2) .paso-individual {
-    background: rgb(94, 172, 201);
-    height: 100%;
-}
-
-.copy-right_text {
-    padding-bottom: 5px;
-    background: rgb(255, 255, 255);
-}
-
-.copy-right_text .copy_right {
-    font-size: 16px;
-    color: #04ADBF;
-    margin-bottom: 0;
-    font-weight: 400;
-    }
-.text-center{
-    text-align: center;
+.imagen{
+    width: 100%;
+    height: auto;
 }

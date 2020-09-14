@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-import './../assets/css/toolbar.css'
+import './../assets/css/components.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './../assets/img/logo.png'
 
