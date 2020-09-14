@@ -18,11 +18,11 @@
     color: white;
 }
 
-.medio .textoInicio h3{
+.medio .textoInicio .negrita{
     font-size: 70px;
 }
 
-.medio .textoInicio h3 span{
+.medio .textoInicio .negrita span{
     font-size: 50px;
 }
 
@@ -108,3 +108,25 @@
     width: 100%;
     height: auto;
 }
+
+.p-0{
+    padding: 0;
+}
+
+.sobreNosotros h1{
+    font-family: Roboto, regular;
+    font-size: 3vw;
+}
+
+.sobreNosotros span{
+    font-family: Roboto, thin;
+    font-size: 2vw;
+    margin-bottom: 50px;
+}
+
+.redes{
+    display: inline;
+    margin: 25px;
+    font-size: 2em;
+}
+
