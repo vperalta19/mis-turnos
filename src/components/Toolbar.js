@@ -15,28 +15,36 @@ function closeNav() {
 	document.getElementById("main").style.marginLeft= "0";
 }
 
-export default function Toolbar() {
-	let name = "Juan Manuel Belgrano";
 
+
+export default function Toolbar(props) {
+	let name = props.toolbarInfo.nombre;
 	return(
 		<div className="header-area">
-			<div  className="header-top_area d-none d-lg-block">
-				<div className="container">
-					<div className="row">
-						<div className="col">
-							<div className="usuario">
-								{name}
+			{(() => {
+              if (name){
+                  return (
+					<div  className="header-top_area d-none d-lg-block">
+						<div className="container">
+							<div className="row">
+								<div className="col">
+									<div className="usuario">
+										{name}
+									</div>
+								</div>
+								<div className="col">
+									<div className="cerrarSesion">
+										<div>CERRAR SESION</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div className="col">
-							<div className="cerrarSesion">
-								<div>CERRAR SESION</div>
-							</div>
-								
 						</div>
 					</div>
-				</div>
-			</div>
+                  )
+              }
+              
+              return null;
+            })()}
 			<div id="main-header" className="main-header-area">
 				<div className="container">
 					<div className="row align-items-center">
@@ -44,38 +52,71 @@ export default function Toolbar() {
 							<img src={logo} alt="logo"/>
 						</div>
 						<div className="col-lg-6 d-none d-lg-block text-center">
-							<div className="toolbar">
-								<ul>
-									<li className="seccion">
-										INICIO
-									</li>
-									<li className="seccion">
-										CALENDARIO
-									</li>
-									<li className="seccion">
-										MI CUENTA
-									</li>
-								</ul>
-							</div>
+							{(() => {
+								if (name){
+									return (
+										<div className="toolbar">
+											<ul>
+												<li className="seccion">
+													INICIO
+												</li>
+												<li className="seccion">
+													CALENDARIO
+												</li>
+												<li className="seccion">
+													MI CUENTA
+												</li>
+											</ul>
+										</div>
+									)
+								}
+								
+								return null;
+							})()}
+							
 						</div>
 
 						<div className="col-8 d-lg-none" >
-							<div id="mySidebar" className="sidebar">
-								<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
-								<div className="usuario">{name}</div>
-								<div className="seccionSideBar">INICIO</div>
-								<div className="seccionSideBar">CALENDARIO</div>
-								<div className="seccionSideBar">MI CUENTA</div>
-								<div className="seccionSideBar">CERRAR SESION</div>
-							</div>
-							<div id="main">
-								<div onClick={openNav}>☰</div>
-							</div>
+							{(() => {
+								if (name){
+									return (
+										<div>
+											<div id="mySidebar" className="sidebar">
+												<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
+												<div className="usuario">{name}</div>
+												<div className="seccionSideBar">INICIO</div>
+												<div className="seccionSideBar">CALENDARIO</div>
+												<div className="seccionSideBar">MI CUENTA</div>
+												<div className="seccionSideBar">CERRAR SESION</div>
+											</div>
+											<div id="main">
+												<div onClick={openNav}>☰</div>
+											</div>
+										</div>
+									)
+								}
+								
+								return null;
+							})()}
+							
 							
 						</div>
 						<div className="col-lg-3 col-12" id="pedirTurno">
 							<div className="pedirTurno">
-								<div>PEDIR TURNO</div>
+							{(() => {
+								if (name){
+									return (
+										<div>PEDIR TURNO</div>
+									)
+								}
+								else{
+									return (
+										<div>INICIAR SESION</div>
+									)
+								}
+								
+							})()}
+								
 							</div>
 						</div>
 					</div>
