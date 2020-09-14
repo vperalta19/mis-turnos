@@ -2,7 +2,7 @@ import React from 'react';
 import './assets/css/App.css';
 import Toolbar from './components/Toolbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MediaCard from './components/Novedad.js';
+import LandingPage from './components/LandingPage.js';
 
 function App() {
 	const toolbar = {
@@ -11,13 +11,7 @@ function App() {
 	return (
 		<div className="App">
 			<Toolbar toolbarInfo={toolbar}></Toolbar>
-			<div className="container-fluid">
-				<div className="row">
-					<div className="col-4">
-						<MediaCard></MediaCard>
-					</div>
-				</div>
-			</div>
+			<LandingPage></LandingPage>
 
 			
 		</div>
