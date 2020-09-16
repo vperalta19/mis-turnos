@@ -118,7 +118,7 @@
     width: 0;
     top: 0;
     right: 0;
-    background-color: #D8EBF2;
+    background-color: #ffffff;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -129,7 +129,6 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
     cursor: pointer;
     float: left;
     margin-left: 30px;
@@ -139,6 +138,28 @@
 .header-area .main-header-area .sidebar .seccionSideBar:hover {
     color: #3b3b3b;
   }
+
+.header-area .main-header-area .sidebar .sideBarCerrarSesion  {
+    font-size: 10px;
+    color: #ffffff;
+    display: block;
+    cursor: pointer;
+    float: left;
+    margin-left: 30px;
+    margin-top: 490px;
+    padding: 5px 55px;
+    background-color: #04ADBF;
+    border-radius: 25px;
+    border: 1px solid transparent;
+}
+
+.header-area .main-header-area .sidebar .sideBarCerrarSesion:hover  {
+    background-color: #ffffff;
+    border-color: #04ADBF;
+    color: #04ADBF;
+}
+
+  
 
   .header-area .main-header-area .sidebar .usuario  {
     font-size: 15px;
@@ -209,3 +230,5 @@
 .dondeEstamos{
     padding: 50px;
 }
+
+

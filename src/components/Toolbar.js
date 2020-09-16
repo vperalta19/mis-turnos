@@ -76,7 +76,7 @@ export default function Toolbar(props) {
 												<div className="seccionSideBar">INICIO</div>
 												<div className="seccionSideBar">CALENDARIO</div>
 												<div className="seccionSideBar">MI CUENTA</div>
-												<div className="seccionSideBar">CERRAR SESION</div>
+												<div className="sideBarCerrarSesion">CERRAR SESION</div>
 											</div>
 											<div id="main">
 												<div onClick={openNav}>☰</div>
