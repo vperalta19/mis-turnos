@@ -13,8 +13,8 @@ import pcovid from './../assets/img/personasCovid.png'
 export default function LandingPage() {
     return(
         <div>
-            <div className="container-fluid medio">
-                <div className="row">
+            <div id="medio" className="container-fluid medio">
+                <div className="row align-items-center h-100">
                     <div className="col textoInicio text-left">
                         <div className='negrita'>
                             <span>LA MANERA MAS </span>FACIL<br />
@@ -64,9 +64,9 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid novedades">
+            <div className="container-fluid sobreNosotros">
                 <div className="row align-items-center">
-                    <div className="col-12 col-md-6 text-center sobreNosotros ">
+                    <div className="col-12 col-md-6 text-center">
                         <div className="row">
                             <div className="col">
                                 <h1>Sobre Nosotros</h1>
@@ -75,7 +75,7 @@ export default function LandingPage() {
                         </div>
                         <div className="row">
                             <div className="col">
-                                <div className="social_media_links">
+                                <div className="social-media-links">
                                     <div className="redes"><FontAwesomeIcon icon={faInstagram}/></div>
                                     <div className="redes"><FontAwesomeIcon icon={faFacebook}/></div>
                                     <div className="redes"><FontAwesomeIcon icon={faTwitter}/></div>            

@@ -8,7 +8,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
     background-image: url(./../img/DrOscuro.jpg);
 }
 
@@ -25,29 +24,6 @@
 .medio .textoInicio .negrita span{
     font-size: 50px;
 }
-
-@media (max-width: 1200px) {
-    .medio .textoInicio{margin: 150px;} 
-}
-
-@media (max-width: 991px) {
-    .medio .textoInicio{margin: 75px;}
-    .medio .textoInicio h3{font-size: 60px;}
-    .medio .textoInicio h3 span{font-size: 45px;}
-    
-}
-@media (max-width: 768px) {
-    .medio .textoInicio{margin: 40px;}
-    .medio .textoInicio h3{font-size: 50px;}
-    .medio .textoInicio h3 span{font-size: 35px;}
-}
-
-@media (max-width: 578px) {
-    .medio .textoInicio{margin: 30px;}
-    .medio .textoInicio h3{font-size: 40px;}
-    .medio .textoInicio h3 span{font-size: 25px;}
-    
-  }
 
 .pasos{
     background-color: rgb(139, 205, 230);
@@ -85,7 +61,6 @@
 
 .pasos .col-xl-4:nth-child(2) .paso-individual {
     background: rgb(94, 172, 201);
-    height: 100%;
 }
 
 .copy-right_text {
@@ -107,27 +82,60 @@
 .p-covid{
     width: 100%;
     height: auto;
+    margin-top: 50px;
 }
 
 .p-0{
     padding: 0;
 }
 
+.social-media-links{
+    margin-top: 25px;
+}
+
 .sobreNosotros h1{
+    margin-top: 50px;
     font-family: Roboto, regular;
-    font-size: 3vw;
 }
 
 .sobreNosotros span{
     font-family: Roboto, thin;
-    font-size: 2vw;
 }
-
-
 
 .redes{
     display: inline;
     margin: 25px;
     font-size: 2em;
 }
+
+@media (min-width: 991px) {
+    .medio{height: 80%;}
+    .medio .textoInicio{margin: 150px;} 
+    .sobreNosotros h1{font-size: 35px;}
+    .sobreNosotros span{font-size: 25px;}
+}
+
+@media (max-width: 991px) {
+    .medio{height: 75%;}
+    .medio .textoInicio{margin: 75px;}
+    .medio .textoInicio .negrita{font-size: 60px;}
+    .medio .textoInicio .negrita span{font-size: 45px;}
+    
+}
+@media (max-width: 768px) {
+    .medio{height: 50%;}
+    .medio .textoInicio{margin: 40px;}
+    .medio .textoInicio .negrita{font-size: 50px;}
+    .medio .textoInicio .negrita span{font-size: 35px;}
+}
+
+@media (max-width: 578px) {
+    .medio{height: 50%;}
+    .medio .textoInicio{margin: 30px;}
+    .medio .textoInicio .negrita{font-size: 40px;}
+    .medio .textoInicio .negrita span{font-size: 25px;}
+    .sobreNosotros h1{font-size: 30px;}
+    .sobreNosotros span{font-size: 20px;}
+    
+  }
 

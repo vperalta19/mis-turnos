@@ -1,19 +1,23 @@
 import React from 'react';
-import './assets/css/App.css';
-import Toolbar from './components/Toolbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LandingPage from './components/LandingPage.js';
+import Toolbar from './components/Toolbar';
+import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
+import Novedad from './components/Novedad';
+import DondeEstamos from './components/DondeEstamos';
 
 function App() {
-	const toolbar = {
-		nombre: 'Juan Manuel Belgrano'
+	const toolbarInfo={
+		nombre: 'Valeria Peralta'
 	}
 	return (
 		<div className="App">
-			<Toolbar toolbarInfo={toolbar}></Toolbar>
+			<Toolbar toolbarInfo={toolbarInfo}></Toolbar>
 			<LandingPage></LandingPage>
+			<Novedad></Novedad>
+			<DondeEstamos></DondeEstamos>
+			<Footer></Footer>
 
-			
 		</div>
 	);
 }

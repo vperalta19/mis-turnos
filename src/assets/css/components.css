@@ -9,6 +9,10 @@
     z-index: 9;
 }
 
+.margen{
+    margin-top: 55px;
+}
+
 .header-area .header-top_area {
     padding: 5px;
     background: #D8EBF2;
@@ -109,9 +113,9 @@
 
 .header-area .main-header-area .sidebar {
     height: 100%;
-    width: 0;
     position: fixed;
     z-index: 1;
+    width: 0;
     top: 0;
     right: 0;
     background-color: #D8EBF2;
@@ -128,7 +132,8 @@
     transition: 0.3s;
     cursor: pointer;
     float: left;
-    margin-left: 35px;
+    margin-left: 30px;
+    width: 100%;
   }
   
 .header-area .main-header-area .sidebar .seccionSideBar:hover {
@@ -143,7 +148,8 @@
     transition: 0.3s;
     cursor: pointer;
     float: left;
-    margin-left: 35px;
+    margin-left: 30px;
+    width: 100%;
   }
   
 .header-area .main-header-area .sidebar .seccionSideBar:hover {
@@ -187,9 +193,6 @@
     top: 0;
 }
 
-.margen{
-    margin-top: 95px;
-}
 
 .card{
     box-shadow: rgb(70, 70, 70, 5);
@@ -201,4 +204,8 @@
 .imagen{
     width: 100%;
     height: auto;
+}
+
+.dondeEstamos{
+    padding: 50px;
 }

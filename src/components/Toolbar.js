@@ -5,41 +5,6 @@ import './../assets/css/components.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './../assets/img/logo.png'
 
-function openNav() {
-	document.getElementById("mySidebar").style.width = "250px";
-	document.getElementById("main").style.marginLeft = "250px";
-  }
-  
-function closeNav() {
-	document.getElementById("mySidebar").style.width = "0";
-	document.getElementById("main").style.marginLeft= "0";
-}
-
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyHeader() {
-	// Get the navbar
-	var navbar = document.getElementById("main-header");
-	var pedirTurno = document.getElementById("pedirTurno");
-
-	// Get the offset position of the navbar
-	var sticky = navbar.offsetTop;
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky"); 
-        pedirTurno.classList.add("d-none");
-        pedirTurno.classList.add("d-lg-block");
-        
-    } else {
-        navbar.classList.remove("sticky");
-        pedirTurno.classList.remove("d-none");
-    }
-}
-
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function() {stickyHeader()};
-
-
-
 export default function Toolbar(props) {
 	let name = props.toolbarInfo.nombre;
 	return(
@@ -107,6 +72,7 @@ export default function Toolbar(props) {
 											<div id="mySidebar" className="sidebar">
 												<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
 												<div className="usuario">{name}</div>
+												
 												<div className="seccionSideBar">INICIO</div>
 												<div className="seccionSideBar">CALENDARIO</div>
 												<div className="seccionSideBar">MI CUENTA</div>
@@ -148,6 +114,52 @@ export default function Toolbar(props) {
 		</div>
 	);
 }
+
+function openNav() {
+	document.getElementById("mySidebar").style.width = "250px";
+	document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+function closeNav() {
+	document.getElementById("mySidebar").style.width = "0";
+	document.getElementById("main").style.marginLeft= "0";
+}
+
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyHeader() {
+	// Get the navbar
+	var navbar = document.getElementById("main-header");
+	var pedirTurno = document.getElementById("pedirTurno");
+	var medio = document.getElementById('medio');
+	var headerTop = document.getElementsByClassName('header-top_area')
+
+	// Get the offset position of the navbar
+	var sticky = navbar.getBoundingClientRect().top;
+
+	console.log(sticky);
+    if (window.pageYOffset > sticky) {
+        navbar.classList.add("sticky"); 
+        pedirTurno.classList.add("d-none");
+		pedirTurno.classList.add("d-lg-block");
+		console.log(headerTop);
+		if(headerTop.length !== 0){
+			medio.classList.add('margen')
+		}
+		
+        
+    } else {
+        navbar.classList.remove("sticky");
+		pedirTurno.classList.remove("d-none");
+		if(headerTop.length !== 0){
+			medio.classList.remove('margen')
+		}
+    }
+}
+
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {stickyHeader()};
+
 
 
 
