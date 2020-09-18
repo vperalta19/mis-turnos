@@ -19,9 +19,6 @@
     border-radius: 50px;
     margin-bottom: 10px;
     box-shadow:20px 20px 50px #839cac; 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     text-align: center;
 }
 
@@ -68,8 +65,6 @@
     Width : 114px;
     Height : 25px;
     border-radius: 10px;
-    flex-grow: 3;
-    flex: 1 0 100%;
 
     font-family: Roboto;
     font-style: normal;
