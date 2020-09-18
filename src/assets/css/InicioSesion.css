@@ -69,7 +69,13 @@
     Height : 25px;
     border-radius: 10px;
     flex-grow: 3;
-    background-position: right;
+    flex: 1 0 100%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 12px;
 
 }
 

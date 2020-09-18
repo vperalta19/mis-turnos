@@ -15,7 +15,7 @@ function InicioSesion() {
                         <form id="inputLogin">
                             <input type="text" id="docid" name="docid"></input>
                             <input type="password" id="pass" name="pass"></input>
-                            <input type="submit" value="Submit" id="sub"></input>
+                            <input type="submit" value="Iniciar Sesion" id="sub"></input>
                         </form>
                     </div>
                 </div>
