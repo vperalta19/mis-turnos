@@ -12,6 +12,11 @@ function InicioSesion() {
                     </div>
                     <div className="col-lg-4 col-10 col-md-6 login">
                         <h1 id="titleLogIn">Iniciar Sesion</h1>
+                        <form id="inputLogin">
+                            <input type="text" id="docid" name="docid"></input>
+                            <input type="password" id="pass" name="pass"></input>
+                            <input type="submit" value="Submit" id="sub"></input>
+                        </form>
                     </div>
                 </div>
                 <div className="row fil2">

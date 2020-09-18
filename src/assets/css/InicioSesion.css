@@ -19,6 +19,10 @@
     border-radius: 50px;
     margin-bottom: 10px;
     box-shadow:20px 20px 50px #839cac; 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .contenedor .fil1 #titleLogIn{
@@ -32,6 +36,42 @@
     line-height: 35px;
 }
 
+.fondoLogSign .contenedor .login #docid{
+    width: 80%;
+    height: 49px;
+
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+.fondoLogSign .contenedor .login #pass{
+    height: 49px;
+    width: 80%;
+
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    margin-bottom: 10px;
+}
+
+.fondoLogSign .contenedor .login #sub{
+    background-color: #4F7E9B;
+    color:white;
+
+    Width : 114px;
+    Height : 25px;
+    border-radius: 10px;
+    flex-grow: 3;
+    background-position: right;
+
+}
 
 /*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
 
@@ -85,7 +125,6 @@
 }
 
 .fondoLogSign .contenedor .signup .buttonSignUp:hover {
-    /* box-shadow: 0 0 11px rgba(33,33,33,.2); */
     box-shadow: 0 0 11px #388ec4;
 
 }
