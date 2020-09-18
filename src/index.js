@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './assets/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import InicioSesion from './pages/InicioSesion'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    {/* <App/> */}
+    <InicioSesion/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,17 +1,98 @@
-.fondoLogSign{
-    background-image: url('./../img/fondoLogIn.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    height: 100vh;
-    margin: 3px auto 0;
-    position: relative;
+.header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* font-size: calc(10px + 2vmin); */
+    color: white;
+}
+
+  .fondoLogSign .header .contenedor .login{
+    width: 100%;
+    height: 265px;
+    background: rgba(255, 255, 255, 0.2);
+    /* background-color: lawngreen; */
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.fondoLogSign .header .contenedor .signup{
+    width: 100%;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    /* background-color: lightcoral; */
+    border-radius: 50px;
+}
+
+.fondoLogSign .contenedor .fil1 #titleLogIn{
+    margin-top: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+
+.fondoLogSign .contenedor .fil2 #titleSignup{
+    margin-top: 12px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #FFFFFF;
+}
+
+/*.fondoLogSign{
+    background-color: #B8D0D9;
+    background-attachment: fixed;
+}
+
+.fondoLogSign .contenedor{
+    background-color: lightgray;
+    margin-top: 150px;
+}
+
+.fondoLogSign .contenedor .fil1{
+    background-color: mediumblue;
+}
+
+.fondoLogSign .contenedor .fil1 #titleLogIn{
+    margin-top: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+
+.fondoLogSign .contenedor .fil2 #titleSignup{
+    margin-top: 12px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #FFFFFF;
 }
 
 .fondoLogSign .login{
     width: 100%;
     height: 265px;
     background: rgba(255, 255, 255, 0.2);
+    background-color: lawngreen;
     border-radius: 50px;
     margin-bottom: 10px;
 }
@@ -20,24 +101,15 @@
     width: 100%;
     height: 150px;
     background: rgba(255, 255, 255, 0.2);
+    background-color: lightcoral;
     border-radius: 50px;
 }
 
 @media (min-width: 768px) {
-    .fondoLogSign .fil1{
-        margin-top: 250px;
-        /*top:250px;*/
-    }
 }
 
 @media (max-width: 768px) {
-    .fondoLogSign {
-        background-image: url('./../img/fondoLogIn_celu.jpeg');
-        background-size: 100%;
+    .fondoLogSign .contenedor{
+        
     }
-    .fondoLogSign .fil1{
-        position: relative;
-        top:180px;
-    }
-}
-
+}*/
