@@ -2,13 +2,15 @@
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
     min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
-    display: flex;  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso "fondo.LogSign"*/
+    display: flex;  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso ".fondoLogSign"*/
     flex-direction: column; /*En vertical ordena lo que le ponga internamente*/
-    justify-content: center; /*Me lo justifica segun el eje que definí arriba (eje principal)*/
+    justify-content: center; /*Me lo justifica segun el eje que definí arriba (eje principal) podría no ponerlo y modificar el margin-top despues*/
     align-items: center;  /*Me lo justifica segun el eje secundario (row en este caso)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/*---------------------------------------------inicio contenedor de Log In---------------------------------------------*/
 
   .fondoLogSign .contenedor .login{
     width: 100%;
@@ -16,13 +18,6 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     margin-bottom: 10px;
-}
-
-.fondoLogSign .contenedor .signup{
-    width: 100%;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
 }
 
 .contenedor .fil1 #titleLogIn{
@@ -36,6 +31,17 @@
     line-height: 35px;
 }
 
+
+/*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
+
+.fondoLogSign .contenedor .signup{
+    width: 100%;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    text-align: center;
+}
+
 .contenedor .fil2 #titleSignup{
     margin-top: 12px;
     text-align: center;
@@ -46,6 +52,34 @@
     line-height: 35px;
     color: #FFFFFF;
 }
+
+.contenedor .fil2 #textSignup{
+    margin-top: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    
+    color: #FFFFFF;
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp{
+    background-color: #4F7E9B;
+    width: 209px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 12px;
+    color: white;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+/*---------------------------------------------inicio media querys---------------------------------------------*/
 
 @media (min-width: 768px) {
     .fondoLogSign .contenedor{
