@@ -1,39 +1,31 @@
-.header {
-    /* background-color: #282c34; */
+.fondoLogSign {
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* font-size: calc(10px + 2vmin); */
+    min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
+    display: flex;  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso "fondo.LogSign"*/
+    flex-direction: column; /*En vertical ordena lo que le ponga internamente*/
+    justify-content: center; /*Me lo justifica segun el eje que definí arriba (eje principal)*/
+    align-items: center;  /*Me lo justifica segun el eje secundario (row en este caso)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.fondoLogSign .header .contenedor{
-    margin-top: 180px;
-}
-
-  .fondoLogSign .header .contenedor .login{
+  .fondoLogSign .contenedor .login{
     width: 100%;
     height: 265px;
     background: rgba(255, 255, 255, 0.2);
-    /* background-color: lawngreen; */
     border-radius: 50px;
     margin-bottom: 10px;
 }
 
-.fondoLogSign .header .contenedor .signup{
+.fondoLogSign .contenedor .signup{
     width: 100%;
     height: 150px;
     background: rgba(255, 255, 255, 0.2);
-    /* background-color: lightcoral; */
     border-radius: 50px;
 }
 
-.fondoLogSign .contenedor .fil1 #titleLogIn{
+.contenedor .fil1 #titleLogIn{
     margin-top: 12px;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -44,8 +36,7 @@
     line-height: 35px;
 }
 
-
-.fondoLogSign .contenedor .fil2 #titleSignup{
+.contenedor .fil2 #titleSignup{
     margin-top: 12px;
     text-align: center;
     font-family: Roboto;
@@ -53,82 +44,23 @@
     font-weight: 900;
     font-size: 30px;
     line-height: 35px;
-
     color: #FFFFFF;
 }
 
+@media (min-width: 768px) {
+    .fondoLogSign .contenedor{
+        margin-top: 180px;
+    }
+}
+
 @media (max-width: 768px) {
-    .fondoLogSign .header{
+    .fondoLogSign{
         background-image: url('./../img/fondoLogIn_celu.jpeg');
         background-repeat: no-repeat;
         background-size: cover;
     }
 
-    .fondoLogSign .header .contenedor{
+    .fondoLogSign .contenedor{
         margin-top: 100px;
     }
 }
-
-/*.fondoLogSign{
-    background-color: #B8D0D9;
-    background-attachment: fixed;
-}
-
-.fondoLogSign .contenedor{
-    background-color: lightgray;
-    margin-top: 150px;
-}
-
-.fondoLogSign .contenedor .fil1{
-    background-color: mediumblue;
-}
-
-.fondoLogSign .contenedor .fil1 #titleLogIn{
-    margin-top: 12px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 30px;
-    line-height: 35px;
-}
-
-
-.fondoLogSign .contenedor .fil2 #titleSignup{
-    margin-top: 12px;
-    text-align: center;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 30px;
-    line-height: 35px;
-
-    color: #FFFFFF;
-}
-
-.fondoLogSign .login{
-    width: 100%;
-    height: 265px;
-    background: rgba(255, 255, 255, 0.2);
-    background-color: lawngreen;
-    border-radius: 50px;
-    margin-bottom: 10px;
-}
-
-.fondoLogSign .signup{
-    width: 100%;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.2);
-    background-color: lightcoral;
-    border-radius: 50px;
-}
-
-@media (min-width: 768px) {
-}
-
-@media (max-width: 768px) {
-    .fondoLogSign .contenedor{
-        
-    }
-}*/
