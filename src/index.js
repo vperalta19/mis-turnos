@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/css/index.css';
-import App from './App';
+
 import * as serviceWorker from './serviceWorker';
+import App from './App';
 import InicioSesion from './pages/InicioSesion'
+import Registrar from './pages/Registrar'
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App/> */}
-    <InicioSesion/>
+    {/* <InicioSesion/> */}
+    <Registrar/>
   </React.StrictMode>,
   document.getElementById('root')
 );

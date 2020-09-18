@@ -72,6 +72,7 @@
     font-size: 12px;
     line-height: 12px;
 
+    transition: box-shadow 0.3s;
 }
 
 /*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
