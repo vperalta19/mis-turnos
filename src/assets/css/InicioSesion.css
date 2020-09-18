@@ -18,6 +18,7 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     margin-bottom: 10px;
+    box-shadow:20px 20px 50px #839cac; 
 }
 
 .contenedor .fil1 #titleLogIn{
@@ -40,6 +41,7 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     text-align: center;
+    box-shadow:20px 20px 50px #839cac;
 }
 
 .contenedor .fil2 #titleSignup{
@@ -77,6 +79,15 @@
     font-weight: 900;
     font-size: 12px;
     line-height: 12px;
+
+    transition: box-shadow .3s; /*Para habilitar el hover*/
+    
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp:hover {
+    /* box-shadow: 0 0 11px rgba(33,33,33,.2); */
+    box-shadow: 0 0 11px #388ec4;
+
 }
 
 /*---------------------------------------------inicio media querys---------------------------------------------*/
