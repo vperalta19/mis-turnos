@@ -11,12 +11,13 @@ function InicioSesion() {
                     <div className = "col-lg-4 col-md-3 col-1"> 
                     </div>
                     <div className="col-lg-4 col-10 col-md-6 login">
-                        <h1 id="titleLogIn">Iniciar Sesion</h1>
-                        <form id="inputLogin">
-                            <input type="text" id="docid" name="docid"></input>
-                            <input type="password" id="pass" name="pass"></input>
-                            <input type="submit" value="Iniciar Sesion" id="sub"></input>
+                        <h1 className="titleLogIn">Iniciar Sesion</h1>
+                        <form id="inputLogin" className="inputLogin">
+                            <input type="text" id="docid" name="docid" className="docid"></input>
+                            <input type="password" id="pass" name="pass" className="pass"></input>
+                            <input type="submit" value="Iniciar Sesion" id="sub" className="sub"></input>
                         </form>
+                        <button type="button" className="recovery">Olvidé mi contraseña</button>
                     </div>
                 </div>
                 <div className="row fil2">

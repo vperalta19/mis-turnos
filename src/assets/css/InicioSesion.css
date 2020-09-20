@@ -1,16 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
 .fondoLogSign {
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
     min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
-    display: flex;  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso ".fondoLogSign"*/
-    flex-direction: column; /*En vertical ordena lo que le ponga internamente*/
-    justify-content: center; /*Me lo justifica segun el eje que definí arriba (eje principal) podría no ponerlo y modificar el margin-top despues*/
-    align-items: center;  /*Me lo justifica segun el eje secundario (row en este caso)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 /*---------------------------------------------inicio contenedor de Log In---------------------------------------------*/
+/* Agregar clases a los ID para manejarlos así en el CSS. NO USAR ID EN EL CSS*/
 
   .fondoLogSign .contenedor .login{
     width: 100%;
@@ -19,46 +23,44 @@
     border-radius: 50px;
     margin-bottom: 10px;
     box-shadow:20px 20px 50px #839cac; 
-    text-align: center;
 }
 
-.contenedor .fil1 #titleLogIn{
+.contenedor .fil1 .titleLogIn{
     margin-top: 12px;
     text-align: center;
     color: rgb(255, 255, 255);
-    font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     font-size: 30px;
     line-height: 35px;
 }
 
-.fondoLogSign .contenedor .login #docid{
+.fondoLogSign .contenedor .login .inputLogin{
+    display: flex;
+    flex-direction: column;
+}
+
+.fondoLogSign .contenedor .login .docid{
     width: 80%;
     height: 49px;
-
     background: #FFFFFF;
     border: 3px solid #EAEAEA;
-    box-sizing: border-box;
     border-radius: 25px;
-
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto
 
 }
 
-.fondoLogSign .contenedor .login #pass{
+.fondoLogSign .contenedor .login .pass{
     height: 49px;
     width: 80%;
 
     background: #FFFFFF;
     border: 3px solid #EAEAEA;
-    box-sizing: border-box;
     border-radius: 25px;
-
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto
 }
 
-.fondoLogSign .contenedor .login #sub{
+.fondoLogSign .contenedor .login .sub{
     background-color: #4F7E9B;
     color:white;
 
@@ -66,13 +68,19 @@
     Height : 25px;
     border-radius: 10px;
 
-    font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     font-size: 12px;
     line-height: 12px;
 
-    transition: box-shadow 0.3s;
+    margin: 0 auto 10px auto
+}
+
+.fondoLogSign .contenedor .login .recovery{
+    margin-top: 10px;
+    background-color: inherit;
+    border: none;
+    text-align: center;
 }
 
 /*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
@@ -89,7 +97,6 @@
 .contenedor .fil2 #titleSignup{
     margin-top: 12px;
     text-align: center;
-    font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     font-size: 30px;
@@ -99,7 +106,6 @@
 
 .contenedor .fil2 #textSignup{
     margin-top: 5px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
@@ -116,7 +122,6 @@
     margin-top: 12px;
     color: white;
 
-    font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     font-size: 12px;
@@ -135,7 +140,7 @@
 
 @media (min-width: 768px) {
     .fondoLogSign .contenedor{
-        margin-top: 180px;
+        padding-top: 200px;
     }
 }
 
@@ -147,6 +152,6 @@
     }
 
     .fondoLogSign .contenedor{
-        margin-top: 100px;
+        padding-top: 100px;
     }
 }
