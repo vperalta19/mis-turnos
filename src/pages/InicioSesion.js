@@ -24,8 +24,8 @@ function InicioSesion() {
                     <div className = "col-lg-4 col-md-3 col-1">
                     </div>
                     <div className="col-lg-4 col-10 col-md-6 signup">
-                        <h1 id="titleSignup">¿Primera vez aquí?</h1>
-                        <p id="textSignup">Regístrate y empieza a utilizarlo</p>
+                        <h1 id="titleSignup" className="titleSignup">¿Primera vez aquí?</h1>
+                        <p id="textSignup" className="textSignup">Regístrate y empieza a utilizarlo</p>
                         <button type="button" className="buttonSignUp">Registrar</button>
                     </div>
                 </div>

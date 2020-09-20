@@ -77,10 +77,11 @@
 }
 
 .fondoLogSign .contenedor .login .recovery{
-    margin-top: 10px;
+    
     background-color: inherit;
     border: none;
-    text-align: center;
+    margin-left: 35%;
+    margin-right: 33%;
 }
 
 /*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
@@ -94,7 +95,7 @@
     box-shadow:20px 20px 50px #839cac;
 }
 
-.contenedor .fil2 #titleSignup{
+.contenedor .fil2 .titleSignup{
     margin-top: 12px;
     text-align: center;
     font-style: normal;
@@ -104,7 +105,7 @@
     color: #FFFFFF;
 }
 
-.contenedor .fil2 #textSignup{
+.contenedor .fil2 .textSignup{
     margin-top: 5px;
     font-style: normal;
     font-weight: normal;
