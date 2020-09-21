@@ -27,16 +27,16 @@
 /*---------------------------------------------Inicio contenedor---------------------------------------------*/
 
 .fondoRegistrar .contenedor .registro_cont{
-    height: 520px;
+    height: 535px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     margin-bottom: 40px;
+    padding-top: 9px;
 }
 
 /*---------------------------------------------Inicio nombre---------------------------------------------*/
 
 .fondoRegistrar .contenedor .registro_cont .namelabel{
-    margin-top: 2px;
     width: 20px;
     height: 14px;
     
@@ -75,6 +75,7 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
+    margin-bottom: 2px;
 }
 
 /*---------------------------------------------Inicio docid---------------------------------------------*/
@@ -88,6 +89,7 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
+    margin-bottom: 2px;
 }
 
 .fondoRegistrar .contenedor .registro_cont .docidlabel{
@@ -99,6 +101,13 @@
 }
 
 /*---------------------------------------------Inicio email---------------------------------------------*/
+.fondoRegistrar .contenedor .registro_cont .emaillabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
 
 .fondoRegistrar .contenedor .registro_cont .email{
     width: 100%;
@@ -109,14 +118,7 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .emaillabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
+    margin-bottom: 2px;
 }
 
 /*---------------------------------------------Inicio nacimiento---------------------------------------------*/
@@ -137,9 +139,18 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
+    margin-bottom: 2px;
 }
 
 /*---------------------------------------------Inicio obra social---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .obsociallabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
 
 .fondoRegistrar .contenedor .registro_cont .obsocial{
     width: 100%;
@@ -151,17 +162,18 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
+    margin-bottom: 2px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .obsociallabel{
+/*---------------------------------------------Inicio numero de socio---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .nsociolabel{
     width: 20px;
     height: 14px;
     
     color: white;
     padding-left: 14px;
 }
-
-/*---------------------------------------------Inicio numero de socio---------------------------------------------*/
 
 .fondoRegistrar .contenedor .registro_cont .nsocio{
     width: 100%;
@@ -172,14 +184,7 @@
     box-sizing: border-box;
     border-radius: 25px;
     margin-top: 5px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .nsociolabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
+    margin-bottom: 2px;
 }
 
 /*---------------------------------------------Inicio .submit---------------------------------------------*/
