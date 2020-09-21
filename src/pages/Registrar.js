@@ -46,34 +46,34 @@ function Registrar() {
                         <div className="row">
                             <div className="col-12">
                                 <span className="namelabel">Nombre</span><br></br>
-                                <input type="text" id="name" name="name" className="name"></input>
+                                <input type="text" id="name" name="name" className="name text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="surnamelabel">Apellido</span><br></br>
-                                <input type="text" id="surname" name="surname" className="surname"></input>
+                                <input type="text" id="surname" name="surname" className="surname text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="docidlabel">Documento</span><br></br>
-                                <input type="text" id="docid" name="docid" className="docid"></input>
+                                <input type="text" id="docid" name="docid" className="docid text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="emaillabel">Email</span><br></br>
-                                <input type="text" id="email" name="email" className="email"></input>
+                                <input type="text" id="email" name="email" className="email text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="nacimientolabel">Fecha de nacimiento</span><br></br>
-                                <input type="text" id="nacimiento" name="nacimiento" className="nacimiento"></input>
+                                <input type="date" id="nacimiento" name="nacimiento" className="nacimiento text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="obsociallabel">Obra social</span><br></br>
-                                <input type="number" id="obsocial" name="obsocial" className="obsocial"></input>
+                                <input type="text" id="obsocial" name="obsocial" className="obsocial text-center"></input>
                             </div>
                             <div className="col-12">
                                 <span className="nsociolabel">Numero de socio</span><br></br>
-                                <input type="text" id="nsocio" name="nsocio" className="nsocio"></input>
+                                <input type="number" id="nsocio" name="nsocio" className="nsocio text-center"></input>
                             </div>
                             <div className="col-12 text-center">
-                                <input type="button" value="Registrarse" id="sub" className="sub text-center"></input>
+                                <button type="button" className="sub text-center">Registrarse</button>
                             </div>
                         </div>
                     </div>
