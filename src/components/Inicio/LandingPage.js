@@ -4,11 +4,11 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {faFacebook} from '@fortawesome/free-brands-svg-icons'
 import {faTwitter} from '@fortawesome/free-brands-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './../assets/css/landingPage.css'
-import doctores from './../assets/img/doctores.png'
-import calendario from './../assets/img/weeks.png'
-import check from './../assets/img/interface.png'
-import pcovid from './../assets/img/personasCovid.png'
+import './../../assets/css/landingPage.css'
+import doctores from './../../assets/img/doctores.png'
+import calendario from './../../assets/img/weeks.png'
+import check from './../../assets/img/interface.png'
+import pcovid from './../../assets/img/personasCovid.png'
 
 export default function LandingPage() {
     return(

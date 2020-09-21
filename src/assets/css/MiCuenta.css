@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.datosPersonales .titulo{
+    background-color: #FFC895;
+    height: 7%;
+}
+
+.datosPersonales .titulo h1{
+    font-size: 15px;
+    color: #ffff;
+}
+
+.datosPersonales .box-datos{
+    margin: 20px auto 5px auto;
+    border: 2px solid transparent;
+    border-color: #CBCBCB;
+}
+
+.datosPersonales .box-datos .filas{
+    border-bottom: 1px solid transparent;
+    border-color: #CBCBCB;
+}
+
+.datosPersonales .box-datos .nombre-datos{
+    background-color: #E4E1E1;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 24px;
+    letter-spacing: 0px;
+
+    color: #567B89;
+
+}
+
+.datosPersonales .box-datos .info-datos{
+    font-size: 15px;
+    color: #567B89;
+}
+
+.caja{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cajal-recetas .titulo{
+    background-color: #00B1C2;
+    height: 7%;
+}
+
+.caja .cajaBody{
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-color: #CBCBCB;
+}
+
+.caja .cajaHMInfo{
+    background-color: #6D96A6;
+}
+
+.caja .cajaRInfo{
+    background-color: #FFC895;
+}
+
+.caja span{
+    color: #ffff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+
+.caja .cajaBody .dato span{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 24px;
+    letter-spacing: 0px;
+    
+    color: #6D96A6;
+}
+
+.caja .cajaBody .info span{
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+
+    color: black;
+
+}
+
+.caja .cajaBody .info ul{
+    margin-bottom: 0;
+}
+
+.caja .cajaBody .info ul li{
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0px;
+
+    color: black;
+
+}
+
+.columnas{
+    border-right: 1px solid transparent;
+    border-color: #CBCBCB;
+}
+
+.btn-Editar{
+    font-size: 10px;
+    background: #567B89;
+    color: #ffffff;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 5px 20px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    float: right;
+    margin-bottom: 5px;
+    
+}
+
+.btn-Editar:hover {
+    background-color: #ffffff;
+    border-color: #567B89;
+    color: #567B89;
+}

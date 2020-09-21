@@ -1,22 +1,26 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Toolbar from './components/Toolbar';
-import LandingPage from './components/LandingPage';
-import Footer from './components/Footer';
-import Novedad from './components/Novedad';
-import DondeEstamos from './components/DondeEstamos';
+import Toolbar from './components/Toolbar'
+import Perfil from './components/MiCuenta/Perfil'
+import PopUp from './components/MiCuenta/PopUp'
 
 function App() {
 	const toolbarInfo={
 		nombre: 'Valeria Peralta'
 	}
+	const userInfo={
+		nombre: 'Valeria Peralta',
+		email: 'vaperalta2018@gmail.com',
+		tel: '3855843316',
+		dni: '42889052',
+		ooss: 'OSPE',
+		nroSocio: '123456',
+		rol: 'paciente'
+	}
 	return (
 		<div className="App">
 			<Toolbar toolbarInfo={toolbarInfo}></Toolbar>
-			<LandingPage></LandingPage>
-			<Novedad></Novedad>
-			<DondeEstamos></DondeEstamos>
-			<Footer></Footer>
+			<Perfil userInfo={userInfo}></Perfil>
+			
 
 		</div>
 	);
