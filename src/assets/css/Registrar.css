@@ -1,78 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: white;
+
+    box-sizing: border-box;
+}
+
 .fondoRegistrar {
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
     min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
-    display: flex;  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso ".fondoLogSign"*/
-    flex-direction: column; /*En vertical ordena lo que le ponga internamente*/
+    /*display: flex;*/  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso ".fondoLogSign"*/
+    /*flex-direction: column;*/ /*En vertical ordena lo que le ponga internamente*/
     /*justify-content: center;*/ /*Me lo justifica segun el eje que definí arriba (eje principal) podría no ponerlo y modificar el margin-top despues*/
-    align-items: center;  /*Me lo justifica segun el eje secundario (row en este caso)*/
+    /*align-items: center;*/  /*Me lo justifica segun el eje secundario (row en este caso)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 /*---------------------------------------------Inicio contenedor---------------------------------------------*/
 
-
-.fondoRegistrar .contenedor{
-    margin-top: 200px;
-    
-}
-
 .fondoRegistrar .contenedor .registro_cont{
-    height: 450px;
+    height: 520px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
-    text-align: center;
+    margin-bottom: 40px;
 }
 
-/*---------------------------------------------Inicio forms feos---------------------------------------------*/
+/*---------------------------------------------Inicio nombre---------------------------------------------*/
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #name{
+.fondoRegistrar .contenedor .registro_cont .namelabel{
+    margin-top: 2px;
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+.fondoRegistrar .contenedor .registro_cont .name{
     width: 100%;
     height: 49px;
+    color: #4F7E9B;
     
     background: #FFFFFF;
     border: 3px solid #EAEAEA;
     box-sizing: border-box;
     border-radius: 25px;
-    margin-top: 10px;
+    margin-bottom: 2px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #surname{
-    width: 100%;
-    height: 49px;
+/*---------------------------------------------Inicio apellido---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .surnamelabel{
+    width: 20px;
+    height: 14px;
     
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
+    color: white;
+    padding-left: 14px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #docid{
-    width: 100%;
-    height: 49px;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #email{
-    width: 100%;
-    height: 49px;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-}
-
-
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #nacimiento{
+.fondoRegistrar .contenedor .registro_cont .surname{
     width: 100%;
     height: 49px;
     
@@ -83,7 +77,9 @@
     margin-top: 5px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #obsocial{
+/*---------------------------------------------Inicio docid---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .docid{
     width: 100%;
     height: 49px;
     
@@ -94,7 +90,17 @@
     margin-top: 5px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #nsocio{
+.fondoRegistrar .contenedor .registro_cont .docidlabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+/*---------------------------------------------Inicio email---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .email{
     width: 100%;
     height: 49px;
     
@@ -105,7 +111,80 @@
     margin-top: 5px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .forms_cont .fil1_r .forms_fill #sub{
+.fondoRegistrar .contenedor .registro_cont .emaillabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+/*---------------------------------------------Inicio nacimiento---------------------------------------------*/
+.fondoRegistrar .contenedor .registro_cont .nacimientolabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+.fondoRegistrar .contenedor .registro_cont .nacimiento{
+    width: 100%;
+    height: 49px;
+    
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-top: 5px;
+}
+
+/*---------------------------------------------Inicio obra social---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .obsocial{
+    width: 100%;
+    height: 49px;
+    color: #4F7E9B;
+    
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-top: 5px;
+}
+
+.fondoRegistrar .contenedor .registro_cont .obsociallabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+/*---------------------------------------------Inicio numero de socio---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .nsocio{
+    width: 100%;
+    height: 49px;
+    
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-top: 5px;
+}
+
+.fondoRegistrar .contenedor .registro_cont .nsociolabel{
+    width: 20px;
+    height: 14px;
+    
+    color: white;
+    padding-left: 14px;
+}
+
+/*---------------------------------------------Inicio .submit---------------------------------------------*/
+
+.fondoRegistrar .contenedor .registro_cont .sub{
     margin-top: 10px;
     width: 209px;
     height: 25px;
@@ -120,8 +199,9 @@
     line-height: 12px;
     
     color: #FFFFFF;
-
 }
+
+/*---------------------------------------------Inicio forms feos---------------------------------------------*/
 
 /*---------------------------------------------inicio media querys---------------------------------------------*/
 
@@ -130,5 +210,11 @@
         background-image: url('./../img/fondoLogIn_celu.jpeg');
         background-repeat: no-repeat;
         background-size: cover;
+    }
+}
+
+@media (min-width: 768px) {
+    .fondoRegistrar .contenedor{
+        padding-top: 220px;
     }
 }
