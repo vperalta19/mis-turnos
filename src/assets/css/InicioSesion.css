@@ -76,9 +76,14 @@
     margin: 0 auto 10px auto
 }
 
+.fondoLogSign .contenedor .login .sub{
+
+
+}
+
+
 .fondoLogSign .contenedor .login .recovery{
     
-    background-color: inherit;
     border: none;
     margin-left: 35%;
     margin-right: 33%;
@@ -128,13 +133,18 @@
     font-size: 12px;
     line-height: 12px;
 
-    transition: box-shadow .3s; /*Para habilitar el hover*/
     
 }
 
 .fondoLogSign .contenedor .signup .buttonSignUp:hover {
-    box-shadow: 0 0 11px #388ec4;
+    background-color: white;
+    color:#4F7E9B;
+    border-color: #4F7E9B;
+    border: 1px solid;
+}
 
+button{
+    border:none;
 }
 
 /*---------------------------------------------inicio media querys---------------------------------------------*/
