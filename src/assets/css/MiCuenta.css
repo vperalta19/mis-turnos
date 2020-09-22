@@ -6,28 +6,37 @@
     box-sizing: border-box;
 }
 
-.datosPersonales .titulo{
-    background-color: #FFC895;
-    height: 7%;
+.historial-recetas{
+    padding: 0;
 }
 
-.datosPersonales .titulo h1{
+.pacientes .titulo{
+    background-color: #00B1C2;
+    height: 5%;
+}
+
+.datosPersonales .titulo{
+    background-color: #FFC895;
+    height: 5%;
+}
+
+.titulo h1{
     font-size: 15px;
     color: #ffff;
 }
 
-.datosPersonales .box-datos{
+.box-datos{
     margin: 20px auto 5px auto;
     border: 2px solid transparent;
     border-color: #CBCBCB;
 }
 
-.datosPersonales .box-datos .filas{
+.box-datos .filas{
     border-bottom: 1px solid transparent;
     border-color: #CBCBCB;
 }
 
-.datosPersonales .box-datos .nombre-datos{
+.box-datos .nombre-datos{
     background-color: #E4E1E1;
     font-size: 15px;
     font-style: normal;
@@ -39,7 +48,7 @@
 
 }
 
-.datosPersonales .box-datos .info-datos{
+.box-datos .info-datos{
     font-size: 15px;
     color: #567B89;
 }
@@ -48,10 +57,6 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.cajal-recetas .titulo{
-    background-color: #00B1C2;
-    height: 7%;
-}
 
 .caja .cajaBody{
     background-color: #ffffff;
@@ -143,4 +148,102 @@
     background-color: #ffffff;
     border-color: #567B89;
     color: #567B89;
+}
+
+.titulo-usuario{
+    background-color: #6D96A6;
+}
+
+.titulo-usuario span{
+    color: #ffff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.btn-modificar{
+    font-size: 12px;
+    background: #FFC895;
+    color: #ffffff;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 5px 30px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    margin: 5px;
+}
+
+.btn-modificar:hover {
+    background-color: #ffffff;
+    border-color: #FFC895;
+    color: #FFC895;
+}
+
+.btn-eliminar{
+    font-size: 12px;
+    background: #FFFF;
+    color: #FFC895;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 5px 30px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    margin: 5px;
+}
+
+.btn-eliminar:hover {
+    background-color: #FFC895;
+    border-color: #FFFF;
+    color: #FFFF;
+}
+
+.btn-agregar-hm{
+    font-size: 12px;
+    background: #FFC895;
+    color: #ffffff;
+    float: left;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 5px 30px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    margin: 5px;
+}
+
+.btn-agregar-hm:hover {
+    background-color: #ffffff;
+    border-color: #FFC895;
+    color: #FFC895;
+}
+
+.btn-agregar-r{
+    font-size: 12px;
+    background: #FFFF;
+    color: #FFC895;
+    float: left;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 5px 30px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    margin: 5px;
+    border-color: #FFC895;
+}
+
+.btn-agregar-r:hover {
+    background-color: #FFC895;
+    color: #FFF;
 }

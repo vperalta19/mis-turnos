@@ -70,21 +70,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const historialInfo = {
-    fecha : '23/09/2020',
-    paciente : 'Juan Manuel Belgrano',
-    profesional : 'Dr San Martin',
-    medicamentos : ['Paracetamol'],
-    estudios : ['Electrograma', 'Radiografia'],
-    notas : 'Veniam tempor cupidatat veniam consectetur culpa amet do dolore aliquip cillum mollit. Elit incididunt qui deserunt consectetur. Ad irure tempor commodo eiusmod Lorem laboris Lorem nulla nostrud. Sint laboris do proident aliqua eu occaecat do commodo quis magna ullamco culpa mollit. Commodo incididunt quis sint ea veniam tempor labore consequat exercitation laborum. Reprehenderit nostrud sint tempor commodo exercitation.'
-  }
+  
+  const historiales = props.historiales;
+  const recetas = props.recetas;
 
   return (
     <div className={classes.root}>
@@ -100,13 +95,26 @@ export default function NavTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <HistorialMedico historialInfo = {historialInfo}></HistorialMedico>
-        <HistorialMedico historialInfo = {historialInfo}></HistorialMedico>
-        <HistorialMedico historialInfo = {historialInfo}></HistorialMedico>
+        {
+          historiales.map(
+              (value, index)=>{
+                  return(
+                      <HistorialMedico key={index} historialInfo={value}></HistorialMedico>
+                  )
+              }
+          )
+        }
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Receta recetaInfo = {historialInfo}></Receta>
-        <Receta recetaInfo = {historialInfo}></Receta>
+        {
+          recetas.map(
+              (value, index)=>{
+                  return(
+                      <Receta key={index} recetaInfo={value}></Receta>
+                  )
+              }
+          )
+        }
       </TabPanel>
     </div>
   );

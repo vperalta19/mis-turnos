@@ -68,7 +68,7 @@ export default function AlertDialog() {
                       <span>Telefono:</span>
                   </div>
                   <div className="col-8">
-                    <input type="text" id="tel" name="tel"></input>
+                    <input type="number" id="tel" name="tel"></input>
                   </div>
               </div>
             </div>
