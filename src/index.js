@@ -10,8 +10,8 @@ import Registrar from './pages/Registrar'
 ReactDOM.render(
   <React.StrictMode>
     {/* <App/> */}
-    {/* <InicioSesion/> */}
-    <Registrar/>
+    <InicioSesion/>
+    {/* <Registrar/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

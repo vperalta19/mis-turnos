@@ -39,14 +39,25 @@ function InicioSesion() {
                     <div className = "col-lg-3 col-md-3 col-1 col-xl-4"> 
                     </div>
                     <div className="col-lg-6 col-10 col-md-6 col-xl-4 login">
-                        <h1 className="titleLogIn">Iniciar Sesion</h1>
-                        <form id="inputLogin" className="inputLogin">
+                        <div className="col text-center">
+                            <h1 className="titleLogIn">Iniciar Sesion</h1>
+                        </div>
+                        <div className="col">
                             <span className="doclabel">Documento</span><br></br>
+                        </div>
+                        <div className="col text-center">
                             <input type="text" id="docid" name="docid" className="docid"></input>
+                        </div>
+                        <div className="col">
+                        <span className="passLabel">Contraseña</span><br></br>
+                        </div>
+                        <div className="col text-center">
                             <input type="password" id="pass" name="pass" className="pass"></input>
-                            <input type="submit" value="Iniciar Sesion" id="sub" className="sub"></input>
-                        </form>
-                        <button type="button" className="recovery">Olvidé mi contraseña</button>
+                        </div>
+                        <div className="col">
+                            <button type="button" className="recovery">Olvidé mi contraseña</button> 
+                            <input type="submit" value="Iniciar Sesion" id="sub" className="sub align-items-right"></input>
+                        </div>
                     </div>
                 </div>
                 <div className="row fil2">
