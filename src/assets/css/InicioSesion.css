@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+  }
+
 button{
     border:none;
 }
@@ -38,7 +42,7 @@ button{
 .fondoLogSign .contenedor .login .doclabel{
     Width: 36px;
     Height: 14px;
-    margin-left: 20px;
+    margin-left: 40px;
 
 }
 
@@ -55,7 +59,7 @@ button{
 .fondoLogSign .contenedor .login .passLabel{
     Width: 36px;
     Height: 14px;
-    margin-left: 20px;   
+    margin-left: 40px;   
 }
 
 .fondoLogSign .contenedor .login .pass{
@@ -80,7 +84,7 @@ button{
     font-weight: 900;
     font-size: 12px;
     line-height: 12px;
-    margin-left: 100px;
+
     border: none;
     margin-bottom: 5px;
 }
@@ -93,10 +97,17 @@ button{
 }
 
 .fondoLogSign .contenedor .login .recovery{
-    border: none;
-    margin-left: 20px;
+    border-bottom: 1px #4F7E9B;
     background-color: rgb(255, 255, 255,0);
     margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.fondoLogSign .contenedor .login .recovery:hover:after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid;
 }
 
 /*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
@@ -134,7 +145,6 @@ button{
     width: 209px;
     height: 25px;
     border-radius: 10px;
-    margin-top: 12px;
     color: white;
 
     font-style: normal;
@@ -142,7 +152,7 @@ button{
     font-size: 12px;
     line-height: 12px;
 
-    margin:17px 25px;
+    margin-bottom: 12px;
     
 }
 
@@ -174,11 +184,4 @@ button{
         padding-top: 100px;
     }
 
-    .fondoLogSign .contenedor .login .sub{
-        margin-left: 10px;
-    }
-
-    .fondoLogSign .contenedor .login .recovery{
-        margin-left: 0px;
-    }
 }

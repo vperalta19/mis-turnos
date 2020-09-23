@@ -23,10 +23,6 @@ button{
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
     min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
-    /*display: flex;*/  /*flex box - diseñado para que automaticamente estire la "caja" que yo quiera, en este caso ".fondoLogSign"*/
-    /*flex-direction: column;*/ /*En vertical ordena lo que le ponga internamente*/
-    /*justify-content: center;*/ /*Me lo justifica segun el eje que definí arriba (eje principal) podría no ponerlo y modificar el margin-top despues*/
-    /*align-items: center;*/  /*Me lo justifica segun el eje secundario (row en este caso)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
