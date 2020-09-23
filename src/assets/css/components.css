@@ -73,8 +73,9 @@
     margin: 20px;
 
 }
+
   
-.header-area .main-header-area .toolbar ul li.seccion {
+.header-area .main-header-area .toolbar ul li a {
     color: #A2A2A2;
     font-size: 15px;
     text-transform: capitalize;
@@ -85,7 +86,7 @@
     cursor: pointer;
   }
   
-.header-area .main-header-area .toolbar ul li.seccion:hover {
+.header-area .main-header-area .toolbar ul li a:hover {
     color: rgb(70, 70, 70);
 }
 

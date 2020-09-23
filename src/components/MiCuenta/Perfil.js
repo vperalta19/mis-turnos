@@ -82,9 +82,8 @@ export default function DatosPersonales(props) {
                         if (quienVe === 'profesional'){
                             return (
                                 <div className='col text-left'>
-                                        <AgregarHM></AgregarHM>
-                                        <AgregarR></AgregarR>
-                                        
+                                    <AgregarHM></AgregarHM>
+                                    <AgregarR></AgregarR>
                                 </div>
                             )
                         }

@@ -1,9 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-import './../assets/css/components.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import logo from './../assets/img/logo.png'
+import {Link} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../assets/css/components.css'
 
 export default function Toolbar(props) {
 	let name = props.toolbarInfo.nombre;
@@ -46,13 +49,13 @@ export default function Toolbar(props) {
 										<div className="toolbar">
 											<ul>
 												<li className="seccion">
-													INICIO
+													<Link to='/'>INICIO</Link>
 												</li>
 												<li className="seccion">
-													CALENDARIO
+													<Link to='/Calendario'>CALENDARIO</Link>
 												</li>
 												<li className="seccion">
-													MI CUENTA
+													<Link to='/MiCuenta'>MI CUENTA</Link>
 												</li>
 											</ul>
 										</div>
