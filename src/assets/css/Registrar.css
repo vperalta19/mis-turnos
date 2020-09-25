@@ -1,20 +1,14 @@
 *{
     padding: 0;
     margin: 0;
-
-    font-style: normal;
-    font-weight: 900;
-    font-size: 12px;
-    line-height: 14px;
-
-    color: white;
-
     box-sizing: border-box;
 }
+
 
 *:focus {
     outline: none;
   }
+
 
 button{
     border:none;
@@ -23,7 +17,7 @@ button{
 .fondoRegistrar {
     background-color: #B8D0D9;
     background-image: url('./../img/fondoLogIn.png');
-    min-height: 100vh; 
+    min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -37,163 +31,32 @@ button{
     padding-top: 9px;
 }
 
-/*---------------------------------------------Inicio nombre---------------------------------------------*/
+/*---------------------------------------------Inicio registro---------------------------------------------*/
 
-.fondoRegistrar .contenedor .registro_cont .namelabel{
+.fondoRegistrar .contenedor .registro_cont span{
     width: 20px;
     height: 14px;
-    
-    color: white;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 14px;
+
+    color:#4F7E9B;
     padding-left: 14px;
 }
 
-.fondoRegistrar .contenedor .registro_cont .name{
+.fondoRegistrar .contenedor .registro_cont input{
     width: 100%;
     height: 49px;
     color:  #A2A2A2;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-bottom: 2px;
-}
-
-/*---------------------------------------------Inicio apellido---------------------------------------------*/
-
-.fondoRegistrar .contenedor .registro_cont .surnamelabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .surname{
-    width: 100%;
-    height: 49px;
-    color:  #A2A2A2;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
     margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-/*---------------------------------------------Inicio docid---------------------------------------------*/
-
-.fondoRegistrar .contenedor .registro_cont .docidlabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .docid{
-    width: 100%;
-    height: 49px;
-    color:  #A2A2A2;
-    
     background: #FFFFFF;
     border: 3px solid #EAEAEA;
     box-sizing: border-box;
     border-radius: 25px;
-    margin-top: 5px;
     margin-bottom: 2px;
 }
 
-/*---------------------------------------------Inicio email---------------------------------------------*/
-.fondoRegistrar .contenedor .registro_cont .emaillabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .email{
-    width: 100%;
-    height: 49px;
-    color:  #A2A2A2;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-/*---------------------------------------------Inicio nacimiento---------------------------------------------*/
-.fondoRegistrar .contenedor .registro_cont .nacimientolabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .nacimiento{
-    width: 100%;
-    height: 49px;
-    
-    color:  #A2A2A2;
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-/*---------------------------------------------Inicio obra social---------------------------------------------*/
-
-.fondoRegistrar .contenedor .registro_cont .obsociallabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .obsocial{
-    width: 100%;
-    height: 49px;
-    color:  #A2A2A2;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-/*---------------------------------------------Inicio numero de socio---------------------------------------------*/
-
-.fondoRegistrar .contenedor .registro_cont .nsociolabel{
-    width: 20px;
-    height: 14px;
-    
-    color: white;
-    padding-left: 14px;
-}
-
-.fondoRegistrar .contenedor .registro_cont .nsocio{
-    width: 100%;
-    height: 49px;
-    color: #A2A2A2;
-    
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
 
 /*---------------------------------------------Inicio .submit---------------------------------------------*/
 
@@ -221,9 +84,27 @@ button{
     border: 1px solid;
 }
 
-/*---------------------------------------------Inicio forms feos---------------------------------------------*/
-
 /*---------------------------------------------inicio media querys---------------------------------------------*/
+
+@media (min-width: 1200px) {
+    .fondoRegistrar .contenedor{
+        padding-top: 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .fondoRegistrar .contenedor{
+        padding-top: 300px;
+    }
+
+}
+
+@media (max-width: 991px) {
+    .fondoRegistrar .contenedor{
+        padding-top: 300px;
+    }
+
+}
 
 @media (max-width: 768px) {
     .fondoRegistrar{
@@ -233,13 +114,15 @@ button{
     }
 
     .fondoRegistrar .contenedor{
-        padding-top: 200px;
+        padding-top: 300px;
     }
 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 575px) {
+
     .fondoRegistrar .contenedor{
-        padding-top: 220px;
+        padding-top: 180px;
     }
+
 }

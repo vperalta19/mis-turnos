@@ -1,5 +1,6 @@
 import React from 'react';
 import Perfil from './../components/MiCuenta/Perfil'
+import Toolbar from './../components/Toolbar';
 
 export default function MiCuenta() {
 	const userInfo={
@@ -24,8 +25,13 @@ export default function MiCuenta() {
 	const historiales = [historialInfo,historialInfo,historialInfo];
 	const recetas = [historialInfo,historialInfo];
 	const pacientes = [userInfo,userInfo,userInfo,userInfo]
+	const toolbarInfo={
+		nombre: 'Valeria Peralta'
+	}
 	return (
+		
 		<div className="MiCuenta">
+			<Toolbar toolbarInfo={toolbarInfo}/>
 			<Perfil userInfo={userInfo} historiales ={historiales} recetas={recetas} pacientes = {pacientes}></Perfil>
 			
 
