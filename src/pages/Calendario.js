@@ -10,6 +10,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listGridPlugin from '@fullcalendar/list'
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/calendario.css'
 
@@ -47,12 +50,12 @@ class Calendario extends React.Component {
 
 		let turnosList = (
 			<div className="turnos-container">
-				<div id="turno-detail" style={{display: "none"}} className="turno-detail-container">
-					<div className="turno-detail">
+				<div id="turno-detail" style={{display: "none"}} className="turno-detail-container" onClick={() => {this.closeTurno()}}>
+					<div className="turno-detail" onClick={(evt) => {evt.stopPropagation()}}>
+						<div onClick={() => {this.closeTurno()}}><FontAwesomeIcon className="close" icon={faTimesCircle}/></div>
 						<div className="detail-title">
 							<span>Info del Turno</span>
 						</div>
-						<div className="close"><span></span></div>
 						<div id="detail-fecha" className="detail-fecha"></div>
 						<div id="detail-hora" className="detail-hora"></div>
 						<div className="detail-buttons">

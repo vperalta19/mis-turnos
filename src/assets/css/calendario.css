@@ -31,6 +31,7 @@
 .turnos-container-margin {
 	height: 100%;
 	padding: 15px;
+	min-height: 300px;
 }
 .turnos-container-margin .turnos-container {
 	height: 100%;
@@ -71,11 +72,24 @@
 	.main-container .calendar-container {
 		padding-top: 15px;
 	}
+	.calendar-container {
+		font-size: 12px;
+	}
+	.calendar-container button {
+		padding: 4px !important;
+	}
+	.calendar-container h2 {
+		font-size: 15px !important;
+	}
 }
 
 .calendar-row {
 	height: 100%;
 	padding-bottom: 15px;
+}
+
+.turnos-row{
+	height: 50%;
 }
 
 .calendar-container a {
@@ -85,6 +99,7 @@
 .turnos-list {
 	list-style-type: none;
 	padding-top: 5px;
+	overflow: scroll;
 }
 
 .turno-container {
@@ -156,3 +171,9 @@
 	color: white;
 	background-color: #C08955;
 }
+
+.turno-detail .close {
+	height: 20px;
+	width: 20px;
+}
+
