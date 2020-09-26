@@ -1,0 +1,24 @@
+.turno-item {
+	position: relative;
+}
+
+.turno-item .time {
+	position: absolute;
+	padding-left: 15px;
+	width: 100%;
+	width: fit-content;
+}
+
+.turno-item .time .dia {
+}
+
+.turno-item .time .hora {
+}
+
+.turno-item .name {
+	position: absolute;
+	right: 15px;
+	top: 0;
+	bottom: 0;
+	line-height: 250%;
+}
