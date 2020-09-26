@@ -35,16 +35,7 @@ class Calendario extends React.Component {
 			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
 			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
 			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
+			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente")
 			
 
 		];
