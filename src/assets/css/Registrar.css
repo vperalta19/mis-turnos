@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 *:focus {
     outline: none;
   }
@@ -57,7 +56,6 @@ button{
     margin-bottom: 2px;
 }
 
-
 /*---------------------------------------------Inicio .submit---------------------------------------------*/
 
 .fondoRegistrar .contenedor .registro_cont .sub{
@@ -85,25 +83,16 @@ button{
 }
 
 /*---------------------------------------------inicio media querys---------------------------------------------*/
-
-@media (min-width: 1200px) {
+@media (min-width: 991px) {
     .fondoRegistrar .contenedor{
-        padding-top: 300px;
+        padding-top: 160px;
     }
-}
-
-@media (max-width: 1200px) {
-    .fondoRegistrar .contenedor{
-        padding-top: 300px;
-    }
-
 }
 
 @media (max-width: 991px) {
     .fondoRegistrar .contenedor{
-        padding-top: 300px;
+        padding-top: 160px;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -114,15 +103,19 @@ button{
     }
 
     .fondoRegistrar .contenedor{
-        padding-top: 300px;
+        padding-top: 200px;
     }
-
 }
 
 @media (max-width: 575px) {
 
     .fondoRegistrar .contenedor{
-        padding-top: 180px;
+        padding-top: 150px;
     }
+}
 
+@media (max-width: 360px) {
+    .fondoRegistrar .contenedor{
+        padding-top: 120px;
+    }
 }

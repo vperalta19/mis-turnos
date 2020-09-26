@@ -142,7 +142,6 @@ button{
     line-height: 12px;
 
     margin-bottom: 12px;
-    
 }
 
 .fondoLogSign .contenedor .signup .buttonSignUp:hover {
@@ -153,25 +152,16 @@ button{
 }
 
 /*---------------------------------------------inicio media querys---------------------------------------------*/
-
-@media (min-width: 1200px) {
+@media (min-width: 991px) {
     .fondoLogSign .contenedor{
-        padding-top: 300px;
+        padding-top: 160px;
     }
-}
-
-@media (max-width: 1200px) {
-    .fondoLogSign .contenedor{
-        padding-top: 300px;
-    }
-
 }
 
 @media (max-width: 991px) {
     .fondoLogSign .contenedor{
-        padding-top: 300px;
+        padding-top: 160px;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -182,13 +172,18 @@ button{
     }
 
     .fondoLogSign .contenedor{
-        padding-top: 300px;
+        padding-top: 200px;
     }
-
 }
 
 @media (max-width: 575px) {
     .fondoLogSign .contenedor{
-        padding-top: 180px;
+        padding-top: 150px;
+    }
+}
+
+@media (max-width: 360px) {
+    .fondoLogSign .contenedor{
+        padding-top: 120px;
     }
 }
