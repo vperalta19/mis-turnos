@@ -6,7 +6,7 @@
     right: 0;
     width: 100%;
     top: 0;
-    z-index: 9;
+    z-index: 99999;
 }
 
 .margen{
@@ -115,7 +115,7 @@
 .header-area .main-header-area .sidebar {
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     width: 0;
     top: 0;
     right: 0;
