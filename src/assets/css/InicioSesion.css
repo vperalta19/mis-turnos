@@ -39,14 +39,18 @@ button{
     line-height: 35px;
 }
 
-.fondoLogSign .contenedor .login .doclabel{
+.fondoLogSign .contenedor .login span{
     Width: 36px;
     Height: 14px;
     margin-left: 40px;
+    color:  #4F7E9B;
 
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 20px;
 }
 
-.fondoLogSign .contenedor .login .docid{
+.fondoLogSign .contenedor .login input{
     width: 80%;
     height: 49px;
 
@@ -56,23 +60,7 @@ button{
     margin: 0 auto 10px auto
 }
 
-.fondoLogSign .contenedor .login .passLabel{
-    Width: 36px;
-    Height: 14px;
-    margin-left: 40px;   
-}
-
-.fondoLogSign .contenedor .login .pass{
-    height: 49px;
-    width: 80%;
-
-    background: #FFFFFF;
-    border: 3px solid #EAEAEA;
-    border-radius: 25px;
-    margin: 0 auto 10px auto
-}
-
-.fondoLogSign .contenedor .login .sub{
+.fondoLogSign .contenedor .login .botones .sub{
     background-color: #4F7E9B;
     color:white;
 
@@ -89,21 +77,22 @@ button{
     margin-bottom: 5px;
 }
 
-.fondoLogSign .contenedor .login .sub:hover {
+.fondoLogSign .contenedor .login .botones .sub:hover {
     background-color: white;
     color:#4F7E9B;
     border-color: #4F7E9B;
     border: 1px solid;
 }
 
-.fondoLogSign .contenedor .login .recovery{
+.fondoLogSign .contenedor .login .botones .recovery{
     border-bottom: 1px #4F7E9B;
     background-color: rgb(255, 255, 255,0);
     margin-bottom: 10px;
     margin-right: 20px;
+    color: #4F7E9B;
 }
 
-.fondoLogSign .contenedor .login .recovery:hover:after {
+.fondoLogSign .contenedor .login .botones .recovery:hover:after {
     content: "";
     display: block;
     width: 100%;
@@ -163,14 +152,26 @@ button{
     border: 1px solid;
 }
 
-
-
 /*---------------------------------------------inicio media querys---------------------------------------------*/
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .fondoLogSign .contenedor{
-        padding-top: 250px;
+        padding-top: 300px;
     }
+}
+
+@media (max-width: 1200px) {
+    .fondoLogSign .contenedor{
+        padding-top: 300px;
+    }
+
+}
+
+@media (max-width: 991px) {
+    .fondoLogSign .contenedor{
+        padding-top: 300px;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -181,7 +182,13 @@ button{
     }
 
     .fondoLogSign .contenedor{
-        padding-top: 100px;
+        padding-top: 300px;
     }
 
+}
+
+@media (max-width: 575px) {
+    .fondoLogSign .contenedor{
+        padding-top: 180px;
+    }
 }

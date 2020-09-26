@@ -12,21 +12,21 @@ function InicioSesion() {
                     </div>
                     <div className="col-lg-6 col-10 col-md-6 col-xl-4 login">
                         <div className="col text-center">
-                            <h1 className="titleLogIn">Iniciar Sesion</h1>
+                            <h1 className="titleLogIn">Iniciar Sesión</h1>
                         </div>
                         <div className="col">
-                            <span className="doclabel">Documento</span><br></br>
+                            <span>Documento</span><br></br>
                         </div>
                         <div className="col text-center">
-                            <input type="text" id="docid" name="docid" className="docid"></input>
+                            <input type="number" id="docid" name="docid" className="docid text-center"></input>
                         </div>
                         <div className="col">
-                        <span className="passLabel">Contraseña</span><br></br>
+                        <span>Contraseña</span><br></br>
                         </div>
                         <div className="col text-center">
-                            <input type="password" id="pass" name="pass" className="pass"></input>
+                            <input type="password" id="pass" name="pass" className="pass text-center"></input>
                         </div>
-                        <div className="col text-center">
+                        <div className="col text-center botones">
                             <button type="button" className="recovery">Olvidé mi contraseña</button> 
                             <input type="submit" value="Iniciar Sesion" id="sub" className="sub"></input>
                         </div>
