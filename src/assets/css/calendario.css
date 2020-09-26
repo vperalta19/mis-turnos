@@ -4,24 +4,45 @@
 	flex-direction: column;
 }
 
+.calendar-desktop {
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+.calendar-mobile {
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+@media (max-width: 991px) {
+	.calendar-desktop {
+		display: none;
+	}
+	.calendar-mobile {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
 .main-container {
 	height: 100%;
 }
 
-.main-container .turnos-container-margin {
+.turnos-container-margin {
 	height: 100%;
 	padding: 15px;
 }
-.main-container .turnos-container {
+.turnos-container-margin .turnos-container {
 	height: 100%;
 	padding-bottom: 15px;
 	border-radius: 25px;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 	background-color: #D4ECF3;
 }
 
-.main-container .turnos-container .turnos-title {
+.turnos-container-margin .turnos-container .turnos-title {
 	width: fit-content;
 	padding: 0px 60px;
 	margin: 15px auto 0px auto;
@@ -35,6 +56,10 @@
 	color: white;
 }
 
+.main-container .calendar-container {
+	padding-bottom: 15px;
+}
+
 @media (max-width: 991px) {
 	.main-container .turnos-container-margin {
 		height: fit-content;
@@ -43,8 +68,91 @@
 	.main-container .turnos-container{
 		border-radius: 0px;
 	} 
+	.main-container .calendar-container {
+		padding-top: 15px;
+	}
 }
 
-.main-container .calendar-container {
+.calendar-row {
+	height: 100%;
+	padding-bottom: 15px;
+}
 
+.calendar-container a {
+	color: #4C4E82
+}
+
+.turnos-list {
+	list-style-type: none;
+	padding-top: 5px;
+}
+
+.turno-container {
+	padding: 5px 10px;
+}
+
+.turno {
+	min-height: 50px;
+	border-radius: 25px;
+	background-color: #FFC895;
+	color: white;
+}
+
+.turno-detail-container {
+	display: flex;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	border-radius: 25px;
+	background-color: #D4ECF380;
+	z-index: 100;
+}
+
+.turno-detail {
+	width: 75%;
+	padding: 10px;
+	margin: auto;
+	border-radius: 25px;
+
+	background-color: #FFC895;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+
+	font-weight: bold;
+	font-size: 18px;
+	color: white;	
+}
+
+.detail-title {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.detail-fecha {
+	text-align: left;
+}
+
+.detail-hora {
+	text-align: left;
+}
+
+.detail-buttons {
+	padding-top: 20px;
+}
+
+.detail-buttons .reprogramar, .detail-buttons .cancelar {
+	width: 100%;
+	margin: 5px 0;
+	border-radius: 25px;
+	border: none;
+	outline:none;
+	font-weight: bold;
+}
+
+.detail-buttons .reprogramar {
+	color: #C68141;
+	background-color: white;
+}
+
+.detail-buttons .cancelar {
+	color: white;
+	background-color: #C08955;
 }
