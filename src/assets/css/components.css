@@ -91,7 +91,7 @@
 }
 
 
-.header-area .main-header-area .pedirTurno{
+.header-area .main-header-area .pedirTurno a{
     font-size: 15px;
     background-color: #04ADBF;
     color: #ffffff;
@@ -106,7 +106,7 @@
     
 }
 
-.header-area .main-header-area .pedirTurno:hover {
+.header-area .main-header-area .pedirTurno a:hover {
     background-color: #ffffff;
     border-color: #04ADBF;
     color: #04ADBF;
@@ -126,7 +126,7 @@
 }
 
   
-.header-area .main-header-area .sidebar .seccionSideBar  {
+.header-area .main-header-area .sidebar .seccionSideBar a  {
     font-size: 25px;
     color: #818181;
     display: block;
@@ -134,9 +134,10 @@
     float: left;
     margin-left: 30px;
     width: 100%;
+    text-decoration: none;
   }
   
-.header-area .main-header-area .sidebar .seccionSideBar:hover {
+.header-area .main-header-area .sidebar .seccionSideBar a:hover {
     color: #3b3b3b;
   }
 

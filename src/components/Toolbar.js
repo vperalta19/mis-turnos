@@ -119,9 +119,9 @@ export default function Toolbar(props) {
 												<div className="x" onClick={closeNav}><FontAwesomeIcon icon={faTimesCircle}/></div>
 												<div className="usuario">{name}</div>
 												
-												<div className="seccionSideBar">INICIO</div>
-												<div className="seccionSideBar">CALENDARIO</div>
-												<div className="seccionSideBar">MI CUENTA</div>
+												<div className="seccionSideBar"><Link to='/'>INICIO</Link></div>
+												<div className="seccionSideBar"><Link to='/Calendario'>CALENDARIO</Link></div>
+												<div className="seccionSideBar"><Link to='/MiCuenta'>MI CUENTA</Link></div>
 												<div className="sideBarCerrarSesion">CERRAR SESION</div>
 											</div>
 											<div id="main">
@@ -141,12 +141,12 @@ export default function Toolbar(props) {
 							{(() => {
 								if (name){
 									return (
-										<div>PEDIR TURNO</div>
+										<div><Link to='/PedirTurno'>PEDIR TURNO</Link></div>
 									)
 								}
 								else{
 									return (
-										<div>INICIAR SESION</div>
+										<div><Link to='/InicioSesion'>INICIO SESION</Link></div>
 									)
 								}
 								

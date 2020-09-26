@@ -7,7 +7,7 @@ import DondeEstamos from './../components/Inicio/DondeEstamos';
 
 export default function Inicio(){
 	const toolbarInfo={
-		nombre: 'Valeria Peralta'
+		nombre: ''
 	}
 	return (
 		<div className="Inicio">

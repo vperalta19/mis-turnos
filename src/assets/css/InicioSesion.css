@@ -14,7 +14,7 @@ button{
 
 .fondoLogSign {
     background-color: #B8D0D9;
-    background-image: url('./../img/fondoLogIn.png');
+    background-image: url('./../img/fondoLogIn.jpeg');
     min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
     background-repeat: no-repeat;
     background-size: cover;
@@ -176,7 +176,7 @@ button{
 
 @media (max-width: 768px) {
     .fondoLogSign{
-        background-image: url('./../img/fondoLogIn_celu.jpeg');
+        background-image: url('./../img/fondoLogIn_celu.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }
