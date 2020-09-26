@@ -14,7 +14,7 @@ export default function Novedad(props) {
     return(
         <div class="post-slide">
             <ul class="post-info">
-                <li><FontAwesomeIcon icon={faCalendarAlt}/>{fecha}</li>
+                <li><FontAwesomeIcon icon={faCalendarAlt}/> {fecha}</li>
             </ul>
             <div class="post-img">
                 <img src={img} alt=""/>

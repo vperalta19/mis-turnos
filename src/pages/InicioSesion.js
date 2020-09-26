@@ -5,7 +5,7 @@ import './../assets/css/InicioSesion.css';
 
 function InicioSesion() {
 	return (
-        <div className="fondoLogSign">
+        <div id='medio' className="fondoLogSign">
             <div className = "container-fluid contenedor">
                 <div className="row fil1 align-items-center">
                     <div className = "col-lg-3 col-md-3 col-1 col-xl-4"> 

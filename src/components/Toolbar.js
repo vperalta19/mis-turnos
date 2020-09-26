@@ -23,31 +23,36 @@ export default function Toolbar(props) {
 	// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 	function stickyHeader() {
 		// Get the navbar
-		var navbar = document.getElementById("main-header");
-		var pedirTurno = document.getElementById("pedirTurno");
-		var medio = document.getElementById('medio');
-		var headerTop = document.getElementsByClassName('header-top_area')
-	
-		// Get the offset position of the navbar
-		var sticky = navbar.getBoundingClientRect().top;
-	
-		if (window.pageYOffset > sticky) {
-			navbar.classList.add("sticky"); 
-			pedirTurno.classList.add("d-none");
-			pedirTurno.classList.add("d-lg-block");
-			console.log(headerTop);
-			if(headerTop.length !== 0){
-				medio.classList.add('margen')
+		try{
+			var navbar = document.getElementById("main-header");
+			var pedirTurno = document.getElementById("pedirTurno");
+			var medio = document.getElementById('medio');
+			var headerTop = document.getElementsByClassName('header-top_area')
+		
+			// Get the offset position of the navbar
+			var sticky = navbar.getBoundingClientRect().top;
+		
+			if (window.pageYOffset > sticky) {
+				navbar.classList.add("sticky"); 
+				pedirTurno.classList.add("d-none");
+				pedirTurno.classList.add("d-lg-block");
+				console.log(headerTop);
+				if(headerTop.length !== 0){
+					medio.classList.add('margen')
+				}
+				
+				
+			} else {
+				navbar.classList.remove("sticky");
+				pedirTurno.classList.remove("d-none");
+				if(headerTop.length !== 0){
+					medio.classList.remove('margen')
+				}
 			}
-			
-			
-		} else {
-			navbar.classList.remove("sticky");
-			pedirTurno.classList.remove("d-none");
-			if(headerTop.length !== 0){
-				medio.classList.remove('margen')
-			}
+		}catch{
+
 		}
+		
 	}
 	
 	// When the user scrolls the page, execute myFunction 
