@@ -99,3 +99,27 @@
 .calendar-container .fc-non-business {
 	background-color: #90909030;
 }
+
+.turnos-detail {
+	height: 100%;
+	position: relative;
+	font-weight: bold;
+	font-size: 18px;
+	color: white;
+	padding: 10px;
+}
+
+.turnos-detail .aceptar {
+	position: absolute;
+	left: 20;
+	right: 20;
+	bottom: 0;
+	margin: auto;
+	padding: 2px 70px;
+	background-color: white;
+	border-radius: 25px;
+	font-weight: bold;
+	font-size: 18px;
+	color: #4C4E82;
+	outline: none;
+}

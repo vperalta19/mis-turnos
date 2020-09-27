@@ -75,18 +75,27 @@ class Calendario extends React.Component {
 
 		let turnosList = (
 			<div className="turnos-container">
-				<div id="turno-detail" style={{display: "none"}} className="turno-detail-container" onClick={() => {this.closeTurno()}}>
+				<div style={{display: "none"}} className="turno-detail-container" onClick={() => {this.closeTurno()}}>
 					<div className="turno-detail" onClick={(evt) => {evt.stopPropagation()}}>
 						<div onClick={() => {this.closeTurno()}}><FontAwesomeIcon className="close" icon={faTimesCircle}/></div>
 						<div className="detail-title">
 							<span>Info del Turno</span>
 						</div>
-						<div id="detail-fecha" className="detail-fecha"></div>
-						<div id="detail-hora" className="detail-hora"></div>
+						<div className="detail-fecha"></div>
+						<div className="detail-hora"></div>
 						<div className="detail-buttons">
 							<button className="reprogramar">Reprogramar</button>
 							<button className="cancelar">Cancelar</button>
 						</div>
+					</div>
+				</div>
+				<div style={{display: "none"}} className="franja-horaria-container" onClick={() => {this.closeFranja()}}>
+					<div className="franja-horaria-popup" onClick={(evt) => {evt.stopPropagation()}}>
+					<div onClick={() => {this.closeFranja()}}><FontAwesomeIcon className="close" icon={faTimesCircle}/></div>
+						<div className="franja-title">
+							<span>Franja Horaria</span>
+						</div>
+						<div className="texto-franja">TODO va a ver que ponemos aca adentro por como funciona el calendario</div>
 					</div>
 				</div>
 				<div className="turnos-title">
@@ -105,6 +114,12 @@ class Calendario extends React.Component {
 						)
 					}
 				</ul>
+				<div className="franja-horaria" style={{display: pacienteView ? "none":""}}>
+					<div className="modificar" onClick={() => { this.openFranja()}}>
+						Modificar Franja Horaria
+					</div>
+				</div>
+
 			</div>
 		);
 
@@ -165,6 +180,20 @@ class Calendario extends React.Component {
 
 	closeTurno() {
 		let details = document.getElementsByClassName("turno-detail-container");
+		for (let i = 0; i < details.length; i++) {
+			details[i].style.display = "none";
+		}
+	}
+
+	openFranja() {
+		let details = document.getElementsByClassName("franja-horaria-container");
+		for (let i = 0; i < details.length; i++) {
+			details[i].style.display = "";
+		}
+	}
+
+	closeFranja() {
+		let details = document.getElementsByClassName("franja-horaria-container");
 		for (let i = 0; i < details.length; i++) {
 			details[i].style.display = "none";
 		}

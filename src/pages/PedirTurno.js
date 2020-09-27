@@ -43,7 +43,24 @@ class PedirTurno extends React.Component {
 		let turnoInputs = (
 			<div className="turnos-container">
 				<div className="turnos-title">
-					<span>Turnos</span>
+					<span>Detalles</span>
+				</div>
+				<div className="turnos-detail" style={{display: "none"}}>
+					<div>
+						<span>Fecha: </span>
+						<span className="turno-detail-fecha"></span>
+					</div>
+					<div>
+						<span>Horario: </span>
+						<span className="turno-detail-horario"></span>
+					</div>
+					<div>
+						<span>Profesional: Profesional</span>
+					</div>
+					<div>
+						<span>DNI: 12345678</span>
+					</div>
+					<button className="aceptar">Confirmar</button>
 				</div>
 			</div>
 		);
@@ -86,7 +103,21 @@ class PedirTurno extends React.Component {
 	selectTime(p) {
 		let start = `${p.event.start.getDate()}/${p.event.start.getMonth()+1}/${p.event.start.getFullYear()}`
 		let time = (d) => { return `${d.getHours()}:${d.getMinutes()}`}
-		alert(`Turno seleccionado: ${start}. ${time(p.event.start)}-${time(p.event.end)}`)
+
+		let details = document.getElementsByClassName("turnos-detail");
+		for (let i = 0; i < details.length; i++) {
+			details[i].style.display = "";
+		}
+
+		let fechas = document.getElementsByClassName("turno-detail-fecha");
+		for (let i = 0; i < fechas.length; i++) {
+			fechas[i].innerHTML = start;
+		}
+
+		let horas = document.getElementsByClassName("turno-detail-horario");
+		for (let i = 0; i < horas.length; i++) {
+			horas[i].innerHTML = time(p.event.start);
+		}
 	}
 
 	getSelectableTimeEvents() {
