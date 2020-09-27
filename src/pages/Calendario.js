@@ -8,7 +8,6 @@ import TurnoItem from '../components/TurnoItem'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import listGridPlugin from '@fullcalendar/list'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
@@ -27,17 +26,14 @@ class Calendario extends React.Component {
 		const toolbarInfo={
 			nombre: 'valeria'
 		}
-		let pacienteView = this.props.pacienteView || true;
+		let pacienteView = this.props.pacienteView || false;
 
-		let turnos = [
+		let turnos = this.props.turnos || [
 			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),			
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente")
-			
-
+			new Turno(1601323200000+86400000+3600000*2, 1601325000000+86400000+3600000*2, "Profesional", "Paciente"),
+			new Turno(1601323200000+86400000*3+3600000, 1601325000000+86400000*3+3600000, "Profesional", "Paciente"),
+			new Turno(1601323200000+86400000*5+3600000*-6, 1601325000000+86400000*5+3600000*-6, "Profesional", "Paciente"),
+			new Turno(1601323200000+86400000*5, 1601325000000+86400000*5, "Profesional", "Paciente"),
 		];
 
 		let events = turnos.map((v) => v.getCalendarEvent(pacienteView))
@@ -45,16 +41,35 @@ class Calendario extends React.Component {
 		let calendar = (
 			<FullCalendar
 				height="calc( 100% - 15px)"
-				plugins={[ dayGridPlugin, timeGridPlugin, listGridPlugin ]}
+				plugins={[ dayGridPlugin, timeGridPlugin ]}
 				headerToolbar={{
 					left: "prev,next today",
 					center: "title",
-					right: "timeGridDay,timeGridWeek,dayGridMonth,listWeek"
+					right: "timeGridDay,timeGridWeek,dayGridMonth"
 				}}
 				initialView="timeGridWeek"
 				allDaySlot={false}
 				timeFormat={"HH:mm"} //TODO todavia no anda esto
 				events={events}
+				businessHours={
+					pacienteView ? null : [
+						{
+							daysOfWeek: [ 1, 2, 4 ],
+							startTime: '08:00',
+							endTime: '14:00'
+						},
+						{
+							daysOfWeek: [ 1, 2, 4 ],
+							startTime: '15:30',
+							endTime: '20:00'
+						},
+						{
+							daysOfWeek: [ 6 ],
+							startTime: '10:00',
+							endTime: '18:00'
+						}
+					]
+				}
 			/>
 		);
 
