@@ -45,20 +45,22 @@ class PedirTurno extends React.Component {
 				<div className="turnos-title">
 					<span>Detalles</span>
 				</div>
-				<div className="turnos-detail" style={{display: "none"}}>
-					<div>
-						<span>Fecha: </span>
-						<span className="turno-detail-fecha"></span>
+				<div className="turnos-detail">
+					<div className="turno-line">
+						<div>Fecha: </div>
+						<input className="turno-detail-fecha" disabled></input>
 					</div>
-					<div>
-						<span>Horario: </span>
-						<span className="turno-detail-horario"></span>
+					<div className="turno-line">
+						<div>Horario: </div>
+						<input className="turno-detail-horario" disabled></input>
 					</div>
-					<div>
-						<span>Profesional: Profesional</span>
+					<div className="turno-line">
+						<div>Obra Social</div>
+						<input className="turno-detail-ooss"></input>
 					</div>
-					<div>
-						<span>DNI: 12345678</span>
+					<div className="turno-line">
+						<div>DNI</div>
+						<input className="turno-detail-dni"></input>
 					</div>
 					<button className="aceptar">Confirmar</button>
 				</div>
@@ -102,21 +104,16 @@ class PedirTurno extends React.Component {
 
 	selectTime(p) {
 		let start = `${p.event.start.getDate()}/${p.event.start.getMonth()+1}/${p.event.start.getFullYear()}`
-		let time = (d) => { return `${d.getHours()}:${d.getMinutes()}`}
-
-		let details = document.getElementsByClassName("turnos-detail");
-		for (let i = 0; i < details.length; i++) {
-			details[i].style.display = "";
-		}
+		let time = (d) => { return `${(d.getHours() < 10 ? "0" : "") + d.getHours()}:${d.getMinutes() + (d.getMinutes() < 10 ? "0" : "")}`}
 
 		let fechas = document.getElementsByClassName("turno-detail-fecha");
 		for (let i = 0; i < fechas.length; i++) {
-			fechas[i].innerHTML = start;
+			fechas[i].value = start;
 		}
 
 		let horas = document.getElementsByClassName("turno-detail-horario");
 		for (let i = 0; i < horas.length; i++) {
-			horas[i].innerHTML = time(p.event.start);
+			horas[i].value = time(p.event.start);
 		}
 	}
 

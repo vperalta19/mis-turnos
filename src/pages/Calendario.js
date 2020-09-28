@@ -14,9 +14,10 @@ import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/calendario.css'
+import { FormControl, FormControlLabel, FormLabel, Input, MenuItem, Radio, RadioGroup, Select } from '@material-ui/core'
+import { Form } from 'react-bootstrap'
 
 class Calendario extends React.Component {
-	
 
 	componentDidMount() {
 		window.dispatchEvent(new Event('resize'));
@@ -95,7 +96,84 @@ class Calendario extends React.Component {
 						<div className="franja-title">
 							<span>Franja Horaria</span>
 						</div>
-						<div className="texto-franja">TODO va a ver que ponemos aca adentro por como funciona el calendario</div>
+						<div className="dias">
+							<Form style={{display: 'flex', flexDirection: 'column'}}>
+								<FormControl>
+									<FormLabel>Seleccione Día</FormLabel>
+									<RadioGroup onChange={(e) => {this.updateFranja(e)}} className="dias-group">
+										<div className="lat-group">
+											<FormControlLabel value="Lunes" control={<Radio/>} label="Lunes" />
+											<FormControlLabel value="Martes" control={<Radio/>} label="Martes" />
+											<FormControlLabel value="Miércoles" control={<Radio/>} label="Miércoles" />
+											<FormControlLabel value="Jueves" control={<Radio/>} label="Jueves" />
+										</div>
+										<div className="lat-group">
+											<FormControlLabel value="Viernes" control={<Radio/>} label="Viernes" />
+											<FormControlLabel value="Sábado" control={<Radio/>} label="Sábado" />
+											<FormControlLabel value="Domingo" control={<Radio/>} label="Domingo" />
+										</div>
+									</RadioGroup>
+									<FormLabel>Duración (en minutos)</FormLabel>
+								</FormControl>
+								{/* <select className="duration-input">
+									<option>15</option>
+									<option>30</option>
+									<option>45</option>
+									<option>60</option>
+								</select> */}
+								<select disabled className="horarios-select" multiple={true}>
+									<option>00:00</option>
+									<option>00:30</option>
+									<option>01:00</option>
+									<option>01:30</option>
+									<option>02:00</option>
+									<option>02:30</option>
+									<option>03:00</option>
+									<option>03:30</option>
+									<option>04:00</option>
+									<option>04:30</option>
+									<option>05:00</option>
+									<option>05:30</option>
+									<option>06:00</option>
+									<option>06:30</option>
+									<option>07:00</option>
+									<option>07:30</option>
+									<option>08:00</option>
+									<option>08:30</option>
+									<option>09:00</option>
+									<option>09:30</option>
+									<option>10:00</option>
+									<option>10:30</option>
+									<option>11:00</option>
+									<option>11:30</option>
+									<option>12:00</option>
+									<option>12:30</option>
+									<option>13:00</option>
+									<option>13:30</option>
+									<option>14:00</option>
+									<option>14:30</option>
+									<option>15:00</option>
+									<option>15:30</option>
+									<option>16:00</option>
+									<option>16:30</option>
+									<option>17:00</option>
+									<option>17:30</option>
+									<option>18:00</option>
+									<option>18:30</option>
+									<option>19:00</option>
+									<option>19:30</option>
+									<option>20:00</option>
+									<option>20:30</option>
+									<option>21:00</option>
+									<option>21:30</option>
+									<option>22:00</option>
+									<option>22:30</option>
+									<option>23:00</option>
+									<option>23:30</option>
+								</select>
+								<button className="confirmar">Confirmar</button>
+							</Form>
+						</div>
 					</div>
 				</div>
 				<div className="turnos-title">
@@ -186,16 +264,23 @@ class Calendario extends React.Component {
 	}
 
 	openFranja() {
-		let details = document.getElementsByClassName("franja-horaria-container");
-		for (let i = 0; i < details.length; i++) {
-			details[i].style.display = "";
+		let franjas = document.getElementsByClassName("franja-horaria-container");
+		for (let i = 0; i < franjas.length; i++) {
+			franjas[i].style.display = "";
 		}
 	}
 
 	closeFranja() {
-		let details = document.getElementsByClassName("franja-horaria-container");
-		for (let i = 0; i < details.length; i++) {
-			details[i].style.display = "none";
+		let franjas = document.getElementsByClassName("franja-horaria-container");
+		for (let i = 0; i < franjas.length; i++) {
+			franjas[i].style.display = "none";
+		}
+	}
+
+	updateFranja() {
+		let inpus = document.getElementsByClassName("horarios-select");
+		for (let i = 0; i < inpus.length; i++) {
+			inpus[i].disabled = false;
 		}
 	}
 };

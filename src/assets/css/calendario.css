@@ -198,3 +198,34 @@
 	width: 20px;
 }
 
+.franja-horaria-popup .dias-group {
+	flex-direction: row !important;
+}
+.franja-horaria-popup .dias-group .lat-group {
+	width: 50%;
+}
+.franja-horaria-popup .dias-group .lat-group .MuiRadio-root {
+	padding: 0px 9px;
+	color: #3C4E60;
+}
+.franja-horaria-popup .MuiFormLabel-root {
+	color: white !important;
+	font-weight: bold;
+	padding-top: 5px;
+}
+.franja-horaria-popup .duration-input {
+	width: 150px;
+}
+.franja-horaria-popup label {
+	margin-top: 0;
+}
+.franja-horaria-popup .confirmar {
+	width: 100%;
+	margin: 5px 0;
+	border-radius: 25px;
+	border: none;
+	outline:none;
+	font-weight: bold;
+	color: white;
+	background-color: #C68141;
+}

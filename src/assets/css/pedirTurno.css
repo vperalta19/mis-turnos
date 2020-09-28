@@ -116,10 +116,24 @@
 	bottom: 0;
 	margin: auto;
 	padding: 2px 70px;
-	background-color: white;
+	background-color: #04ADBF;
 	border-radius: 25px;
 	font-weight: bold;
 	font-size: 18px;
-	color: #4C4E82;
+	color: white;
 	outline: none;
+}
+
+.turnos-detail input{
+	width: 80%;
+	height: 30px;
+
+	background: #FFFFFF;
+	border: 3px solid #EAEAEA;
+	border-radius: 25px;
+	margin: 0 auto 10px auto
+}
+
+.turno-line {
+	display: grid;
 }
