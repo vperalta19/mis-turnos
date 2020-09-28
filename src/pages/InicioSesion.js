@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/InicioSesion.css';
 
@@ -38,7 +39,7 @@ function InicioSesion() {
                     <div className="col-lg-6 col-10 col-md-6 col-xl-4 signup">
                         <h1 id="titleSignup" className="titleSignup">¿Primera vez aquí?</h1>
                         <p id="textSignup" className="textSignup">Regístrate y empieza a utilizarlo</p>
-                        <button type="button" className="buttonSignUp">Registrar</button>
+                        <button type="button" className="buttonSignUp"><Link to='/Registrar'>REGISTRAR</Link></button>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,10 @@
     outline: none;
   }
 
+a{
+    text-decoration: none;
+}
+
 button{
     border:none;
 }
@@ -129,19 +133,29 @@ button{
     color: #FFFFFF;
 }
 
-.fondoLogSign .contenedor .signup .buttonSignUp{
+.fondoLogSign .contenedor .signup .buttonSignUp {
     background-color: #4F7E9B;
     width: 209px;
     height: 25px;
     border-radius: 10px;
-    color: white;
+    
+    outline: none;
+    
+    
+    margin-bottom: 12px;
+}
 
+.fondoLogSign .contenedor .signup .buttonSignUp a{
+    text-decoration: none;
+    color: white;
     font-style: normal;
     font-weight: 900;
     font-size: 12px;
     line-height: 12px;
+}
 
-    margin-bottom: 12px;
+.fondoLogSign .contenedor .signup .buttonSignUp a:hover{
+    color:#4F7E9B;
 }
 
 .fondoLogSign .contenedor .signup .buttonSignUp:hover {
