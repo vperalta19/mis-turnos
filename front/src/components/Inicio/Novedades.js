@@ -4,8 +4,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './../../assets/css/Novedad.css'
 import Novedad from './Novedad'
+import './../../assets/css/Novedad.css'
 
 
 export default function Novedades() {

@@ -10,8 +10,8 @@ export default function MiCuenta() {
 		dni: '42889052',
 		ooss: 'OSPE',
 		nroSocio: '123456',
-		usuario: 'paciente',
-		quienVe: 'paciente'
+		usuario: 'profesional',
+		quienVe: 'profesional'
 	}
 	const historialInfo = {
 		fecha : '23/09/2020',

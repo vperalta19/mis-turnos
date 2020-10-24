@@ -18,7 +18,7 @@ class PedirTurno extends React.Component {
 
 	render() {
 		const toolbarInfo={
-			nombre: 'valeria'
+			nombre: 'Valeria Peralta'
 		}
 
 		let events = this.getSelectableTimeEvents()

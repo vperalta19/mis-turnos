@@ -25,7 +25,7 @@ class Calendario extends React.Component {
 
 	render() {
 		const toolbarInfo={
-			nombre: 'valeria'
+			nombre: 'Valeria Peralta'
 		}
 		let pacienteView = this.props.pacienteView || false;
 
