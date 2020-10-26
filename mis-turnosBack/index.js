@@ -14,7 +14,7 @@ app.use(express.json());
 //Routes
 // app.use(require('./routes/Pacientes'));
 // app.use(require('./routes/Profesionales'));
-// app.use(require('./routes/Turnos'));
+app.use(require('./routes/Turnos'));
 // app.use(require('./routes/Recetas'));
 // app.use(require('./routes/franjaHoraria'));
 // app.use(require('./routes/Medicamentos'));
