@@ -27,7 +27,7 @@ router.get('/getMedicamento/:id', (req,res)=> {
 router.post('/crearMedicamento', (req, res) => {
     let {paciente,droga,dosis,notas} = req.body;
     let query = `INSERT INTO Medicamentos (paciente, droga, dosis , notas) VALUES (?,?,?,?)`;
-    mysqlConnection.query(query, [paciente,droga,dosis,nota], (err, result) => {
+    mysqlConnection.query(query, [paciente,droga,dosis,notas], (err, result) => {
         if(err) throw err;
         res.json({status:"OK"});
     }); 
