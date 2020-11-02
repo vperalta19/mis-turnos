@@ -62,7 +62,7 @@ router.delete('/crearNovedad', (req, res) => {
 
 //------------------------------------------------------------------------------------------------------------
 
-router.post('/imagenUpload', async (req, res) => {
+router.post('/imagenUpload', async (req, res) => { //Falta
     try {
         const fileStr = req.body.data;
         const uploadResponse = await cloudinary.uploader.upload(fileStr);
