@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const mysqlConnection = require('../Database');
+
+const { cloudinary } = require('../services/img.service');
 //------------------------------------------------------------------------------------------------------------
 //GET Novedades
 router.get('/getNovedades', (req,res)=> {
@@ -68,7 +70,7 @@ router.post('/imagenUpload', async (req, res) => {
         res.json({ msg: 'yaya' });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ err: 'Something went wrong' });
+        res.status(500).json({err: 'Something went wrong' });
     }
 });
 
