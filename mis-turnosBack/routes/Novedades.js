@@ -6,7 +6,7 @@ const mysqlConnection = require('../Database');
 //------------------------------------------------------------------------------------------------------------
 //GET Novedades
 router.get('/getNovedades', (req,res)=> {
-    mysqlConnection.query('SELECT * FROM Novedades',function(err, result){
+    mysqlConnection.query('SELECT * FROM Novedades ORDER BY fecha DESC',function(err, result){
         if (err) throw err;
         res.send(result);
     });
@@ -15,7 +15,7 @@ router.get('/getNovedades', (req,res)=> {
 //get novedades segun un id
 router.get('/getNovedad/:id', (req,res)=> {
     let idNovedad = req.params.id;
-    mysqlConnection.query('SELECT * FROM Novedades WHERE idNovedad = ?',[idNovedad],function(err, result){
+    mysqlConnection.query('SELECT * FROM Novedades WHERE idNovedad = ? ',[idNovedad],function(err, result){
         if (err) throw err;
         res.send(result);
     });
@@ -24,7 +24,7 @@ router.get('/getNovedad/:id', (req,res)=> {
 //Get Novedades desde una fecha
 router.post('/getNovedadesDesde', (req,res)=> {
     let {fechaDesde} = req.body;
-    mysqlConnection.query('SELECT * FROM Novedades WHERE fecha >= ?',[fechaDesde],function(err, result){
+    mysqlConnection.query('SELECT * FROM Novedades WHERE fecha >= ? ORDER BY fecha DES',[fechaDesde],function(err, result){
         if (err) throw err;
         res.send(result);
     });
