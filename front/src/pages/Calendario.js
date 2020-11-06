@@ -18,6 +18,14 @@ import { FormControl, FormControlLabel, FormLabel, Input, MenuItem, Radio, Radio
 import { Form } from 'react-bootstrap'
 
 class Calendario extends React.Component {
+	constructor(props){
+		super(props)
+		
+	}
+
+	cerrarSesion(){
+		this.props.history.push("/")
+	}
 
 	componentDidMount() {
 		window.dispatchEvent(new Event('resize'));
@@ -203,7 +211,7 @@ class Calendario extends React.Component {
 
 		return (
 			<div className='page-container'>
-				<Toolbar className='p-0' toolbarInfo={toolbarInfo}></Toolbar>
+				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
 				<div id='medio' className="container-fluid" style={{height: '100%'}}>
 					<div className="calendar-desktop">
 						<div className="row main-container">

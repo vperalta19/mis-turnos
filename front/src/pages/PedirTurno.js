@@ -10,7 +10,15 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/pedirTurno.css'
 
-class PedirTurno extends React.Component {
+export default class PedirTurno extends React.Component {
+	constructor(props){
+		super(props)
+		
+	}
+
+	cerrarSesion(){
+		this.props.history.push("/")
+	}
 
 	componentDidMount() {
 		window.dispatchEvent(new Event('resize'));
@@ -69,7 +77,7 @@ class PedirTurno extends React.Component {
 
 		return (
 			<div className='page-container'>
-				<Toolbar className='p-0' toolbarInfo={toolbarInfo}></Toolbar>
+				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
 				<div id='medio' className="container-fluid" style={{height: '100%'}}>
 					<div className="calendar-desktop">
 						<div className="row main-container">
@@ -164,5 +172,3 @@ class PedirTurno extends React.Component {
 		return out;
 	}
 };
-
-export default PedirTurno;
