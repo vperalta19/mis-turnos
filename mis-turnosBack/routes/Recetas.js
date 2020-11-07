@@ -9,11 +9,14 @@ const { cloudinary } = require('../services/img.service');
 //GET de Recetas
 router.get('/getRecetas/:id',(req,res)=>{
     let idUser = req.params.id;
-    let sql = "SELECT * from Recetas WHERE paciente = ?"
+    let sql = "SELECT * FROM Recetas WHERE paciente = ?"
     mysqlConnection.query(sql, [idUser], (err, result) => {
         if(err){
-            res.status(404).json({err:"Not found"});
+            res.status(500).json({err:"Error"});
         }else{
+            if(result.length == 0){
+                return res.status(404).json({err:"Not found"});
+            }
             res.status(200).send(result); //Esto funciona????
         }
     });
@@ -22,11 +25,14 @@ router.get('/getRecetas/:id',(req,res)=>{
 //GET Receta específica
 router.get('/getReceta/:idReceta',(req,res)=>{
     let idReceta = req.params.idReceta;
-    let sql = "SELECT * from Recetas WHERE idRecetas = ?"
+    let sql = "SELECT * FROM Recetas WHERE idRecetas = ?"
     mysqlConnection.query(sql, [idReceta], (err, result) => {
         if(err){
-            res.status(404).json({err:"Not found"});
+            res.status(500).json({err:"Error"});
         }else{
+            if(result.length == 0){
+                return res.status(404).json({err:"Not found"});
+            }
             res.status(200).send(result); //Esto funciona????
         }
     });

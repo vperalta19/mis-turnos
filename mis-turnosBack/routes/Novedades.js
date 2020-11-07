@@ -10,8 +10,11 @@ const { cloudinary } = require('../services/img.service');
 router.get('/getNovedades', (req,res)=> {
     mysqlConnection.query('SELECT * FROM Novedades ORDER BY fecha DESC',function(err, result){
         if(err){
-            res.status(404).json({err:"Not found"});
+            res.status(500).json({err:"Error"});
         }else{
+            if(result.length == 0){
+                return res.status(404).json({err:"Not found"});
+            }
             res.status(200).send(result); //Esto funciona????
         }
     });
@@ -22,8 +25,11 @@ router.get('/getNovedad/:id', (req,res)=> {
     let idNovedad = req.params.id;
     mysqlConnection.query('SELECT * FROM Novedades WHERE idNovedad = ? ',[idNovedad],function(err, result){
         if(err){
-            res.status(404).json({err:"Not found"});
+            res.status(500).json({err:"Error"});
         }else{
+            if(result.length == 0){
+                return res.status(404).json({err:"Not found"});
+            }
             res.status(200).send(result); //Esto funciona????
         }
     });
@@ -34,8 +40,11 @@ router.post('/getNovedadesDesde', (req,res)=> {
     let {fechaDesde} = req.body;
     mysqlConnection.query('SELECT * FROM Novedades WHERE fecha >= ? ORDER BY fecha DES',[fechaDesde],function(err, result){
         if(err){
-            res.status(404).json({err:"Not found"});
+            res.status(500).json({err:"Error"});
         }else{
+            if(result.length == 0){
+                return res.status(404).json({err:"Not found"});
+            }
             res.status(200).send(result); //Esto funciona????
         }
     });
@@ -64,25 +73,11 @@ router.delete('/crearNovedad', (req, res) => {
     let sql = `DELETE FROM Novedades WHERE idNovedad = ?;`
     mysqlConnection.query(sql, [idNovedad], (err, result) => {
         if(err){
-            res.json({status:"Error"});
-        } else{
-            res.json({status:"OK"});
+            res.status(404).json({err:"Not found"});
+        }else{
+            res.status(200).json({msg:"OK"});
         }
     }); 
-});
-
-//------------------------------------------------------------------------------------------------------------
-
-router.post('/imagenUpload', async (req, res) => { //Falta
-    try {
-        const fileStr = req.body.data;
-        const uploadResponse = await cloudinary.uploader.upload(fileStr);
-        console.log(uploadResponse.secure_url);
-        res.json({ msg: 'yaya' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({err: 'Something went wrong' });
-    }
 });
 
 //------------------------------------------------------------------------------------------------------------
