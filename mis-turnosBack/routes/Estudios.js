@@ -8,9 +8,12 @@ const mysqlConnection = require('../Database');
 router.get('/getEstudios/:id',(req,res)=>{
     let idUser = req.params.id;
     let sql = "SELECT * from Estudios WHERE paciente = ?"
-    mysqlConnection.query(query, [idUser], (err, result) => {
-        if(err) throw err;
-        res.json({status:"OK"});
+    mysqlConnection.query(sql, [idUser], (err, result) => {
+        if(err){
+            res.status(404).json({err:"Not found"});
+        }else{
+            res.status(200).send(result); //Esto funciona????
+        }
     });
 });
 
@@ -18,9 +21,12 @@ router.get('/getEstudios/:id',(req,res)=>{
 router.get('/getEstudio/:idEstudio',(req,res)=>{
     let idEstudio = req.params.idEstudio;
     let sql = "SELECT * from Estudios WHERE idEstudios = ?"
-    mysqlConnection.query(query, [idEstudio], (err, result) => {
-        if(err) throw err;
-        res.json({status:"OK"});
+    mysqlConnection.query(sql, [idEstudio], (err, result) => {
+        if(err){
+            res.status(404).json({err:"Not found"});
+        }else{
+            res.status(200).send(result); //Esto funciona????
+        }
     });
 });
 
@@ -28,8 +34,8 @@ router.get('/getEstudio/:idEstudio',(req,res)=>{
 //Crear un Estudio
 router.post('/crearEstudio', (req, res) => {
     let {paciente,nombreEst,resultado,notas} = req.body;
-    let query = `INSERT INTO Estudios (paciente, nombreEstudio, resultado, notas) VALUES (?,?,?,?)`;
-    mysqlConnection.query(query, [paciente,nombreEst,resultado,notas], (err, result) => {
+    let sql = `INSERT INTO Estudios (paciente, nombreEstudio, resultado, notas) VALUES (?,?,?,?)`;
+    mysqlConnection.query(sql, [paciente,nombreEst,resultado,notas], (err, result) => {
         if(err) throw err;
         res.json({status:"OK"});
     }); 
@@ -39,15 +45,12 @@ router.post('/crearEstudio', (req, res) => {
 //Borrar un Estudio
 router.delete('/borrarEstudio', (req, res) => {
     let {idEstudio} = req.body;
-    let query = `DELETE FROM Estudios WHERE idEstudios = ?`;
-    mysqlConnection.query(query, [idEstudio], (err, result) => {
+    let sql = `DELETE FROM Estudios WHERE idEstudios = ?`;
+    mysqlConnection.query(sql, [idEstudio], (err, result) => {
         if(err) throw err;
         res.json({status:"OK"});
     }); 
 });
-
-
-//------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------------------
 module.exports = router;
