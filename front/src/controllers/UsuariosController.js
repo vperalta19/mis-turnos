@@ -1,6 +1,6 @@
 import { login, registrar, editarUsuario, getPacientes, getUsuario } from "../services/apiRoutes";
 
-export default class TransaccionesController {
+export default class UsuariosController {
 	
 	contructor(){
         this._usuarioLogged = null;
@@ -22,8 +22,7 @@ export default class TransaccionesController {
     async getUsuarioLogged(){
         if (!this._usuarioLogged || !this._usuarioLogged.length)
 		{
-            this._usuarioLogged = JSON.parse(sessionStorage.getItem('usuario'))
-			
+            this._usuarioLogged = JSON.parse(sessionStorage.getItem('usuario'));
 		}
 		return this._usuarioLogged;
     }

@@ -16,18 +16,32 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/calendario.css'
 import { FormControl, FormControlLabel, FormLabel, Input, MenuItem, Radio, RadioGroup, Select } from '@material-ui/core'
 import { Form } from 'react-bootstrap'
+import { GlobalContext } from '../controllers/Context'
 
 class Calendario extends React.Component {
-	constructor(props){
-		super(props)
-		
+	static contextType = GlobalContext;
+
+	constructor() {
+		super();
+
+		this.state = {
+			pacienteView: true,
+			turnos: []
+		}
 	}
 
 	cerrarSesion(){
 		this.props.history.push("/")
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
+		const user = await this.context.UsuariosController.getUsuarioLogged();
+		
+		this.setState({
+			pacienteView: user.rol === 'paciente'
+		})
+		debugger;
+
 		window.dispatchEvent(new Event('resize'));
 	}
 
