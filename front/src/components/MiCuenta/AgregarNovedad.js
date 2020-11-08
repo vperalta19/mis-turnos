@@ -18,6 +18,7 @@ export default class AgregarR extends React.Component {
       previewSource: '',
       selectedFile: null,
       descripcion: '',
+      titulo: '',
       alert: false
 
     }
@@ -35,11 +36,12 @@ export default class AgregarR extends React.Component {
     })
   };
 
-  handleChange = (e) => {
+  handleChange = (event) => {
+    const {name, value} = event.target;
     this.setState({
-      descripcion: e.target.value
+        [name]: value
     })
-  }
+}
   
   handleFileInputChange = (e) => {
       const file = e.target.files[0];
@@ -77,7 +79,7 @@ export default class AgregarR extends React.Component {
 
   uploadImage = async (imagen) => {
       try {
-        const receta = {imagen: imagen, descripcion: this.state.descripcion}
+        const receta = {imagen: imagen, descripcion: this.state.descripcion, titulo: this.state.titulo }
         await subirReceta(receta);
         this.setState({
           fileInputState: '',
@@ -91,7 +93,7 @@ export default class AgregarR extends React.Component {
   render(){
     return (
       <div>
-        <div className='btn-agregar-r' onClick={this.handleClickOpen}>Agregar Receta</div>
+        <div className='btn-agregar-hm' onClick={this.handleClickOpen}>Agregar Novedad</div>
         
         <Dialog
           open={this.state.open}
@@ -118,13 +120,23 @@ export default class AgregarR extends React.Component {
                     
                     <div className='col'>
                       <div className="row m-2">
+                        <span>Titulo:</span>
+                      </div>
+                      <div className="row m-2">
+                       <input style={{ width: '100%' }} type="text" value={this.state.titulo} name='titulo' onChange={this.handleChange}></input>
+                      </div>
+                    </div>  
+                  </div>   
+                  <div className="row m-2">
+                    <div className='col'>
+                      <div className="row m-2">
                         <span>Descripcion:</span>
                       </div>
                       <div className="row m-2">
                        <textarea style={{ width: '100%' }} type="text" value={this.state.descripcion} name='descripcion' onChange={this.handleChange}></textarea>
                       </div>
                     </div>  
-                  </div>   
+                  </div> 
                   <div className="row m-2">
                     <div className='col'>
                       <input

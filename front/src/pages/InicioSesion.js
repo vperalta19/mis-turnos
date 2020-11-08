@@ -31,7 +31,7 @@ export default class InicioSesion extends React.Component {
           dni: this.state.dni,
           contraseña: this.state.contraseña,
         }
-        const validacion = await this.context.UsuariosController.getUsuario(login)
+        const validacion = await this.context.UsuariosController.login(login)
         
         if(validacion){
             this.props.history.push("/")

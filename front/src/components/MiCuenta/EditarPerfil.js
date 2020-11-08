@@ -6,83 +6,193 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import './../../assets/css/MiCuenta.css'
+import { Alert } from '@material-ui/lab';
+import { GlobalContext } from '../../controllers/Context';
 
-export default function AlertDialog() {
+export default class EditarPerfil extends React.Component {
+  static contextType = GlobalContext;
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false,
+      alert: false,
+      dniOriginal: '',
+      nombre : '',
+      apellido : '',
+      email : '',
+      telefono : '',
+      dni : '',
+      ooss : '',
+      nroSocio : '',
+      contraseña: ''
+    }
+  }
 
+  handleChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({
+        [name]: value
+    })
+  }
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
+  handleClickOpen = () => {
+    this.setState({
+      open:true
+    })
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  handleClick = async () => {
+    const usuario ={
+      nombre : this.state.nombre,
+      apellido : this.state.apellido,
+      email : this.state.email,
+      telefono : this.state.telefono,
+      dni : this.state.dni,
+      ooss : this.state.ooss,
+      nroSocio : this.state.nroSocio,
+      contraseña: this.state.contraseña
+    }
+    console.log(usuario, this.state.dniOriginal)
+    const response = await this.context.UsuariosController.editarUsuario(usuario,this.state.dniOriginal)
+    if (response){
+      this.setState({
+        open:false
+      })
+      window.location.reload()
+    }
+    else{
+      this.setState({
+        open:true
+      })
+    }
+    
   };
 
-  return (
-    <div>
-      <div className='btn-Editar' onClick={handleClickOpen}>Editar Perfil</div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="editarPerfilTitulo"
-        aria-describedby="editarPerfilContenido"
-      >
-        <DialogTitle id="editarPerfilTitulo">{"Editar Perfil"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="editarPerfilContenido">
-            <div className='container'>
-              <div className="row m-2">
+  async componentDidMount(){
+    const usuario = await this.context.UsuariosController.getUsuarioLogged()
+    
+    this.setState({
+        nombre : usuario.nombre,
+        apellido : usuario.apellido,
+        email : usuario.email,
+        telefono : usuario.telefono,
+        dni : usuario.dni,
+        dniOriginal : usuario.dni,
+        contraseña : usuario.contraseña,
+        ooss : usuario.ooss,
+        nroSocio : usuario.nroSocio,
+        fechaNacimiento: usuario.fechaNacimiento
+    })
+}
+  
+  render(){
+    return (
+      <div>
+        <div className='btn-Editar' onClick={this.handleClickOpen}>Editar Perfil</div>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="editarPerfilTitulo"
+          aria-describedby="editarPerfilContenido"
+        >
+          <DialogTitle id="editarPerfilTitulo">{"Editar Perfil"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="editarPerfilContenido">
+              <div className='container'>
+                {(() => {
+                    if (this.state.alert){
+                        return (
+                            <Alert variant="filled" severity="error">
+                                No existe usuario con ese dni
+                            </Alert>
+                        )
+                    }
+                    
+                    return null;
+                })()}
+                <div className="row m-2">
+                    <div className="col-4">
+                        <span>Nombre:</span>
+                    </div>
+                    <div className="col-8">
+                      <input type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange}></input>
+                    </div>
+                </div>
+                <div className="row m-2">
+                    <div className="col-4">
+                        <span>Apellido:</span>
+                    </div>
+                    <div className="col-8">
+                      <input type="text" value={this.state.apellido} name='apellido' onChange={this.handleChange}></input>
+                    </div>
+                </div>
+                <div className='row m-2'>
                   <div className="col-4">
-                      <span>Nombre:</span>
+                      <span>DNI:</span>
                   </div>
                   <div className="col-8">
-                    <input type="text" id="nombre" name="nombre"></input>
+                    <input type="number" value={this.state.dni} name='dni' onChange={this.handleChange}></input>
                   </div>
-              </div>
-              <div className='row m-2'>
-                <div className="col-4">
-                    <span>DNI:</span>
                 </div>
-                <div className="col-8">
-                  <input type="number" id="dni" name="dni"></input>
+                <div className="row m-2 ">
+                    <div className="col-4">
+                        <span>Email: </span>
+                    </div>
+                    <div className="col-8">
+                      <input type="email" value={this.state.email} name='email' onChange={this.handleChange}></input>
+                    </div>
                 </div>
-              </div>
-              <div className="row m-2 ">
+                <div className='row m-2'>
                   <div className="col-4">
-                      <span>Email: </span>
+                      <span>Obra Social:</span>
                   </div>
                   <div className="col-8">
-                    <input type="email" id="email" name="email"></input>
+                    <input type="text" value={this.state.ooss} name='ooss' onChange={this.handleChange}></input>
                   </div>
-              </div>
-              <div className='row m-2'>
-                <div className="col-4">
-                    <span>Obra Social:</span>
                 </div>
-                <div className="col-8">
-                  <input type="text" id="ooss" name="ooss"></input>
-                </div>
-              </div>
-              <div className="row m-2">
+                <div className='row m-2'>
                   <div className="col-4">
-                      <span>Telefono:</span>
+                      <span>Nro Socio:</span>
                   </div>
                   <div className="col-8">
-                    <input type="number" id="tel" name="tel"></input>
+                    <input type="number" value={this.state.nroSocio} name='nroSocio' onChange={this.handleChange}></input>
                   </div>
+                </div>
+                <div className="row m-2">
+                    <div className="col-4">
+                        <span>Telefono:</span>
+                    </div>
+                    <div className="col-8">
+                      <input type="number" value={this.state.telefono} name='telefono' onChange={this.handleChange}></input>
+                    </div>
+                </div>
+                <div className='row m-2'>
+                  <div className="col-4">
+                      <span>Fecha Nacimiento:</span>
+                  </div>
+                  <div className="col-8">
+                  <input type="date" value={this.state.fechaNacimiento} name='fechaNacimiento' onChange={this.handleChange}></input>
+                  </div>
+                </div>
+                <div className='row m-2'>
+                  <div className="col-4">
+                      <span>Contraseña:</span>
+                  </div>
+                  <div className="col-8">
+                  <input type="password" value={this.state.contraseña} name='contraseña' onChange={this.handleChange}></input>
+                  </div>
+                </div>
               </div>
-            </div>
-            
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>
-            Confirmar
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
+              
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClick}>
+              Confirmar
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  }
 }

@@ -207,18 +207,19 @@
 }
 
 .btn-agregar-hm{
-    font-size: 12px;
+    font-size: 10px;
     background: #FFC895;
     color: #ffffff;
-    float: left;
+    float: right;
     text-decoration: none;
     cursor: pointer;
     font-weight: 700;
-    padding: 5px 30px;
+    padding: 5px 20px;
     border-radius: 25px;
     text-align: center;
     border: 1px solid transparent;
-    margin: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .btn-agregar-hm:hover {
@@ -228,22 +229,41 @@
 }
 
 .btn-agregar-r{
-    font-size: 12px;
+    font-size: 10px;
     background: #FFFF;
     color: #FFC895;
-    float: left;
     text-decoration: none;
     cursor: pointer;
     font-weight: 700;
-    padding: 5px 30px;
+    padding: 5px 20px;
     border-radius: 25px;
     text-align: center;
     border: 1px solid transparent;
-    margin: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    float: right;
     border-color: #FFC895;
 }
 
 .btn-agregar-r:hover {
     background-color: #FFC895;
     color: #FFF;
+}
+
+#subirImagen{
+    display: none;
+}
+
+.subirImagen{
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #106BA0;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
 }

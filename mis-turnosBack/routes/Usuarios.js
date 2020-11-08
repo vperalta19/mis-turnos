@@ -62,20 +62,23 @@ router.put('/editarUsuario/:dni', function(req,res){
         actualizar.telefono, 
         actualizar.ooss,
         actualizar.nroSocio,
+        actualizar.fechaNacimiento,
         dni
     ];
     con.query('SELECT dni FROM Usuarios WHERE dni = ?', dni, function(err,row,field){
         if(err) {
             throw err;
         }
-        else if (row.length === 0) {                                                   
+        else if (row.length === 0) {  
+            res.status(404)                                                 
             res.send('No existe el usuario')
         }
         else{
-            con.query('UPDATE Usuarios SET dni = ?, nombre = ?, apellido = ?, email = ?, telefono = ?, ooss = ?, nroSocio = ? WHERE dni = ?', usuarioArray, function(err,result){
+            con.query('UPDATE Usuarios SET dni = ?, nombre = ?, apellido = ?, email = ?, telefono = ?, ooss = ?, nroSocio = ?, fechaNacimiento = ?, contraseña = ? WHERE dni = ?', usuarioArray, function(err,result){
                 if(err){
                     throw err;
                 }
+                res.status(200)
                 res.send('se actualizo correctamente');
             });
         }
@@ -104,7 +107,7 @@ router.put('/eliminarUsuario/:dni', function(req,res){
     
 });
 
-router.post('/getUsuario', function(req,res){
+router.post('/login', function(req,res){
     const {dni} = req.body
     const {contraseña} = req.body
     con.query('SELECT * FROM Usuarios WHERE dni = ? AND contraseña = ?',[dni,contraseña],  function(err,result){
@@ -121,7 +124,6 @@ router.post('/getUsuario', function(req,res){
         }
         
     });
-    
 });
 
 router.get('/getUsuarios', function(req,res){
@@ -131,8 +133,28 @@ router.get('/getUsuarios', function(req,res){
         }
         
     });
-
-    
 });
+
+router.get('/getPacientes', function(req,res){
+    con.query('SELECT * FROM Usuarios WHERE rol = "paciente"', function(err,result){
+        if(err) {
+            throw err;
+        }
+        res.send(result)
+        
+    });
+});
+
+router.get('/getUsuario/:dni', function(req,res){
+    const {dni} = req.params
+    con.query('SELECT * FROM Usuarios WHERE dni = ?',dni, function(err,result){
+        if(err) {
+            throw err;
+        }
+        res.send(result)
+        
+    });
+});
+
 //------------------------------------------------------------------------------------------------------------
 module.exports = router;
