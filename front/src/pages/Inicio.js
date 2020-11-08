@@ -5,18 +5,26 @@ import Footer from './../components/Inicio/Footer';
 import Novedades from './../components/Inicio/Novedades';
 import DondeEstamos from './../components/Inicio/DondeEstamos';
 
-export default function Inicio(){
-	const toolbarInfo={
-		nombre: 'Valeria Peralta'
+export default class Inicio extends React.Component{
+	constructor(props){
+		super(props)
+		
 	}
-	return (
-		<div className="Inicio">
-			<Toolbar toolbarInfo={toolbarInfo}/>
-			<LandingPage></LandingPage>
-			<Novedades></Novedades>
-			<DondeEstamos></DondeEstamos>
-			<Footer></Footer>
 
-		</div>
-	);
+	cerrarSesion(){
+		this.props.history.push("/")
+	}
+
+	render(){
+		return (
+			<div className="Inicio">
+				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
+				<LandingPage></LandingPage>
+				<Novedades></Novedades>
+				<DondeEstamos></DondeEstamos>
+				<Footer></Footer>
+
+			</div>
+		);
+	}
 }

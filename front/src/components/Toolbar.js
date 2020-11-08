@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-
 
 import logo from './../assets/img/logo.png'
 import {Link} from 'react-router-dom'
@@ -36,7 +35,6 @@ export default function Toolbar(props) {
 				navbar.classList.add("sticky"); 
 				pedirTurno.classList.add("d-none");
 				pedirTurno.classList.add("d-lg-block");
-				console.log(headerTop);
 				if(headerTop.length !== 0){
 					medio.classList.add('margen')
 				}
@@ -57,7 +55,20 @@ export default function Toolbar(props) {
 	
 	// When the user scrolls the page, execute myFunction 
 	window.onscroll = function() {stickyHeader()};
-	let name = props.toolbarInfo.nombre;
+	var sesion = sessionStorage.getItem('usuario')
+	
+
+	function cerrarSesion(){
+		sessionStorage.setItem('usuario','');
+		props.cerrarFn();
+	}
+
+	var name
+	if(sesion){
+		let json = JSON.parse(sesion);
+		name = json.nombre + " " + json.apellido
+	}
+	
 	return(
 		<div className="header-area">
 			{(() => {
@@ -72,9 +83,9 @@ export default function Toolbar(props) {
 									</div>
 								</div>
 								<div className="col">
-									<div className="cerrarSesion">
-										<div>CERRAR SESION</div>
-									</div>
+									<button className="cerrarSesion" onClick={cerrarSesion}>
+										CERRAR SESION
+									</button>
 								</div>
 							</div>
 						</div>
@@ -127,7 +138,7 @@ export default function Toolbar(props) {
 												<div className="seccionSideBar"><Link to='/'>INICIO</Link></div>
 												<div className="seccionSideBar"><Link to='/Calendario'>CALENDARIO</Link></div>
 												<div className="seccionSideBar"><Link to='/MiCuenta'>MI CUENTA</Link></div>
-												<div className="sideBarCerrarSesion">CERRAR SESION</div>
+												<div className="sideBarCerrarSesion" onClick={cerrarSesion}>CERRAR SESION</div>
 											</div>
 											<div id="main">
 												<div onClick={openNav}>☰</div>
