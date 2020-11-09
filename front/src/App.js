@@ -20,7 +20,7 @@ export default class App extends React.Component {
 						<Route path='/' exact render={props => (<Inicio {...props} ></Inicio>)} />
 						<Route path='/Calendario'  component={Calendario} />
 						<Route path='/MiCuenta'  component={MiCuenta} />
-						<Route path='/Paciente/:dni'  render={props => (<Paciente {...props} getUsuario={(dni)=>{this.getUsuario(dni)}} ></Paciente>)}  />
+						<Route path='/Paciente'  render={props => (<Paciente {...props}  ></Paciente>)}  />
 						<Route path='/PedirTurno'  component={PedirTurno} />
 						<Route path='/InicioSesion' 
 						render={props => (<InicioSesion {...props}></InicioSesion>)}

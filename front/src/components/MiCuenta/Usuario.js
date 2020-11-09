@@ -1,12 +1,14 @@
 import React from 'react'
 import './../../assets/css/MiCuenta.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 export default class Usuario extends React.Component {
     constructor(props){
         super(props);
         const datos = props.userInfo;
         this.state ={
+            datos: datos,
             nombre : datos.nombre,
             email : datos.email,
             tel : datos.tel,
@@ -16,6 +18,12 @@ export default class Usuario extends React.Component {
             rol : props.rol,
         }
     }
+
+    handleClick(){
+        sessionStorage.setItem('pacienteVista',JSON.stringify(this.state.datos))
+        
+    }
+
     render(){
         return(
             <div className="container-fluid">
@@ -107,7 +115,7 @@ export default class Usuario extends React.Component {
                         </div>
                         <div className="row cajaBody">
                             <div className='col'>
-                                <div className='btn-modificar'>Mas Info</div>
+                                <Link to="/Paciente"><div className='btn-modificar' onClick={this.handleClick.bind(this)}>Mas Info</div></Link>
                             </div>
                         </div>
                     </div>

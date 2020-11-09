@@ -1,6 +1,5 @@
 import React from 'react';
 import { GlobalContext } from '../controllers/Context';
-import PerfilProfesional from '../components/MiCuenta/PerfilProfesional'
 import PerfilPaciente from './../components/MiCuenta/PerfilPaciente'
 import Toolbar from './../components/Toolbar';
 
@@ -19,9 +18,8 @@ export default class MiCuenta extends React.Component {
 
 	async componentDidMount(){
 		this.setState({
-			userInfo: await this.context.UsuariosController.getUsuarioLogged()
+			userInfo: await JSON.parse(sessionStorage.getItem('pacienteVista'))
 		})
-		this.render()
 
 	}
 
@@ -37,30 +35,12 @@ export default class MiCuenta extends React.Component {
 
 		const historiales = [historialInfo,historialInfo,historialInfo];
 		const recetas = [historialInfo,historialInfo];
-		const pacientes = [this.state.userInfo,this.state.userInfo,this.state.userInfo,this.state.userInfo,this.state.userInfo]
 		return (
 			
 			<div className="MiCuenta">
 				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
-				{(() => {
-					if(this.state.userInfo){
-						if(this.state.userInfo.rol === 'medico'){
-							return(
-								<PerfilProfesional  userInfo={this.state.userInfo} pacientes = {pacientes}></PerfilProfesional>
-							)
-							
-						}
-						else if(this.state.userInfo.rol === 'paciente'){
-							return(
-								<PerfilPaciente  userInfo={this.state.userInfo} historiales ={historiales} recetas={recetas} quienVe="paciente"></PerfilPaciente>
-							)
-							
-						}
-					}
-				})()}
-				
-				
-
+				{console.log(!!this.state.userInfo)}
+				{!!this.state.userInfo && (<PerfilPaciente  userInfo={this.state.userInfo} historiales ={historiales} recetas={recetas} quienVe="profesional"></PerfilPaciente>)}
 			</div>
 		);
 	}

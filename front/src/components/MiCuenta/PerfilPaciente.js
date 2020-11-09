@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../assets/css/MiCuenta.css'
 import Tab from './Tab'
 import EditarPerfil from './EditarPerfil'
-import AgregarNovedad from './AgregarNovedad'
+import AgregarR from './AgregarR'
+import AgregarHM from './AgregarHM'
 import { GlobalContext } from '../../controllers/Context';
 
 export default class Perfil extends React.Component {
@@ -12,12 +13,6 @@ export default class Perfil extends React.Component {
     constructor(props){
         super(props);
         const usuario = this.props.userInfo;
-        if (!usuario.ooss){
-            usuario.ooss = '-'
-        }
-        if (!usuario.nroSocio){
-            usuario.nroSocio = '-'
-        }
         this.state = {
             nombre : usuario.nombre,
             apellido : usuario.apellido,
@@ -96,8 +91,8 @@ export default class Perfil extends React.Component {
                             if(this.state.quienVe === 'profesional'){
                                 return (
                                     <div className='col text-right'>
-                                        <EditarPerfil></EditarPerfil>
-                                        <AgregarNovedad></AgregarNovedad>
+                                        <AgregarR></AgregarR>
+                                        <AgregarHM></AgregarHM>
                                     </div>
                                 )
                             }
