@@ -16,7 +16,11 @@ app.use(express.json());
 //------------------------------------------------------------------------------------------------------------
 
 //Routes
+<<<<<<< HEAD
 app.use(require('./routes/Usuarios'));
+=======
+// app.use(require('./routes/Usuarios'));
+>>>>>>> dbca8eb0121a6030ccb247c78088cb2f5b6cd7c2
 // app.use(require('./routes/Turnos'));
 // app.use(require('./routes/Recetas'));
 // app.use(require('./routes/franjaHoraria'));

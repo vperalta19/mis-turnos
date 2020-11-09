@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
+<<<<<<< HEAD
 const con = require('../Database');
 //------------------------------------------------------------------------------------------------------------
 
@@ -158,3 +159,8 @@ router.get('/getUsuario/:dni', function(req,res){
 
 //------------------------------------------------------------------------------------------------------------
 module.exports = router;
+=======
+const mysqlConnection = require('../Database');
+
+
+>>>>>>> dbca8eb0121a6030ccb247c78088cb2f5b6cd7c2
