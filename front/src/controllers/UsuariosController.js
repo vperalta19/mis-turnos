@@ -1,6 +1,6 @@
-import { login, registrar, editarUsuario, getPacientes, getUsuario } from "../services/apiRoutes";
+import { login, registrar, editarUsuario, getPacientes, getUsuario, getUsuarios, eliminarUsuario } from "../services/apiRoutes";
 
-export default class TransaccionesController {
+export default class UsuariosController {
 	
 	contructor(){
         this._usuarioLogged = null;
@@ -52,6 +52,20 @@ export default class TransaccionesController {
         return json
     }
     
+    async getUsuarios()
+	{
+        const response = await getUsuarios();
+        const json  = await response.json();
+        return json
+    }
+
+    async eliminarUsuario(dni)
+	{
+        const response = await eliminarUsuario(dni);
+        return response
+    }
+    
+
     async getUsuario(dni)
 	{
         var json = null;
@@ -65,6 +79,7 @@ export default class TransaccionesController {
 
     async editarUsuario(data,dni)
 	{
+        console.log(dni)
         var validacion = false; 
         const response = await editarUsuario(data,dni);
     

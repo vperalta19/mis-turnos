@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
-const mysqlConnection = require('../Database');
+const con = require('../Database');
+//---------------------------------------
 
 const { cloudinary } = require('../services/img.service');
 //------------------------------------------------------------------------------------------------------------
@@ -10,7 +11,7 @@ const { cloudinary } = require('../services/img.service');
 router.get('/getRecetas/:id',(req,res)=>{
     let idUser = req.params.id;
     let sql = "SELECT * FROM Recetas WHERE paciente = ?"
-    mysqlConnection.query(sql, [idUser], (err, result) => {
+    con.query(sql, [idUser], (err, result) => {
         if(err){
             res.status(500).json({err:"Error"});
         }else{
@@ -26,7 +27,7 @@ router.get('/getRecetas/:id',(req,res)=>{
 router.get('/getReceta/:idReceta',(req,res)=>{
     let idReceta = req.params.idReceta;
     let sql = "SELECT * FROM Recetas WHERE idRecetas = ?"
-    mysqlConnection.query(sql, [idReceta], (err, result) => {
+    con.query(sql, [idReceta], (err, result) => {
         if(err){
             res.status(500).json({err:"Error"});
         }else{
@@ -40,26 +41,34 @@ router.get('/getReceta/:idReceta',(req,res)=>{
 
 //------------------------------------------------------------------------------------------------------------
 //Crear una Receta
-router.post('/crearReceta', (req, res) => {
-    let {paciente,descripcion,imagen} = req.body;
-    let uploadResponse = await cloudinary.uploader.upload(imagen);
-    let link = uploadResponse.secure_url;
-    let sql = `INSERT INTO Estudios (descripcion, imagen, paciente) VALUES (?,?,?,?)`;
-    mysqlConnection.query(sql, [descripcion,link,paciente], (err, result) => {
-        if(err){
-            res.status(500).json({err:"Error"});
-        }else{
-            res.status(201).json({msg:"OK"});
-        }
+router.post('/crearReceta', async (req, res) => {
+    try {
+        let {paciente} = req.body;
+        let{descripcion} =req.body;
+        let{imagen}=req.body;
+        let uploadResponse = await cloudinary.uploader.upload(imagen);
+        let link = uploadResponse.secure_url;
+        let sql = `INSERT INTO Recetas (descripcion, imagen, paciente) VALUES (?,?,?)`;
+        con.query(sql, [descripcion,link,paciente], (err, result) => {
+            if(err){
+                console.log(err)
+                res.status(500).json({err:"Error"});
+            }else{
+                res.status(200).json({msg:"OK"});
+            }
     }); 
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ err: 'Something went wrong' });
+    }
 });
 
 //------------------------------------------------------------------------------------------------------------
 //Borrar una Receta
-router.delete('/borrarReceta', (req, res) => {
-    let {idReceta} = req.body;
+router.delete('/borrarReceta/:idReceta', (req, res) => {
+    let {idReceta} = req.params;
     let sql = `DELETE FROM Recetas WHERE idRecetas = ?`;
-    mysqlConnection.query(sql, [idReceta], (err, result) => {
+    con.query(sql, [idReceta], (err, result) => {
         if(err){
             res.status(404).json({err:"Not found"});
         }else{

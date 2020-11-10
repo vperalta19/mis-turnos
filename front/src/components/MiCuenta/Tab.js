@@ -10,7 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import HistorialMedico from './HistorialMedico'
 import Receta from './Receta'
-
+import AgregarR from './AgregarR'
+import AgregarEstudio from './AgregarEstudio'
+import AgregarMedicamento from './AgregarMedicamento'
 
 const style = {
     background: '#00B1C2',
@@ -95,26 +97,61 @@ export default function NavTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {
-          historiales.map(
+      
+          {(() => {
+              if(props.quienVe === 'profesional'){
+                  return (
+                      <div className='row'>
+                        <div className='col text-right'>
+                            <AgregarMedicamento dni={props.dni}></AgregarMedicamento>
+                            <AgregarEstudio dni={props.dni}></AgregarEstudio>
+                        </div>
+                      </div>
+                    
+                  )
+              }
+              
+              return null;
+          })()}
+          <div className='row'>
+            {historiales &&
+            historiales.map(
               (value, index)=>{
                   return(
+
                       <HistorialMedico key={index} historialInfo={value}></HistorialMedico>
                   )
               }
-          )
-        }
+            )}
+          </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {
-          recetas.map(
-              (value, index)=>{
-                  return(
-                      <Receta key={index} recetaInfo={value}></Receta>
-                  )
-              }
-          )
-        }
+        {(() => {
+            if(props.quienVe === 'profesional'){
+                return (
+                    <div className='row'>
+                      <div className='col text-right'>
+                          <AgregarR dni={props.dni}></AgregarR>
+                      </div>
+                    </div>
+                  
+                )
+            }
+            
+            return null;
+        })()}
+        <div className='row'>
+          {value===1 && !!recetas &&
+            (recetas.map(
+                (value, index)=>{
+                    return(
+                        <Receta key={index} receta={value}></Receta>
+                    )
+                }
+            ))
+          }
+        </div>
+        
       </TabPanel>
     </div>
   );

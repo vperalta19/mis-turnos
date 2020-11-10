@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 
-<<<<<<< HEAD
 const con = require('../Database');
 //------------------------------------------------------------------------------------------------------------
 
@@ -45,7 +44,7 @@ router.post('/registrarUsuario', function(req,res){
                         throw err;
                     }
                     res.status(200)
-                    res.send('UsuarioCreado')
+                    res.send('Usuario Creado')
                 });
             } 
 
@@ -64,6 +63,7 @@ router.put('/editarUsuario/:dni', function(req,res){
         actualizar.ooss,
         actualizar.nroSocio,
         actualizar.fechaNacimiento,
+        actualizar.contraseña,
         dni
     ];
     con.query('SELECT dni FROM Usuarios WHERE dni = ?', dni, function(err,row,field){
@@ -89,11 +89,13 @@ router.put('/editarUsuario/:dni', function(req,res){
 
 router.put('/eliminarUsuario/:dni', function(req,res){
     var {dni} = req.params;
+    console.log(dni)
     con.query('SELECT dni FROM Usuarios WHERE dni = ?', dni, function(err,row,field){
         if(err) {
             throw err;
         }
-        else if (row.length === 0) {                                                   
+        else if (row.length === 0) {         
+            res.status(404)                                          
             res.send('No existe el usuario')
         }
         else{
@@ -101,6 +103,7 @@ router.put('/eliminarUsuario/:dni', function(req,res){
                 if(err){
                     throw err;
                 }
+                res.status(200)
                 res.send('se elimino correctamente');
             });
         }
@@ -128,16 +131,16 @@ router.post('/login', function(req,res){
 });
 
 router.get('/getUsuarios', function(req,res){
-    con.query('SELECT * FROM Usuarios', function(err,result){
+    con.query('SELECT * FROM Usuarios WHERE rol != "admin" && estado ="Activo"', function(err,result){
         if(err) {
             throw err;
         }
-        
+        res.send(result)
     });
 });
 
 router.get('/getPacientes', function(req,res){
-    con.query('SELECT * FROM Usuarios WHERE rol = "paciente"', function(err,result){
+    con.query('SELECT * FROM Usuarios WHERE rol = "paciente" && estado ="Activo"', function(err,result){
         if(err) {
             throw err;
         }
@@ -159,8 +162,3 @@ router.get('/getUsuario/:dni', function(req,res){
 
 //------------------------------------------------------------------------------------------------------------
 module.exports = router;
-=======
-const mysqlConnection = require('../Database');
-
-
->>>>>>> dbca8eb0121a6030ccb247c78088cb2f5b6cd7c2

@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../assets/css/MiCuenta.css'
 import Tab from './Tab'
 import EditarPerfil from './EditarPerfil'
-import AgregarR from './AgregarR'
-import AgregarHM from './AgregarHM'
+
 import { GlobalContext } from '../../controllers/Context';
 
 export default class Perfil extends React.Component {
@@ -24,8 +23,16 @@ export default class Perfil extends React.Component {
             rol : usuario.rol,
             quienVe : this.props.quienVe,
             historiales : props.historiales,
-            recetas : props.recetas
+            recetas : []
         }
+    }
+
+    async componentDidMount(){
+        const recetas = await this.context.RecetasController.getRecetas(this.state.dni)
+        this.setState({
+            recetas: recetas
+        })
+        this.render()
     }
     
     render(){
@@ -88,18 +95,10 @@ export default class Perfil extends React.Component {
                     </div>
                     <div className='row'>
                         {(() => {
-                            if(this.state.quienVe === 'profesional'){
+                            if(this.state.quienVe === 'paciente' ){
                                 return (
                                     <div className='col text-right'>
-                                        <AgregarR></AgregarR>
-                                        <AgregarHM></AgregarHM>
-                                    </div>
-                                )
-                            }
-                            else if(this.state.quienVe === 'paciente'){
-                                return (
-                                    <div className='col text-right'>
-                                        <EditarPerfil></EditarPerfil>
+                                        <EditarPerfil dni={this.state.dni}></EditarPerfil>
                                     </div>
                                 )
                             }
@@ -113,7 +112,7 @@ export default class Perfil extends React.Component {
                 <div className='container-fluid historial-recetas'>
                     <div className='row titulo align-items-center'>
                         <div className='col'>
-                            <Tab historiales={this.state.historiales} recetas={this.state.recetas}></Tab>
+                            <Tab historiales={this.state.historiales} recetas={this.state.recetas} quienVe={this.state.quienVe} dni={this.state.dni}></Tab>
                         </div>
                     </div>
                 </div> 

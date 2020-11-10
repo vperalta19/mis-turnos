@@ -19,6 +19,7 @@ export default class Perfil extends React.Component {
             email : usuario.email,
             telefono : usuario.telefono,
             dni : usuario.dni,
+            rol: usuario.rol,
             especialidad : usuario.especialidad,
             matricula : usuario.matricula,
             pacientes : []
@@ -26,10 +27,18 @@ export default class Perfil extends React.Component {
     }
 
     async componentDidMount(){
-        const pacientes = await this.context.UsuariosController.getPacientes()
-        this.setState({
-            pacientes: pacientes
-        })
+        if(this.state.rol==='medico' || this.state.rol==='secretaria'){
+            const pacientes = await this.context.UsuariosController.getPacientes()
+            this.setState({
+                pacientes: pacientes
+            })
+        }
+        else if(this.state.rol === 'admin'){
+            const pacientes = await this.context.UsuariosController.getUsuarios()
+            this.setState({
+                pacientes: pacientes
+            })
+        }
     }
 
     
@@ -95,7 +104,7 @@ export default class Perfil extends React.Component {
                     </div>
                     <div className='row'>
                         <div className='col text-right'>
-                            <EditarPerfil></EditarPerfil>
+                            <EditarPerfil dni={this.state.dni}></EditarPerfil>
                             <AgregarNovedad></AgregarNovedad>
                         </div>
                     </div>
@@ -106,7 +115,18 @@ export default class Perfil extends React.Component {
                     <div className='row titulo align-items-center'>
                         <div className='col text-center'>
                             <h1>
-                                MIS PACIENTES
+                                {(() => {
+                                    if(this.state.rol === 'medico' || this.state.rol === 'secretaria' ){
+                                        return (
+                                            'MIS PACIENTES'
+                                        )
+                                    }
+                                    else if(this.state.rol === 'admin') {
+                                        return(
+                                            'USUARIOS'
+                                        )
+                                    }
+                                })()}
                             </h1>
                         </div>
                     </div>
@@ -115,16 +135,13 @@ export default class Perfil extends React.Component {
                             {(this.state.pacientes.length && this.state.pacientes.map(
                                     (value, index)=>{
                                         return(
-                                            <Usuario key = {index} userInfo = {value} rol='profesional'></Usuario>
+                                            <Usuario key = {index} userInfo = {value} rol={this.state.rol}></Usuario>
                                         )
                                     }
                                 ))}
                         </div>
                     </div>
-                </div> 
-                
-
-                
+                </div>    
             </div>
             
         )

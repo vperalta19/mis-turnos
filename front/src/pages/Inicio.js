@@ -6,11 +6,6 @@ import Novedades from './../components/Inicio/Novedades';
 import DondeEstamos from './../components/Inicio/DondeEstamos';
 
 export default class Inicio extends React.Component{
-	constructor(props){
-		super(props)
-		
-	}
-
 	cerrarSesion(){
 		this.props.history.push("/")
 	}

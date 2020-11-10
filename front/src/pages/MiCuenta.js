@@ -44,7 +44,7 @@ export default class MiCuenta extends React.Component {
 				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
 				{(() => {
 					if(this.state.userInfo){
-						if(this.state.userInfo.rol === 'medico'){
+						if(this.state.userInfo.rol === 'medico' || this.state.userInfo.rol === 'secretaria' || this.state.userInfo.rol === 'admin'){
 							return(
 								<PerfilProfesional  userInfo={this.state.userInfo} pacientes = {pacientes}></PerfilProfesional>
 							)

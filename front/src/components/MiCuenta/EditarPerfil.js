@@ -24,7 +24,8 @@ export default class EditarPerfil extends React.Component {
       dni : '',
       ooss : '',
       nroSocio : '',
-      contraseña: ''
+      contraseña: '',
+      boton: props.boton
     }
   }
 
@@ -69,7 +70,7 @@ export default class EditarPerfil extends React.Component {
   };
 
   async componentDidMount(){
-    const usuario = await this.context.UsuariosController.getUsuarioLogged()
+    const usuario = await this.context.UsuariosController.getUsuario(this.props.dni)
     
     this.setState({
         nombre : usuario.nombre,
@@ -77,7 +78,7 @@ export default class EditarPerfil extends React.Component {
         email : usuario.email,
         telefono : usuario.telefono,
         dni : usuario.dni,
-        dniOriginal : usuario.dni,
+        dniOriginal : this.props.dni,
         contraseña : usuario.contraseña,
         ooss : usuario.ooss,
         nroSocio : usuario.nroSocio,
@@ -88,7 +89,19 @@ export default class EditarPerfil extends React.Component {
   render(){
     return (
       <div>
-        <div className='btn-Editar' onClick={this.handleClickOpen}>Editar Perfil</div>
+        {(() => {
+            if (this.state.boton === 'admin'){
+                return (
+                  <div className='btn-Modificar' onClick={this.handleClickOpen}>Modificar</div>
+                )
+            }
+            else{
+              return(
+                <div className='btn-Editar' onClick={this.handleClickOpen}>Editar Perfil</div>
+              )
+            }
+        })()}
+        
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

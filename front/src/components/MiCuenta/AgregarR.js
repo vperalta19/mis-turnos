@@ -6,10 +6,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import './../../assets/css/MiCuenta.css'
-import { subirReceta } from '../../services/apiRoutes';
 import { Alert } from '@material-ui/lab';
+import { GlobalContext } from '../../controllers/Context';
 
 export default class AgregarR extends React.Component {
+  static contextType = GlobalContext;
   constructor(props){
     super(props);
     this.state = {
@@ -18,7 +19,9 @@ export default class AgregarR extends React.Component {
       previewSource: '',
       selectedFile: null,
       descripcion: '',
-      alert: false
+      alert: false,
+      alertType:'',
+      alertDescript: ''
 
     }
   }
@@ -64,7 +67,8 @@ export default class AgregarR extends React.Component {
       e.preventDefault();
       if (!this.state.selectedFile) {
         this.setState({
-          alert: true
+          alert: true,
+          alertDescript: 'No se puede subir una receta sin imagen'
         })
         return
       }
@@ -75,19 +79,35 @@ export default class AgregarR extends React.Component {
       };
   };
 
-  uploadImage = async (imagen) => {
+  uploadImage = async (base64EncodedImage) => {
       try {
-        const receta = {imagen: imagen, descripcion: this.state.descripcion}
-        await subirReceta(receta);
-        this.setState({
-          fileInputState: '',
-          previewSource: ''
-        })
+        const receta = {imagen: base64EncodedImage, descripcion: this.state.descripcion, paciente: this.props.dni}
+        const validacion = await this.context.RecetasController.subirReceta(receta)
+        if(validacion){
+           this.setState({
+            alert:true,
+            alertType:'success',
+            alertDescript: 'Novedad subida con exito'
+          })
+          setTimeout(() => {
+            this.handleClose();
+            window.location.reload()
+          }, 2000);
+        }
+        else{
+          this.setState({
+            alert:true,
+            alertType:'error',
+            alertDescript: 'Error al subir la receta, intentelo de nuevo'
+          })
+        }
+        
           
       } catch (err) {
           console.error(err);
       }
   };
+  
   render(){
     return (
       <div>
@@ -102,8 +122,8 @@ export default class AgregarR extends React.Component {
           {(() => {
             if (this.state.alert){
                 return (
-                    <Alert style={{width:'100%'}} variant="filled" severity="error">
-                        No puede subir una receta sin imagen
+                    <Alert style={{width:'100%'}} variant="filled" severity={this.state.alertType}>
+                        {this.state.alertDescript}
                     </Alert>
                 )
             }

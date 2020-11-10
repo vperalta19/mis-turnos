@@ -39,7 +39,6 @@ export default class MiCuenta extends React.Component {
 			
 			<div className="MiCuenta">
 				<Toolbar cerrarFn={ () => { this.cerrarSesion(); } }/>
-				{console.log(!!this.state.userInfo)}
 				{!!this.state.userInfo && (<PerfilPaciente  userInfo={this.state.userInfo} historiales ={historiales} recetas={recetas} quienVe="profesional"></PerfilPaciente>)}
 			</div>
 		);

@@ -52,13 +52,14 @@ router.post('/getNovedadesDesde', (req,res)=> {
 
 //------------------------------------------------------------------------------------------------------------
 //Crear una Novedad
-router.post('/crearNovedad', (req, res) => {
+router.post('/crearNovedad', async (req, res) => {
     let {titulo,descripcion,imagen} = req.body;
     let uploadResponse = await cloudinary.uploader.upload(imagen);
     let link = uploadResponse.secure_url;
     let sql = `INSERT INTO Novedades (titulo,texto,img) VALUES (?,?,?);`
     mysqlConnection.query(sql, [titulo,descripcion,link], (err, result) => {
         if(err){
+            console.log(err)
             res.status(500).json({ err:'Something went wrong'});
         } else{
             res.status(200).json({msg:'Ok'});

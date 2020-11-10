@@ -1,106 +1,62 @@
 import React from 'react';
 import './../../assets/css/MiCuenta.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDownload} from '@fortawesome/free-solid-svg-icons'
+import { GlobalContext } from '../../controllers/Context';
 
-export default function Receta(props) {
-    const recetaInfo = props.recetaInfo;
-    const fecha = recetaInfo.fecha;
-    const paciente = recetaInfo.paciente;
-    const profesional = recetaInfo.profesional;
-    const medicamentos = recetaInfo.medicamentos;
-    const estudios = recetaInfo.estudios;
-    const notas = recetaInfo.notas;
-    return(
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col caja m-2">
-                    <div className="row cajaRInfo align-items-center">
-                        <div className="col text-right">
-                            <span>{fecha}</span>
-                        </div>
-                    </div>
-                    <div className="row cajaBody ">
-                        <div className="col-12 col-md-6  columnas">
-                            <div className="row">
-                                <div className="col-4 dato">
-                                    <span>Paciente: </span>
-                                </div>
-                                <div className="col-8 info">
-                                    <span>{paciente} </span>
-                                </div>
+export default class Receta extends React.Component {
+    static contextType = GlobalContext;
+    constructor(props){
+        super(props);
+        const receta = props.receta;
+        this.state={
+            fecha: new Date(receta.fecha),
+            descripcion: receta.descripcion,
+            imagen: receta.imagen.slice(0,50)+'fl_attachment/'+receta.imagen.slice(50),
+            id: receta.idRecetas
+        }
+    }
+
+    async eliminarReceta(){
+        console.log(this.state.id)
+        const response = await this.context.RecetasController.eliminarReceta(this.state.id)
+        if (response.status ===200){
+            window.location.reload()
+        }
+    }
+    
+    render(){
+        return(
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col caja m-2">
+                        <div className="row cajaRInfo align-items-center">
+                            <div className="col text-right">
+                                <span>{this.state.fecha.getDate() + '/' + this.state.fecha.getMonth() + '/' + this.state.fecha.getFullYear()}</span>
                             </div>
                         </div>
-                        <div className='col-12 col-md-6'>
-                            <div className="row">
-                                <div className="col-4 dato">
-                                    <span>Profesional: </span>
-                                </div>
-                                <div className="col-8 info">
-                                    <span>{profesional}</span>
-                                </div>
+                        
+                        <div className="row cajaBody">
+                            <div className="col-12 dato">
+                                <span>Descripcion: </span>
                             </div>
+                            <div className="col-12 info mb-3">
+                                <span>{this.state.descripcion}</span>
+                            </div>
+                            <div className='col-12 m-2 text-right descargar'>
+                                <a href={this.state.imagen} download className='btn-agregar-hm'>Descargar Receta <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon></a>
+                                <button onClick={this.eliminarReceta.bind(this)} className='btn-agregar-r'>Eliminar Receta</button>
+                            </div>
+
                         </div>
                     </div>
-                    <div className="row cajaBody ">
-                        <div className='col-12 col-md-6 columnas'>
-                            <div className="row">
-                                <div className="col-4 dato">
-                                    <span>Estudios Realizados: </span>
-                                </div>
-                                <div className="col-8 info">
-                                    <ul>
-                                        {
-                                            estudios.map(
-                                                (value, index)=>{
-                                                    return(
-                                                        <li key={index}> 
-                                                            {value}
-                                                        </li>
-                                                    )
-                                                }
-                                            )
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12 col-md-6'>
-                            <div className="row">
-                                <div className="col-4 dato">
-                                    <span>Medicamentos: </span>
-                                </div>
-                                <div className="col-8 info">
-                                    <ul>
-                                        {
-                                            medicamentos.map(
-                                                (value, index)=>{
-                                                    return(
-                                                        <li key={index}> 
-                                                            {value}
-                                                        </li>
-                                                    )
-                                                }
-                                            )
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row cajaBody">
-                        <div className="col-12 dato">
-                            <span>Notas: </span>
-                        </div>
-                        <div className="col-12 info mb-3">
-                            <span>{notas}</span>
-                        </div>
-                    </div>
+                    
+                    
+                    
                 </div>
                 
-                
-                
             </div>
-            
-        </div>
-    );
+        );
+    }
 }

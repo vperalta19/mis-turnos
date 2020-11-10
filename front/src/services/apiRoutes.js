@@ -25,6 +25,16 @@ export const getPacientes = async () =>{
     }
 }
 
+export const getUsuarios = async () =>{
+    try {
+        const response = await fetch('http://localhost:3500/getUsuarios');
+        return response
+    } 
+    catch (error) {
+        console.error(error)
+    }
+}
+
 export const getUsuario = async (dni) =>{
     try {
         const response = await fetch('http://localhost:3500/getUsuario/'+dni);
@@ -34,6 +44,8 @@ export const getUsuario = async (dni) =>{
         console.error(error)
     }
 }
+
+
 
 export const registrar = async (data) =>{
     const options = {
@@ -60,6 +72,7 @@ export const editarUsuario = async (data,dni) =>{
         },
         body: JSON.stringify(data)
     }
+    console.log(dni)
     try {
         const response = await fetch('http://localhost:3500/editarUsuario/'+dni,options);
         return response
@@ -75,12 +88,11 @@ export const subirReceta = async (receta) =>{
         headers: {
             'Content-Type': 'application/json'
         },
-        body:  JSON.stringify({ receta })
+        body:  JSON.stringify(receta)
     }
     try {
-        console.log(receta)
-        // const response = await fetch('http://localhost:3500/subirReceta',options);
-        // console.log(response)
+        const response = await fetch('http://localhost:3500/crearReceta',options);
+        return response
     } 
     catch (error) {
         console.log(error)
@@ -88,18 +100,73 @@ export const subirReceta = async (receta) =>{
     
 }
 
-export const subirNovedad = async (receta) =>{
+export const subirNovedad = async (novedad) =>{
     const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body:  JSON.stringify({ receta })
+        body:  JSON.stringify(novedad)
     }
     try {
-        console.log(receta)
-        // const response = await fetch('http://localhost:3500/subirReceta',options);
-        // console.log(response)
+        const response = await fetch('http://localhost:3500/crearNovedad',options);
+        return response
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export const getRecetas = async (dni) =>{
+    try {
+        const response = await fetch('http://localhost:3500/getRecetas/'+dni);
+        return response
+    } 
+    catch (error) {
+        console.error(error)
+    }
+}
+
+export const getNovedades = async () =>{
+    try {
+        const response = await fetch('http://localhost:3500/getNovedades/');
+        return response
+    } 
+    catch (error) {
+        console.error(error)
+    }
+}
+
+
+
+export const eliminarReceta = async (id) =>{
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const response = await fetch('http://localhost:3500/borrarReceta/'+id,options);
+        return response
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export const eliminarUsuario = async (dni) =>{
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const response = await fetch('http://localhost:3500/eliminarUsuario/'+dni,options);
+        return response
     } 
     catch (error) {
         console.log(error)
