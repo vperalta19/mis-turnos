@@ -6,10 +6,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import './../../assets/css/MiCuenta.css'
-import { subirNovedad} from '../../services/apiRoutes';
 import { Alert } from '@material-ui/lab';
+import { GlobalContext } from '../../controllers/Context';
 
-export default class AgregarR extends React.Component {
+export default class AgregarNovedad extends React.Component {
+  static contextType = GlobalContext;
   constructor(props){
     super(props);
     this.state = {
@@ -135,7 +136,7 @@ export default class AgregarR extends React.Component {
             
             return null;
         })()}
-          <DialogTitle id="agregarR-Titulo">{"Agregar Receta"}</DialogTitle>
+          <DialogTitle id="agregarR-Titulo">{"Agregar Novedad"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="agregarR-Contenido">
               <div className='container'>

@@ -173,3 +173,66 @@ export const eliminarUsuario = async (dni) =>{
     }
     
 }
+
+export const crearHistorial = async (historial) =>{
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:  JSON.stringify(historial)
+    }
+    try {
+        const response = await fetch('http://localhost:3500/crearHistorial',options);
+        return response
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export const getHistoriales = async (dni) =>{
+    try {
+        const response = await fetch('http://localhost:3500/getHistoriales/'+dni);
+        return response
+    } 
+    catch (error) {
+        console.error(error)
+    }
+}
+
+export const editarHistorial = async (historial) =>{
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:  JSON.stringify(historial)
+    }
+    try {
+        const response = await fetch('http://localhost:3500/editarHistorial',options);
+        return response
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export const borrarHistorial = async (id) =>{
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const response = await fetch('http://localhost:3500/borrarHistorial/'+id,options);
+        return response
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
+}

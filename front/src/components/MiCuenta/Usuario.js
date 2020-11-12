@@ -1,9 +1,10 @@
 import React from 'react'
-import './../../assets/css/MiCuenta.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import EditarPerfil from './EditarPerfil';
 import { GlobalContext } from '../../controllers/Context';
+import './../../assets/css/MiCuenta.css'
 
 export default class Usuario extends React.Component {
     static contextType = GlobalContext;

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload} from '@fortawesome/free-solid-svg-icons'
 import { GlobalContext } from '../../controllers/Context';
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 
 export default class Receta extends React.Component {
     static contextType = GlobalContext;
@@ -32,8 +33,12 @@ export default class Receta extends React.Component {
                 <div className="row">
                     <div className="col caja m-2">
                         <div className="row cajaRInfo align-items-center">
-                            <div className="col text-right">
+                            <div className="col text-left">
                                 <span>{this.state.fecha.getDate() + '/' + this.state.fecha.getMonth() + '/' + this.state.fecha.getFullYear()}</span>
+                            </div>
+                            <div className='col text-right'>
+                                <FontAwesomeIcon style={{color:'white'}} icon={faTrashAlt} onClick={this.eliminarReceta.bind(this)}></FontAwesomeIcon>
+                                
                             </div>
                         </div>
                         
@@ -46,7 +51,6 @@ export default class Receta extends React.Component {
                             </div>
                             <div className='col-12 m-2 text-right descargar'>
                                 <a href={this.state.imagen} download className='btn-agregar-hm'>Descargar Receta <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon></a>
-                                <button onClick={this.eliminarReceta.bind(this)} className='btn-agregar-r'>Eliminar Receta</button>
                             </div>
 
                         </div>

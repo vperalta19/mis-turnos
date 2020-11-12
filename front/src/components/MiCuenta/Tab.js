@@ -1,6 +1,5 @@
 import React from 'react';
-import './../../assets/css/MiCuenta.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,9 +10,10 @@ import Box from '@material-ui/core/Box';
 import HistorialMedico from './HistorialMedico'
 import Receta from './Receta'
 import AgregarR from './AgregarR'
-import AgregarEstudio from './AgregarEstudio'
-import AgregarMedicamento from './AgregarMedicamento'
+import AgregarHM from './AgregarHM'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../assets/css/MiCuenta.css'
 const style = {
     background: '#00B1C2',
     color: 'white',
@@ -32,7 +32,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={2}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -67,7 +67,6 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -84,7 +83,7 @@ export default function NavTabs(props) {
   const recetas = props.recetas;
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root }>
       <AppBar position="static" style={style}>
         <Tabs
           variant="fullWidth"
@@ -103,8 +102,7 @@ export default function NavTabs(props) {
                   return (
                       <div className='row'>
                         <div className='col text-right'>
-                            <AgregarMedicamento dni={props.dni}></AgregarMedicamento>
-                            <AgregarEstudio dni={props.dni}></AgregarEstudio>
+                            <AgregarHM dni={props.dni}></AgregarHM>
                         </div>
                       </div>
                     

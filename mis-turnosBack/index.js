@@ -19,6 +19,7 @@ app.use(express.json());
 
 //Routes
 app.use(require('./routes/Usuarios'));
+app.use(require('./routes/HistorialMedico'));
 // app.use(require('./routes/Turnos'));
 app.use(require('./routes/Recetas'));
 app.use(require('./routes/franjaHoraria'));

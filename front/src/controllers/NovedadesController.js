@@ -5,7 +5,7 @@ export default class NovedadesController{
         this._novedades = []
     }
 
-    async subirReceta(novedad){
+    async subirNovedad(novedad){
         var validacion = false;
         const response = await subirNovedad(novedad);
         if(response.status === 200) {

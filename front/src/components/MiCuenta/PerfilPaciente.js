@@ -1,11 +1,12 @@
 import React from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './../../assets/css/MiCuenta.css'
+
 import Tab from './Tab'
 import EditarPerfil from './EditarPerfil'
 
 import { GlobalContext } from '../../controllers/Context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../assets/css/MiCuenta.css'
 
 export default class Perfil extends React.Component {
     static contextType = GlobalContext;
@@ -22,15 +23,17 @@ export default class Perfil extends React.Component {
             nroSocio : usuario.nroSocio,
             rol : usuario.rol,
             quienVe : this.props.quienVe,
-            historiales : props.historiales,
+            historiales : [],
             recetas : []
         }
     }
 
     async componentDidMount(){
         const recetas = await this.context.RecetasController.getRecetas(this.state.dni)
+        const historiales = await this.context.HistorialController.getHistoriales(this.state.dni)
         this.setState({
-            recetas: recetas
+            recetas: recetas,
+            historiales: historiales
         })
         this.render()
     }
