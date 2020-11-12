@@ -5,6 +5,7 @@ import './../../assets/css/MiCuenta.css'
 import EditarPerfil from './EditarPerfil'
 import Usuario from './Usuario'
 import AgregarNovedad from './AgregarNovedad'
+import AgregarUsuario from './AgregarUsuario'
 import { GlobalContext } from '../../controllers/Context';
 
 
@@ -104,8 +105,27 @@ export default class Perfil extends React.Component {
                     </div>
                     <div className='row'>
                         <div className='col text-right'>
-                            <EditarPerfil dni={this.state.dni}></EditarPerfil>
-                            <AgregarNovedad></AgregarNovedad>
+                            {(() => {
+                                    if(this.state.rol === 'medico' || this.state.rol === 'secretaria' ){
+                                        return (
+                                            <div>
+                                                <EditarPerfil dni={this.state.dni}></EditarPerfil>
+                                                <AgregarNovedad></AgregarNovedad>
+                                            </div>
+                                            
+                                        )
+                                    }
+                                    else if(this.state.rol === 'admin') {
+                                        return(
+                                            <div>
+                                                <EditarPerfil dni={this.state.dni}></EditarPerfil>
+                                                <AgregarNovedad></AgregarNovedad>
+                                                <AgregarUsuario></AgregarUsuario>
+                                            </div>
+                                        )
+                                    }
+                                })()}
+                            
                         </div>
                     </div>
                     

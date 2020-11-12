@@ -34,9 +34,10 @@ export default class EditarHistorial extends React.Component {
     })
   };
 
-  handleChange = (e) => {
+  handleChange = (event) => {
+    const {name, value} = event.target;
     this.setState({
-      descripcion: e.target.value
+        [name]: value
     })
   }
 

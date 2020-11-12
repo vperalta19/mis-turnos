@@ -19,6 +19,15 @@ export default class UsuariosController {
         return validacion
     }
 
+    async registrar(usuario){
+        var validacion = false;
+        const response = await registrar(usuario);
+        if(response.status === 200) {
+            validacion = true;
+        }
+        return validacion
+    }
+
     async getUsuarioLogged(){
         if (!this._usuarioLogged || !this._usuarioLogged.length)
 		{
