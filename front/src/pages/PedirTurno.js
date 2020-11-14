@@ -9,19 +9,51 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/pedirTurno.css'
+import { GlobalContext } from '../controllers/Context'
 
 export default class PedirTurno extends React.Component {
+	static contextType = GlobalContext;
+	
 	constructor(props){
 		super(props)
-		
+		this.state = {
+			eventsInfo: false,
+			inicioDate: "",
+			inicioTime: "",
+			inicio: null,
+			pacienteView: false,
+			dni: "",
+			ooss: ""
+		}
+		this.turnos = [];
+		this.franja = [];
 	}
 
 	cerrarSesion(){
 		this.props.history.push("/")
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
+		const user = await this.context.UsuariosController.getUsuarioLogged();
+		if (user.rol === 'paciente') {
+			this.setState({
+				pacienteView: true,
+				dni: user.dni,
+				ooss: user.ooss
+			})
+		}
+
+		this.turnos = await this.context.TurnosController.getTurnos();
+		this.franja = await this.context.TurnosController.getFranja();
+
+		this.setState({
+			eventsInfo: true,
+			inicioDate: "",
+			inicioTime: ""
+		});
+
 		window.dispatchEvent(new Event('resize'));
+
 	}
 
 	render() {
@@ -29,7 +61,43 @@ export default class PedirTurno extends React.Component {
 			nombre: 'Valeria Peralta'
 		}
 
-		let events = this.getSelectableTimeEvents()
+		var turnos = this.turnos;
+		var franja = this.franja;
+		
+		let events = !this.state.eventsInfo ? [] :
+			(params, fn) => {
+				let disp = [];
+				for (let i = 0; i < franja.length; i++) {
+					const f = franja[i];
+					const d = Number.parseInt(f.daysOfWeek[0]);
+					const h = Number.parseInt(f.startTime.substring(0,2));
+					const m = Number.parseInt(f.startTime.substring(3,5));
+
+					let newDate = new Date(params.start);
+					newDate.setDate( newDate.getDate() + d);
+					newDate.setHours( newDate.getHours() + h);
+					newDate.setMinutes( newDate.getMinutes() + m);
+
+					if (newDate.getTime() - (new Date()).getTime() <= 0) continue;
+
+					let out = false;
+					for (let j = 0; j < turnos.length; j++) {
+						const t = turnos[j];
+						if(t.fechaInicio == newDate.toISOString()){
+							out = true;
+							break;
+						}
+					}
+					if (out) continue;
+
+					disp.push({
+						start: newDate.getTime(),
+						end: newDate.getTime() + 1800000,
+						color: '#20ff20'
+					})
+				}
+				fn(disp);
+			};
 
 		let calendar = (
 			<FullCalendar
@@ -42,7 +110,7 @@ export default class PedirTurno extends React.Component {
 				}}
 				initialView="timeGridWeek"
 				allDaySlot={false}
-				timeFormat={"HH:mm"} //TODO todavia no anda esto
+				// timeFormat={"HH:mm"} //TODO todavia no anda esto
 				events={events}
 				eventClick={(p) => { this.selectTime(p)}}
 			/>
@@ -56,21 +124,43 @@ export default class PedirTurno extends React.Component {
 				<div className="turnos-detail">
 					<div className="turno-line">
 						<div>Fecha: </div>
-						<input className="turno-detail-fecha" disabled></input>
+						<input value={this.state.inicioDate} className="turno-detail-fecha" disabled></input>
 					</div>
 					<div className="turno-line">
 						<div>Horario: </div>
-						<input className="turno-detail-horario" disabled></input>
+						<input value={this.state.inicioTime} className="turno-detail-horario" disabled></input>
 					</div>
-					<div className="turno-line">
+					{/* <div className="turno-line">
 						<div>Obra Social</div>
-						<input className="turno-detail-ooss"></input>
-					</div>
+						<input value={this.state.ooss} onChange={ (v) => { this.setState({ooss: v.target.value}); } } className="turno-detail-ooss" disabled={this.state.pacienteView}></input>
+					</div> */}
 					<div className="turno-line">
 						<div>DNI</div>
-						<input className="turno-detail-dni"></input>
+						<input type="number" value={this.state.dni} onChange={ (v) => { this.setState({dni: v.target.value}); } } className="turno-detail-dni" disabled={this.state.pacienteView}></input>
 					</div>
-					<button className="aceptar">Confirmar</button>
+					<button className="aceptar"
+						onClick={
+							() => {
+								if (this.state.dni == "") {
+									alert("Ingrese el DNI de la persona correspondiente para pedir un Turno.");
+									return;
+								}
+								if (this.state.inicio == null) {
+									alert("Seleccione una fecha en el calendario para pedir un Turno.")
+									return;
+								}
+								this.context.TurnosController.addTurno({
+									dni: this.state.dni,
+									inicio: this.state.inicio.getTime(),
+									fin: this.state.inicio.getTime() + 1800000
+								});
+								setTimeout(
+									() => {
+										window.location.reload();
+									}, 100
+								)
+							}
+						}>Confirmar</button>
 				</div>
 			</div>
 		);
@@ -114,61 +204,10 @@ export default class PedirTurno extends React.Component {
 		let start = `${p.event.start.getDate()}/${p.event.start.getMonth()+1}/${p.event.start.getFullYear()}`
 		let time = (d) => { return `${(d.getHours() < 10 ? "0" : "") + d.getHours()}:${d.getMinutes() + (d.getMinutes() < 10 ? "0" : "")}`}
 
-		let fechas = document.getElementsByClassName("turno-detail-fecha");
-		for (let i = 0; i < fechas.length; i++) {
-			fechas[i].value = start;
-		}
-
-		let horas = document.getElementsByClassName("turno-detail-horario");
-		for (let i = 0; i < horas.length; i++) {
-			horas[i].value = time(p.event.start);
-		}
-	}
-
-	getSelectableTimeEvents() {
-		let out = [];
-		for (let i = 0; i < 12; i++) {
-			out.push({
-				start: 1601290800000+60000*30*i,
-				end: 1601290800000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		for (let i = 0; i < 12; i++) {
-			out.push({
-				start: 1601377200000+60000*30*i,
-				end: 1601377200000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		for (let i = 0; i < 12; i++) {
-			out.push({
-				start: 1601550000000+60000*30*i,
-				end: 1601550000000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		for (let i = 0; i < 9; i++) {
-			out.push({
-				start: 1601317800000+60000*30*i,
-				end: 1601317800000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		for (let i = 0; i < 9; i++) {
-			out.push({
-				start: 1601404200000+60000*30*i,
-				end: 1601404200000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		for (let i = 0; i < 9; i++) {
-			out.push({
-				start: 1601577000000+60000*30*i,
-				end: 1601577000000+60000*30*(i+1),
-				color: '#20ff20'
-			})
-		}
-		return out;
+		this.setState({
+			inicio: p.event.start,
+			inicioDate: start,
+			inicioTime: time(p.event.start)
+		});
 	}
 };

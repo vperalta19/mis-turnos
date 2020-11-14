@@ -1,45 +1,87 @@
-import { getUsuario, registrar } from "../services/apiRoutes";
+import { eliminarTunro, addTurno, getFranja, getTurnos, getTurnosPaciente, setFranja } from "../services/apiRoutes";
 
 export default class TurnosController {
 	
 	contructor(){
-        this._usuarioLogged = null;
-        this._usuarios =[];
+
 	}
 
-    async setUsuarioLogged(usuario){
-        var validacion = false;
-        const response = await registrar(usuario);
-        if(response.status === 200) {
-            validacion = true;
-            sessionStorage.setItem('usuario',JSON.stringify(usuario));
-            this._usuarioLogged = usuario;
-        }
-        return validacion
-    }
-
-    async getUsuarioLogged(){
-        if (!this._usuarioLogged || !this._usuarioLogged.length)
-		{
-            this._usuarioLogged = JSON.parse(sessionStorage.getItem('usuario'));
-		}
-		return this._usuarioLogged;
-    }
-
-	
-	async getUsuario(infoUsuario)
+	async getTurnosPaciente(idPaciente)
 	{
-        var validacion = false; 
-        const response = await getUsuario(infoUsuario);
-    
-        if(response.status === 200){
-            const json = await response.json();
-            sessionStorage.setItem('usuario',JSON.stringify(json[0]));
-            validacion = true;
-        }
-			
+		let out = null;
+
+		const response = await getTurnosPaciente(idPaciente);
+	
+		if(response.status === 200){
+			const json = await response.json();
+			out = json;
+		}
 		
-		return validacion;
+		return out;
+	}
+
+	async getTurnos() {
+		let out = null;
+
+        const response = await getTurnos();
+    
+        if(response.status === 200) {
+            const json = await response.json();
+            out = json;
+        }
+		
+		return out;
+	}
+
+	async addTurno(t) {
+		let out = null;
+
+        const response = await addTurno(t);
+    
+        if(response.status === 200) {
+            const json = await response.json();
+            out = json;
+        }
+		
+		return out;
+	}
+
+	async eliminarTunro(id) {
+		let out = null;
+
+		const response = await eliminarTunro(id);
+	
+		if(response.status === 200) {
+			const json = await response.json();
+			out = json;
+		}
+		
+		return out;
+	}
+
+	async getFranja() {
+		let out = null;
+
+        const response = await getFranja();
+    
+        if(response.status === 200) {
+            const json = await response.json();
+            out = json;
+        }
+		
+		return out.map(
+			(f) => {
+				return {
+					daysOfWeek: [f.dia],
+					startTime: f.horaInicio,
+					endTime: f.horaFin
+				}
+			}
+		);
+	}
+
+	async setFranja(disp) {
+        await setFranja(disp);
 	}
 
 }

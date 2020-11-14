@@ -2,7 +2,8 @@ export default class Turno {
 
 	static days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
-	constructor(inicio, fin, profesional, paciente) {
+	constructor(id, inicio, fin, profesional, paciente) {
+		this.id = id;
 		this._inicio = inicio;
 		this._fin = fin;
 		this._profesional = profesional;
@@ -16,7 +17,7 @@ export default class Turno {
 
 	getStringFullDate() {
 		let date = new Date(this._inicio);
-		return `${Turno.days[date.getDay()]} ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+		return `${Turno.days[date.getDay()]} ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
 	}
 
 	getStringTime() {

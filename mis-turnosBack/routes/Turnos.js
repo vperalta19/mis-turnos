@@ -26,7 +26,7 @@ router.get('/getTurnosPaciente/:pacienteID', function(req, res) {
 
 router.post('/crearTurno', function(req, res) {
 	mysqlConnection.query(
-		`INSERT INTO Turnos(paciente, fechaInicio, fechaFin) VALUES (${req.body.dni}, from_unixtime(${req.body.inicio}/1000), from_unixtime(${req.body.fin}/1000))`,
+		`INSERT INTO Turnos(paciente, fechaInicio, fechaFin) VALUES (${req.body.dni}, "${req.body.inicio}", "${req.body.fin}")`,
 		function(err, result){
 			if (err) {
 				throw err;

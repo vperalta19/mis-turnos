@@ -1,7 +1,7 @@
 import { login, registrar, editarUsuario, getPacientes, getUsuario } from "../services/apiRoutes";
 
 export default class UsuariosController {
-	
+
 	contructor(){
         this._usuarioLogged = null;
         this._usuarios =[];

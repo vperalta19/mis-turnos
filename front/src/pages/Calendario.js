@@ -25,8 +25,20 @@ class Calendario extends React.Component {
 		super();
 
 		this.state = {
+			openTurno: null,
 			pacienteView: true,
-			turnos: []
+			turnos: [],
+			franjaMostrar: [],
+			franja: {
+				"Lunes": [],
+				"Martes": [],
+				"Miercoles": [],
+				"Jueves": [],
+				"Viernes": [],
+				"Sabado": [],
+				"Domingo": [],
+			},
+			franjaDia: ""
 		}
 	}
 
@@ -34,13 +46,125 @@ class Calendario extends React.Component {
 		this.props.history.push("/")
 	}
 
+	setTimes(v) {
+		const horarios = this.getSelectValues(v.target);
+
+		let franja = {
+			"Lunes": this.state.franja.Lunes,
+			"Martes": this.state.franja.Martes,
+			"Miercoles": this.state.franja.Miercoles,
+			"Jueves": this.state.franja.Jueves,
+			"Viernes": this.state.franja.Viernes,
+			"Sabado": this.state.franja.Sabado,
+			"Domingo": this.state.franja.Domingo,
+		}
+
+		franja[this.state.franjaDia] = horarios;
+
+		this.setState({
+			franja: franja
+		});
+	}
+
+	getSelectValues(select) {
+		let result = [];
+		let options = select && select.options;
+		let opt;
+	
+		for (let i=0, iLen=options.length; i<iLen; i++) {
+			opt = options[i];
+			if (opt.selected) {
+				result.push(opt.value || opt.text);
+			}
+		}
+		return result;
+	}
+
+	updateDiaFranja(e) {
+		this.setState({
+			franjaDia: e.target.value
+		})
+	}
+
+	async confirmFranja() {
+		let out = [];
+		for (let d in this.state.franja) {
+			const dia = this.state.franja[d];
+			for (let h = 0; h < dia.length; h++) {
+				const horario = dia[h];
+				out.push({
+					dia: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"].indexOf(d),
+					inicio: horario + ":00",
+					fin: horario.substring(0,3) + (horario.substring(3,4) == "3" ? "59:59" : "29:59") 
+				})
+			}
+		}
+		this.context.TurnosController.setFranja(out);
+	}
+
+
 	async componentDidMount() {
 		const user = await this.context.UsuariosController.getUsuarioLogged();
-		
+		let turnos;
+
 		this.setState({
 			pacienteView: user.rol === 'paciente'
 		})
-		debugger;
+
+		if (user.rol === 'paciente') {
+			turnos = await this.context.TurnosController.getTurnosPaciente(user.dni);
+		} else {
+
+			turnos = await this.context.TurnosController.getTurnos();
+
+			const franjaMostrar = await this.context.TurnosController.getFranja();
+
+			let franja = {
+				"Lunes": [],
+				"Martes": [],
+				"Miercoles": [],
+				"Jueves": [],
+				"Viernes": [],
+				"Sabado": [],
+				"Domingo": [],
+			}
+
+			for (let i = 0; i < franjaMostrar.length; i++) {
+				const f = franjaMostrar[i];
+				const dia = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"][f.daysOfWeek[0]];
+				franja[dia].push(f.startTime.substring(0, 5));
+			}
+
+			this.setState({
+				franjaMostrar: franjaMostrar,
+				franja: franja
+			});
+		}
+
+		turnos = turnos.filter(
+			(t) => {
+				return new Date(t.fechaInicio).getTime() - new Date().getTime() > 0;
+			}
+		)
+		turnos.sort(
+			(a, b) => {
+				return new Date(a.fechaInicio).getTime() - new Date(b.fechaInicio).getTime()
+			}
+		)
+
+		this.setState({
+			turnos: turnos.map(
+				(t) => {
+					return new Turno(
+						t.idTurno,
+						new Date(t.fechaInicio),
+						new Date(t.fechaFin),
+						"",
+						user.nombre + " " + user.apellido
+					)
+				}
+			)
+		})
 
 		window.dispatchEvent(new Event('resize'));
 	}
@@ -49,17 +173,8 @@ class Calendario extends React.Component {
 		const toolbarInfo={
 			nombre: 'Valeria Peralta'
 		}
-		let pacienteView = this.props.pacienteView || false;
 
-		let turnos = this.props.turnos || [
-			new Turno(1601323200000, 1601325000000, "Profesional", "Paciente"),			
-			new Turno(1601323200000+86400000+3600000*2, 1601325000000+86400000+3600000*2, "Profesional", "Paciente"),
-			new Turno(1601323200000+86400000*3+3600000, 1601325000000+86400000*3+3600000, "Profesional", "Paciente"),
-			new Turno(1601323200000+86400000*5+3600000*-6, 1601325000000+86400000*5+3600000*-6, "Profesional", "Paciente"),
-			new Turno(1601323200000+86400000*5, 1601325000000+86400000*5, "Profesional", "Paciente"),
-		];
-
-		let events = turnos.map((v) => v.getCalendarEvent(pacienteView))
+		let events = this.state.turnos.length > 0 ? this.state.turnos.map((v) => v.getCalendarEvent(this.state.pacienteView)) : [];
 
 		let calendar = (
 			<FullCalendar
@@ -72,26 +187,12 @@ class Calendario extends React.Component {
 				}}
 				initialView="timeGridWeek"
 				allDaySlot={false}
-				timeFormat={"HH:mm"} //TODO todavia no anda esto
+				eventTimeFormat={{ hour12: false, hour: '2-digit', minute: '2-digit' }}
 				events={events}
 				businessHours={
-					pacienteView ? null : [
-						{
-							daysOfWeek: [ 1, 2, 4 ],
-							startTime: '08:00',
-							endTime: '14:00'
-						},
-						{
-							daysOfWeek: [ 1, 2, 4 ],
-							startTime: '15:30',
-							endTime: '20:00'
-						},
-						{
-							daysOfWeek: [ 6 ],
-							startTime: '10:00',
-							endTime: '18:00'
-						}
-					]
+					this.state.franjaMostrar.length == 0 ?
+					[{ daysOfWeek: 0, startTime: "00:00:00", endTime: "00:00:01"}]	:
+					this.state.franjaMostrar
 				}
 			/>
 		);
@@ -104,11 +205,18 @@ class Calendario extends React.Component {
 						<div className="detail-title">
 							<span>Info del Turno</span>
 						</div>
-						<div className="detail-fecha"></div>
-						<div className="detail-hora"></div>
+						<div className="detail-fecha">Fecha: {!this.state.openTurno ? "" : this.state.openTurno.getStringFullDate()}</div>
+						<div className="detail-hora">Horario: {!this.state.openTurno ? "" : this.state.openTurno.getStringTime()}</div>
 						<div className="detail-buttons">
 							<button className="reprogramar">Reprogramar</button>
-							<button className="cancelar">Cancelar</button>
+							<button className="cancelar"
+								onClick={
+									() => {
+										this.context.TurnosController.eliminarTunro(this.state.openTurno.id);
+										window.location.reload();
+									}
+								}
+							>Cancelar</button>
 						</div>
 					</div>
 				</div>
@@ -122,16 +230,16 @@ class Calendario extends React.Component {
 							<Form style={{display: 'flex', flexDirection: 'column'}}>
 								<FormControl>
 									<FormLabel>Seleccione Día</FormLabel>
-									<RadioGroup onChange={(e) => {this.updateFranja(e)}} className="dias-group">
+									<RadioGroup value={this.state.franjaDia} onChange={(e) => {this.updateDiaFranja(e)}} className="dias-group">
 										<div className="lat-group">
 											<FormControlLabel value="Lunes" control={<Radio/>} label="Lunes" />
 											<FormControlLabel value="Martes" control={<Radio/>} label="Martes" />
-											<FormControlLabel value="Miércoles" control={<Radio/>} label="Miércoles" />
+											<FormControlLabel value="Miercoles" control={<Radio/>} label="Miércoles" />
 											<FormControlLabel value="Jueves" control={<Radio/>} label="Jueves" />
 										</div>
 										<div className="lat-group">
 											<FormControlLabel value="Viernes" control={<Radio/>} label="Viernes" />
-											<FormControlLabel value="Sábado" control={<Radio/>} label="Sábado" />
+											<FormControlLabel value="Sabado" control={<Radio/>} label="Sábado" />
 											<FormControlLabel value="Domingo" control={<Radio/>} label="Domingo" />
 										</div>
 									</RadioGroup>
@@ -143,57 +251,14 @@ class Calendario extends React.Component {
 									<option>45</option>
 									<option>60</option>
 								</select> */}
-								<select disabled className="horarios-select" multiple={true}>
-									<option>00:00</option>
-									<option>00:30</option>
-									<option>01:00</option>
-									<option>01:30</option>
-									<option>02:00</option>
-									<option>02:30</option>
-									<option>03:00</option>
-									<option>03:30</option>
-									<option>04:00</option>
-									<option>04:30</option>
-									<option>05:00</option>
-									<option>05:30</option>
-									<option>06:00</option>
-									<option>06:30</option>
-									<option>07:00</option>
-									<option>07:30</option>
-									<option>08:00</option>
-									<option>08:30</option>
-									<option>09:00</option>
-									<option>09:30</option>
-									<option>10:00</option>
-									<option>10:30</option>
-									<option>11:00</option>
-									<option>11:30</option>
-									<option>12:00</option>
-									<option>12:30</option>
-									<option>13:00</option>
-									<option>13:30</option>
-									<option>14:00</option>
-									<option>14:30</option>
-									<option>15:00</option>
-									<option>15:30</option>
-									<option>16:00</option>
-									<option>16:30</option>
-									<option>17:00</option>
-									<option>17:30</option>
-									<option>18:00</option>
-									<option>18:30</option>
-									<option>19:00</option>
-									<option>19:30</option>
-									<option>20:00</option>
-									<option>20:30</option>
-									<option>21:00</option>
-									<option>21:30</option>
-									<option>22:00</option>
-									<option>22:30</option>
-									<option>23:00</option>
-									<option>23:30</option>
+								<select value={this.state.franja[this.state.franjaDia] || []} onChange={ (v) => { this.setTimes(v); }} disabled={this.state.franjaDia===""} className="horarios-select" multiple={true}>
+									<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option><option>04:00</option><option>04:30</option>
+									<option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option><option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option>
+									<option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+									<option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+									<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option>
 								</select>
-								<button className="confirmar">Confirmar</button>
+								<button className="confirmar" onClick={ () => { this.confirmFranja(); }}>Confirmar</button>
 							</Form>
 						</div>
 					</div>
@@ -203,18 +268,18 @@ class Calendario extends React.Component {
 				</div>
 				<ul className="turnos-list">
 					{
-						turnos.map(
+						this.state.turnos.map(
 							(value, index) => {
 								return (
 									<li className="turno-container" key={index} onClick={() => {this.openTurno(value)}}>
-										<TurnoItem className="turno" turno={value} pacienteView={pacienteView}></TurnoItem>
+										<TurnoItem className="turno" turno={value} pacienteView={this.state.pacienteView}></TurnoItem>
 									</li>
 								)
 							}
 						)
 					}
 				</ul>
-				<div className="franja-horaria" style={{display: pacienteView ? "none":""}}>
+				<div className="franja-horaria" style={{display: this.state.pacienteView ? "none":""}}>
 					<div className="modificar" onClick={() => { this.openFranja()}}>
 						Modificar Franja Horaria
 					</div>
@@ -262,20 +327,15 @@ class Calendario extends React.Component {
 	 * @param {Turno} turno
 	 */
 	openTurno(turno) {
+
 		let details = document.getElementsByClassName("turno-detail-container");
 		for (let i = 0; i < details.length; i++) {
 			details[i].style.display = "";
 		}
 
-		let fechas = document.getElementsByClassName("detail-fecha");
-		for (let i = 0; i < fechas.length; i++) {
-			fechas[i].innerHTML = "Fecha: " + turno.getStringFullDate();
-		}
-
-		let horas = document.getElementsByClassName("detail-hora");
-		for (let i = 0; i < horas.length; i++) {
-			horas[i].innerHTML = "Horario: " + turno.getStringTime();;
-		}
+		this.setState({
+			openTurno: turno
+		})
 	}
 
 	closeTurno() {
@@ -296,13 +356,6 @@ class Calendario extends React.Component {
 		let franjas = document.getElementsByClassName("franja-horaria-container");
 		for (let i = 0; i < franjas.length; i++) {
 			franjas[i].style.display = "none";
-		}
-	}
-
-	updateFranja() {
-		let inpus = document.getElementsByClassName("horarios-select");
-		for (let i = 0; i < inpus.length; i++) {
-			inpus[i].disabled = false;
 		}
 	}
 };

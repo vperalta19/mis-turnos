@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(require('./routes/Usuarios'));
 app.use(require('./routes/Turnos'));
 // app.use(require('./routes/Recetas'));
-// app.use(require('./routes/franjaHoraria'));
+app.use(require('./routes/franjaHoraria'));
 // app.use(require('./routes/Medicamentos'));
 // app.use(require('./routes/Estudios'));
 // app.use(require('./routes/Novedades'));
