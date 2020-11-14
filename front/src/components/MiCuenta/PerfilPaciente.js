@@ -1,23 +1,18 @@
 import React from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './../../assets/css/MiCuenta.css'
+
 import Tab from './Tab'
 import EditarPerfil from './EditarPerfil'
-import AgregarNovedad from './AgregarNovedad'
+
 import { GlobalContext } from '../../controllers/Context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../assets/css/MiCuenta.css'
 
 export default class Perfil extends React.Component {
     static contextType = GlobalContext;
     constructor(props){
         super(props);
         const usuario = this.props.userInfo;
-        if (!usuario.ooss){
-            usuario.ooss = '-'
-        }
-        if (!usuario.nroSocio){
-            usuario.nroSocio = '-'
-        }
         this.state = {
             nombre : usuario.nombre,
             apellido : usuario.apellido,
@@ -28,9 +23,19 @@ export default class Perfil extends React.Component {
             nroSocio : usuario.nroSocio,
             rol : usuario.rol,
             quienVe : this.props.quienVe,
-            historiales : props.historiales,
-            recetas : props.recetas
+            historiales : [],
+            recetas : []
         }
+    }
+
+    async componentDidMount(){
+        const recetas = await this.context.RecetasController.getRecetas(this.state.dni)
+        const historiales = await this.context.HistorialController.getHistoriales(this.state.dni)
+        this.setState({
+            recetas: recetas,
+            historiales: historiales
+        })
+        this.render()
     }
     
     render(){
@@ -93,18 +98,10 @@ export default class Perfil extends React.Component {
                     </div>
                     <div className='row'>
                         {(() => {
-                            if(this.state.quienVe === 'profesional'){
+                            if(this.state.quienVe === 'paciente' ){
                                 return (
                                     <div className='col text-right'>
-                                        <EditarPerfil></EditarPerfil>
-                                        <AgregarNovedad></AgregarNovedad>
-                                    </div>
-                                )
-                            }
-                            else if(this.state.quienVe === 'paciente'){
-                                return (
-                                    <div className='col text-right'>
-                                        <EditarPerfil></EditarPerfil>
+                                        <EditarPerfil dni={this.state.dni}></EditarPerfil>
                                     </div>
                                 )
                             }
@@ -118,7 +115,7 @@ export default class Perfil extends React.Component {
                 <div className='container-fluid historial-recetas'>
                     <div className='row titulo align-items-center'>
                         <div className='col'>
-                            <Tab historiales={this.state.historiales} recetas={this.state.recetas}></Tab>
+                            <Tab historiales={this.state.historiales} recetas={this.state.recetas} quienVe={this.state.quienVe} dni={this.state.dni}></Tab>
                         </div>
                     </div>
                 </div> 

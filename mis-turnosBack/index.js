@@ -5,6 +5,8 @@ const app = express();
 var cors = require('cors');
 
 app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 //------------------------------------------------------------------------------------------------------------
 
 //Creo port para indicar el puerto en el que va a funcionar el servidor
@@ -17,12 +19,13 @@ app.use(express.json());
 
 //Routes
 app.use(require('./routes/Usuarios'));
+app.use(require('./routes/HistorialMedico'));
 app.use(require('./routes/Turnos'));
-// app.use(require('./routes/Recetas'));
+app.use(require('./routes/Recetas'));
 app.use(require('./routes/franjaHoraria'));
-// app.use(require('./routes/Medicamentos'));
-// app.use(require('./routes/Estudios'));
-// app.use(require('./routes/Novedades'));
+app.use(require('./routes/Medicamentos'));
+app.use(require('./routes/Estudios'));
+app.use(require('./routes/Novedades'));
 
 //------------------------------------------------------------------------------------------------------------
 

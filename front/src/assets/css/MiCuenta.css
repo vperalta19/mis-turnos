@@ -6,9 +6,6 @@
     box-sizing: border-box;
 }
 
-.historial-recetas{
-    padding: 0;
-}
 
 .pacientes .titulo{
     background-color: #00B1C2;
@@ -63,6 +60,27 @@
     border: 1px solid transparent;
     border-color: #CBCBCB;
 }
+
+.caja .cajaBody .descargar a{
+    font-size: 10px;
+    background-color: #04ADBF;
+    color: #ffffff;
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid transparent;
+    
+}
+
+.caja .cajaBody .descargar a:hover {
+    background-color: #ffffff;
+    border-color: #04ADBF;
+    color: #04ADBF;
+}
+
 
 .caja .cajaHMInfo{
     background-color: #6D96A6;

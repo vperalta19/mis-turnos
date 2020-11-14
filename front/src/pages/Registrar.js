@@ -57,10 +57,6 @@ export default class Registrar extends React.Component {
             else {this.setState({alert:true,alertDescripcion:'El usuario ya existe'})}
             
         }
-        
-        
-        
-        // this.props.history.push("/")
     }
 
     render(){

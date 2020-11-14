@@ -1,6 +1,5 @@
 import React from 'react';
-import './../../assets/css/MiCuenta.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,8 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import HistorialMedico from './HistorialMedico'
 import Receta from './Receta'
+import AgregarR from './AgregarR'
+import AgregarHM from './AgregarHM'
 
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../assets/css/MiCuenta.css'
 const style = {
     background: '#00B1C2',
     color: 'white',
@@ -30,7 +32,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={2}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -65,7 +67,6 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -82,7 +83,7 @@ export default function NavTabs(props) {
   const recetas = props.recetas;
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root }>
       <AppBar position="static" style={style}>
         <Tabs
           variant="fullWidth"
@@ -95,26 +96,60 @@ export default function NavTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {
-          historiales.map(
+      
+          {(() => {
+              if(props.quienVe === 'profesional'){
+                  return (
+                      <div className='row'>
+                        <div className='col text-right'>
+                            <AgregarHM dni={props.dni}></AgregarHM>
+                        </div>
+                      </div>
+                    
+                  )
+              }
+              
+              return null;
+          })()}
+          <div className='row'>
+            {historiales &&
+            historiales.map(
               (value, index)=>{
                   return(
+
                       <HistorialMedico key={index} historialInfo={value}></HistorialMedico>
                   )
               }
-          )
-        }
+            )}
+          </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {
-          recetas.map(
-              (value, index)=>{
-                  return(
-                      <Receta key={index} recetaInfo={value}></Receta>
-                  )
-              }
-          )
-        }
+        {(() => {
+            if(props.quienVe === 'profesional'){
+                return (
+                    <div className='row'>
+                      <div className='col text-right'>
+                          <AgregarR dni={props.dni}></AgregarR>
+                      </div>
+                    </div>
+                  
+                )
+            }
+            
+            return null;
+        })()}
+        <div className='row'>
+          {value===1 && !!recetas &&
+            (recetas.map(
+                (value, index)=>{
+                    return(
+                        <Receta key={index} receta={value}></Receta>
+                    )
+                }
+            ))
+          }
+        </div>
+        
       </TabPanel>
     </div>
   );

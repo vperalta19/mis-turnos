@@ -1,7 +1,7 @@
-import { login, registrar, editarUsuario, getPacientes, getUsuario } from "../services/apiRoutes";
+import { login, registrar, editarUsuario, getPacientes, getUsuario, getUsuarios, eliminarUsuario } from "../services/apiRoutes";
 
 export default class UsuariosController {
-
+	
 	contructor(){
         this._usuarioLogged = null;
         this._usuarios =[];
@@ -15,6 +15,15 @@ export default class UsuariosController {
             validacion = true;
             sessionStorage.setItem('usuario',JSON.stringify(usuario));
             this._usuarioLogged = usuario;
+        }
+        return validacion
+    }
+
+    async registrar(usuario){
+        var validacion = false;
+        const response = await registrar(usuario);
+        if(response.status === 200) {
+            validacion = true;
         }
         return validacion
     }
@@ -51,6 +60,20 @@ export default class UsuariosController {
         return json
     }
     
+    async getUsuarios()
+	{
+        const response = await getUsuarios();
+        const json  = await response.json();
+        return json
+    }
+
+    async eliminarUsuario(dni)
+	{
+        const response = await eliminarUsuario(dni);
+        return response
+    }
+    
+
     async getUsuario(dni)
 	{
         var json = null;
@@ -64,6 +87,7 @@ export default class UsuariosController {
 
     async editarUsuario(data,dni)
 	{
+        console.log(dni)
         var validacion = false; 
         const response = await editarUsuario(data,dni);
     

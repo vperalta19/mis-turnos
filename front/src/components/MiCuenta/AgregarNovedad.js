@@ -6,10 +6,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import './../../assets/css/MiCuenta.css'
-import { subirReceta } from '../../services/apiRoutes';
 import { Alert } from '@material-ui/lab';
+import { GlobalContext } from '../../controllers/Context';
 
-export default class AgregarR extends React.Component {
+export default class AgregarNovedad extends React.Component {
+  static contextType = GlobalContext;
   constructor(props){
     super(props);
     this.state = {
@@ -19,7 +20,9 @@ export default class AgregarR extends React.Component {
       selectedFile: null,
       descripcion: '',
       titulo: '',
-      alert: false
+      alert: false,
+      alertDescript: '',
+      alertType: ''
 
     }
   }
@@ -63,33 +66,54 @@ export default class AgregarR extends React.Component {
   };
 
   handleSubmitFile = (e) => {
-      e.preventDefault();
-      if (!this.state.selectedFile) {
-        this.setState({
-          alert: true
-        })
-        return
-      }
+    e.preventDefault();
+    if (!this.state.selectedFile) {
+      this.uploadImage('');
+    }
+    else{
       const reader = new FileReader();
       reader.readAsDataURL(this.state.selectedFile);
       reader.onloadend = () => {
           this.uploadImage(reader.result);
       };
+    }
+    
+};
+
+  uploadImage = async (base64EncodedImage) => {
+    try {
+      if(this.state.descripcion.length > 255 || this.state.titulo.length > 255){
+        this.setState({
+          alert:true,
+          alertType:'error',
+          alertDescript: 'Decripcion o Titulo muy largo'
+        })
+      }else{
+        const novedad = {imagen: base64EncodedImage, descripcion: this.state.descripcion, titulo: this.state.titulo}
+        const validacion = await this.context.NovedadesController.subirNovedad(novedad)
+        if(validacion){
+          this.setState({
+            alert:true,
+            alertType:'success',
+            alertDescript: 'Novedad subida con exito'
+          })
+          setTimeout(() => {
+            this.handleClose();
+          }, 2000);
+        }
+        else{
+          this.setState({
+            alert:true,
+            alertType:'error',
+            alertDescript: 'No se pudo subir la novedad, intentelo de nuevo'
+          })
+        }
+      }
+    } catch (err) {
+        console.error(err);
+    }
   };
 
-  uploadImage = async (imagen) => {
-      try {
-        const receta = {imagen: imagen, descripcion: this.state.descripcion, titulo: this.state.titulo }
-        await subirReceta(receta);
-        this.setState({
-          fileInputState: '',
-          previewSource: ''
-        })
-          
-      } catch (err) {
-          console.error(err);
-      }
-  };
   render(){
     return (
       <div>
@@ -104,15 +128,15 @@ export default class AgregarR extends React.Component {
           {(() => {
             if (this.state.alert){
                 return (
-                    <Alert style={{width:'100%'}} variant="filled" severity="error">
-                        No puede subir una receta sin imagen
+                    <Alert style={{width:'100%'}} variant="filled" severity={this.state.alertType}>
+                        {this.state.alertDescript}
                     </Alert>
                 )
             }
             
             return null;
         })()}
-          <DialogTitle id="agregarR-Titulo">{"Agregar Receta"}</DialogTitle>
+          <DialogTitle id="agregarR-Titulo">{"Agregar Novedad"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="agregarR-Contenido">
               <div className='container'>

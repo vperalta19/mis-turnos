@@ -1,21 +1,42 @@
 import React from 'react'
-import './../../assets/css/MiCuenta.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import EditarPerfil from './EditarPerfil';
+import { GlobalContext } from '../../controllers/Context';
+import './../../assets/css/MiCuenta.css'
 
 export default class Usuario extends React.Component {
+    static contextType = GlobalContext;
     constructor(props){
         super(props);
         const datos = props.userInfo;
         this.state ={
+            datos: datos,
             nombre : datos.nombre,
+            apellido: datos.apellido,
             email : datos.email,
             tel : datos.tel,
             dni : datos.dni,
             ooss : datos.ooss,
             nroSocio : datos.nroSocio,
+            rolUsuario: datos.rol,
             rol : props.rol,
         }
     }
+
+    handleClick(){
+        sessionStorage.setItem('pacienteVista',JSON.stringify(this.state.datos))
+        
+    }
+
+    async eliminarUsuario(){
+        const response = await this.context.UsuariosController.eliminarUsuario(this.state.dni)
+        if(response.status === 200){
+            window.location.reload()
+        }
+    }
+
     render(){
         return(
             <div className="container-fluid">
@@ -23,14 +44,14 @@ export default class Usuario extends React.Component {
                     <div className="col caja m-2">
                         <div className="row cajaHMInfo align-items-center">
                             <div className="col text-left">
-                                <span>{this.state.nombre}</span>
+                                <span>{this.state.nombre + ' ' + this.state.apellido + ' (' + this.state.rolUsuario.toUpperCase() + ')'}</span>
                             </div>
                             {(() => {
                                 if (this.state.rol === 'admin'){
                                     return (
                                         <div className='col text-right'>
-                                            <div className='btn-modificar'>Modificar</div>
-                                            <div className='btn-eliminar'>Eliminar</div>
+                                            <EditarPerfil dni={this.state.dni} boton='admin'></EditarPerfil>
+                                            <buton className='btn-eliminar' onClick={this.eliminarUsuario.bind(this)}>Eliminar</buton>
                                         </div>
                                     )
                                 }
@@ -46,7 +67,7 @@ export default class Usuario extends React.Component {
                                         <span>Nombre: </span>
                                     </div>
                                     <div className="col-8 info">
-                                        <span>{this.state.nombre}</span>
+                                        <span>{this.state.nombre + ' ' + this.state.apellido}</span>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +128,16 @@ export default class Usuario extends React.Component {
                         </div>
                         <div className="row cajaBody">
                             <div className='col'>
-                                <div className='btn-modificar'>Mas Info</div>
+                                {(() => {
+                                    if(this.state.rolUsuario === 'paciente' ){
+                                        return (
+                                            <Link to="/Paciente"><div className='btn-modificar' onClick={this.handleClick.bind(this)}>Mas Info</div></Link>
+                                        )
+                                    }
+                                    
+                                    return null;
+                                })()}
+                                
                             </div>
                         </div>
                     </div>

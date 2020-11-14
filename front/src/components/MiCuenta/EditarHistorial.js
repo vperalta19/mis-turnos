@@ -9,7 +9,7 @@ import './../../assets/css/MiCuenta.css'
 import { GlobalContext } from '../../controllers/Context';
 import { Alert } from '@material-ui/lab';
 
-export default class AgregarEstudio extends React.Component {
+export default class EditarHistorial extends React.Component {
   static contextType = GlobalContext;
   constructor(props){
     super(props)
@@ -42,16 +42,17 @@ export default class AgregarEstudio extends React.Component {
   }
 
   handleClick = async () => {
-    const usuario ={
+    const historial ={
       descripcion : this.state.descripcion,
-      paciente : this.props.dni,
+      idHistorialMedico : this.props.historial.idHistorialMedico,
     }
-    const validacion = await this.context.HistorialController.crearHistorial(usuario)
+    console.log(historial.idHistorialMedico)
+    const validacion = await this.context.HistorialController.editarHistorial(historial)
     if(validacion){
       this.setState({
         alert:true,
         alertType:'success',
-        alertDescript: 'Historial subido con exito'
+        alertDescript: 'Historial editado con exito'
       })
       setTimeout(() => {
         this.handleClose();
@@ -62,17 +63,23 @@ export default class AgregarEstudio extends React.Component {
       this.setState({
         alert:true,
         alertType:'error',
-        alertDescript: 'No se pudo subir el historial, intentelo de nuevo'
+        alertDescript: 'No se pudo editado el historial, intentelo de nuevo'
       })
     }
     
   };
 
+  componentDidMount(){
+      this.setState({
+          descripcion: this.props.historial.descripcion
+      })
+  }
+
 
   render(){
     return (
       <div>
-        <div className='btn-agregar-hm' onClick={this.handleClickOpen}>Agregar Historial Medico</div>
+        <div className='btn-modificar' onClick={this.handleClickOpen}>Editar Historial</div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -90,7 +97,7 @@ export default class AgregarEstudio extends React.Component {
             
             return null;
           })()}
-          <DialogTitle id="agregarHM-Titulo">{"Agregar Historial Medico"}</DialogTitle>
+          <DialogTitle id="agregarHM-Titulo">{"Editar Historial Medico"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="agregarHM-Contenido">
               <div className='container'>
