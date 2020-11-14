@@ -103,8 +103,20 @@ router.put('/eliminarUsuario/:dni', function(req,res){
                 if(err){
                     throw err;
                 }
-                res.status(200)
-                res.send('se elimino correctamente');
+                else{
+                    con.query('DELETE FROM Turnos WHERE paciente = ?',dni, function(err,result){
+                        if(err){
+                            throw err;
+                        }
+                        else{
+                            
+                            res.status(200)
+                            res.send('se elimino correctamente');
+                        }
+                        
+                    });
+                }
+                
             });
         }
     });

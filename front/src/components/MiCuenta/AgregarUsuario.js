@@ -107,7 +107,6 @@ export default class AgregarEstudio extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="agregarHM-Titulo"
           aria-describedby="agregarHM-Contenido"
-          style={{widht: '100%'}}
         >
           {(() => {
             if (this.state.alert){
