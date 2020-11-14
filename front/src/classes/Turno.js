@@ -2,12 +2,13 @@ export default class Turno {
 
 	static days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
-	constructor(id, inicio, fin, profesional, paciente) {
+	constructor(id, inicio, fin, profesional, paciente, dni) {
 		this.id = id;
 		this._inicio = inicio;
 		this._fin = fin;
 		this._profesional = profesional;
 		this._paciente = paciente;
+		this._dni = dni;
 	}
 
 	getStringDate() {

@@ -8,6 +8,7 @@ import Inicio from './pages/Inicio';
 import InicioSesion from './pages/InicioSesion';
 import Registrar from './pages/Registrar';
 import Paciente from './pages/Paciente';
+import ReprogramarTurno from './pages/ReprogramarTurno';
 
 
 export default class App extends React.Component {
@@ -18,10 +19,16 @@ export default class App extends React.Component {
 				<div className="App">
 					<Switch>
 						<Route path='/' exact render={props => (<Inicio {...props} ></Inicio>)} />
-						<Route path='/Calendario'  component={Calendario} />
+						<Route path='/Calendario' 
+						render={props => (<Calendario {...props}></Calendario>)}
+						/>
 						<Route path='/MiCuenta'  component={MiCuenta} />
 						<Route path='/Paciente'  render={props => (<Paciente {...props}  ></Paciente>)}  />
-						<Route path='/PedirTurno'  component={PedirTurno} />
+						<Route path='/PedirTurno' 
+						render={props => (<PedirTurno {...props}></PedirTurno>)}
+						/><Route path='/Reprogramar' 
+						render={props => (<ReprogramarTurno {...props}></ReprogramarTurno>)}
+						/>
 						<Route path='/InicioSesion' 
 						render={props => (<InicioSesion {...props}></InicioSesion>)}
 						/>

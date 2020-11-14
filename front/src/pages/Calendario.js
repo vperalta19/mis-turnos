@@ -160,7 +160,8 @@ class Calendario extends React.Component {
 						new Date(t.fechaInicio),
 						new Date(t.fechaFin),
 						"",
-						user.nombre + " " + user.apellido
+						t.nombre + " " + t.apellido,
+						t.dni
 					)
 				}
 			)
@@ -208,7 +209,14 @@ class Calendario extends React.Component {
 						<div className="detail-fecha">Fecha: {!this.state.openTurno ? "" : this.state.openTurno.getStringFullDate()}</div>
 						<div className="detail-hora">Horario: {!this.state.openTurno ? "" : this.state.openTurno.getStringTime()}</div>
 						<div className="detail-buttons">
-							<button className="reprogramar">Reprogramar</button>
+							<button className="reprogramar"
+								onClick={
+									() => {
+										this.context.TurnosController.selectedTurno = this.state.openTurno;
+										this.props.history.push("/Reprogramar");
+									}
+								}
+							>Reprogramar</button>
 							<button className="cancelar"
 								onClick={
 									() => {

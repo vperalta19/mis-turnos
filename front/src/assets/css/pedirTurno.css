@@ -125,6 +125,7 @@
 }
 
 .turnos-detail input{
+	padding-left: 10px;
 	width: 80%;
 	height: 30px;
 
@@ -136,4 +137,8 @@
 
 .turno-line {
 	display: grid;
+}
+
+.fc-timegrid-event-harness {
+	cursor: pointer;
 }

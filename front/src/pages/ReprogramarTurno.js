@@ -10,20 +10,18 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './../assets/css/pedirTurno.css'
 import { GlobalContext } from '../controllers/Context'
+import { faSleigh } from '@fortawesome/free-solid-svg-icons'
 
-export default class PedirTurno extends React.Component {
+export default class ReprogramarTurno extends React.Component {
 	static contextType = GlobalContext;
 	
 	constructor(props){
 		super(props)
 		this.state = {
 			eventsInfo: false,
+			turno: null,
 			inicioDate: "",
-			inicioTime: "",
-			inicio: null,
-			pacienteView: false,
-			dni: "",
-			ooss: ""
+			inicioTime: ""
 		}
 		this.turnos = [];
 		this.franja = [];
@@ -34,26 +32,21 @@ export default class PedirTurno extends React.Component {
 	}
 
 	async componentDidMount() {
-		const user = await this.context.UsuariosController.getUsuarioLogged();
-		if (user.rol === 'paciente') {
-			this.setState({
-				pacienteView: true,
-				dni: user.dni,
-				ooss: user.ooss
-			})
-		}
+		const turno = this.context.TurnosController.selectedTurno;
+		this.setState({
+			turno: turno,
+			inicioDate: turno.getStringFullDate(),
+			inicioTime: turno.getStringTime()
+		})
 
 		this.turnos = await this.context.TurnosController.getTurnos();
 		this.franja = await this.context.TurnosController.getFranja();
 
 		this.setState({
-			eventsInfo: true,
-			inicioDate: "",
-			inicioTime: ""
+			eventsInfo: true
 		});
 
 		window.dispatchEvent(new Event('resize'));
-
 	}
 
 	render() {
@@ -136,29 +129,26 @@ export default class PedirTurno extends React.Component {
 					</div> */}
 					<div className="turno-line">
 						<div>DNI</div>
-						<input type="number" value={this.state.dni} onChange={ (v) => { this.setState({dni: v.target.value}); } } className="turno-detail-dni" disabled={this.state.pacienteView}></input>
+						<input value={this.state.turno ? this.state.turno._dni : "-"} className="turno-detail-dni" disabled></input>
 					</div>
 					<button className="aceptar"
 						onClick={
 							() => {
-								if (this.state.dni == "") {
-									alert("Ingrese el DNI de la persona correspondiente para pedir un Turno.");
+								if (this.state.turno == null) {
+									alert("Hube un error. Intente nuevamente.");
 									return;
 								}
-								if (this.state.inicio == null) {
-									alert("Seleccione una fecha en el calendario para pedir un Turno.")
-									return;
-								}
+								this.context.TurnosController.eliminarTunro(this.state.turno.id);
 								this.context.TurnosController.addTurno({
-									dni: this.state.dni,
-									inicio: this.state.inicio.getTime(),
-									fin: this.state.inicio.getTime() + 1800000
+									dni: this.state.turno._dni,
+									inicio: this.state.turno._inicio.getTime(),
+									fin: this.state.turno._inicio.getTime() + 1800000
 								});
 								setTimeout(
 									() => {
 										this.props.history.push("/Calendario");
 									}, 100
-								)
+								)	
 							}
 						}>Confirmar</button>
 				</div>
@@ -204,8 +194,9 @@ export default class PedirTurno extends React.Component {
 		let start = `${p.event.start.getDate()}/${p.event.start.getMonth()+1}/${p.event.start.getFullYear()}`
 		let time = (d) => { return `${(d.getHours() < 10 ? "0" : "") + d.getHours()}:${d.getMinutes() + (d.getMinutes() < 10 ? "0" : "")}`}
 
+		this.state.turno._inicio = p.event.start;
+
 		this.setState({
-			inicio: p.event.start,
 			inicioDate: start,
 			inicioTime: time(p.event.start)
 		});

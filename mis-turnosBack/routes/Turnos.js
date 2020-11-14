@@ -7,7 +7,7 @@ const mysqlConnection = require('../Database');
 //------------------------------------------------------------------------------------------------------------
 
 router.get('/getTurnos', function(req, res) {
-	mysqlConnection.query('SELECT * FROM Turnos' , function(err, result){
+	mysqlConnection.query('SELECT idTurno, fechaInicio, fechaFin, nombre, apellido, dni FROM Turnos T, Usuarios U WHERE T.paciente = U.dni' , function(err, result){
 		if (err) {
 			throw err;
 		}
