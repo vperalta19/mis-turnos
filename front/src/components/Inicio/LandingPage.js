@@ -70,7 +70,7 @@ export default function LandingPage() {
                         <div className="row">
                             <div className="col">
                                 <h1>Sobre Nosotros</h1>
-                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an.</span>
+                                <span>Especialista en adultos que enfoca al paciente con una concepción integral del ser humano, capacitado para prevenir, diagnosticar, tratar y rehabilitar la patología prevalente, así como para guiar al paciente por todos los niveles de atención y realizar promoción de la salud; cumple un rol fundamental en la medicina actual.</span>
                             </div>
                         </div>
                         <div className="row">

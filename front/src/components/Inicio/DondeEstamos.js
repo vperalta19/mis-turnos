@@ -8,7 +8,7 @@ export default function DondeEstamos() {
             <div className="row align-items-center">
                 <div className="col-12 col-md-6 col-lg-4 text-center dondeEstamos">
                     <h3>Donde Estamos</h3>
-                    <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an.</span>
+                    <span>Lima 775 - C1073AAO | Ciudad Autónoma de Buenos Aires</span>
                 </div>
                 <div className="col-12 col-md-6 col-lg-8">
 
