@@ -111,6 +111,7 @@
 }
 
 .franja-horaria {
+	cursor: pointer;
 	padding-bottom: 2px;
 }
 .franja-horaria .modificar{

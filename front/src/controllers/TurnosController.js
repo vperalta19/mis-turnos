@@ -1,9 +1,28 @@
+import Turno from "../classes/Turno";
 import { eliminarTunro, addTurno, getFranja, getTurnos, getTurnosPaciente, setFranja } from "../services/apiRoutes";
 
 export default class TurnosController {
 	
 	contructor(){
+		/**
+		 * @type {Turno}
+		 */
+		this._selectedTurno = null;
+	}
 
+	get selectedTurno() {
+		return new Turno(
+			this._selectedTurno.id,
+			this._selectedTurno._inicio,
+			this._selectedTurno._fin,
+			this._selectedTurno._profesional,
+			this._selectedTurno._paciente,
+			this._selectedTurno._dni
+		);
+	}
+
+	set selectedTurno(v) {
+		this._selectedTurno = v;
 	}
 
 	async getTurnosPaciente(idPaciente)

@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 const con = require('../Database');
+
+// import {mailSend} from '../services/mailer';
+const mails = require('../services/mailer');
 //------------------------------------------------------------------------------------------------------------
 
 router.post('/registrarUsuario', function(req,res){
@@ -43,6 +46,8 @@ router.post('/registrarUsuario', function(req,res){
                     if(err){
                         throw err;
                     }
+                    let cuerpo = "<body>Bienvenido " +registrar.nombre + " " +registrar.apellido + ".\n" + "Ya puedes sacar turnos entrando al siguiente link: \n www.mis-turnos.com</body>";
+					mails.mailSend("¡BIENVENIDO a Mis-turnos.com",registrar.email,cuerpo);
                     res.status(200)
                     res.send('Usuario Creado')
                 });

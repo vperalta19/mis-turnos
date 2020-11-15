@@ -43,7 +43,7 @@ export default class Registrar extends React.Component {
             contraseña: this.state.contraseña,
             fechaNacimiento: this.state.fechaNacimiento,
             telefono: this.state.telefono,
-            rol: 'Paciente'
+            rol: 'paciente'
         }
         
         if(!usuario.nombre.length || !usuario.apellido.length || !usuario.email.length || !usuario.dni.length || !usuario.contraseña.length || !usuario.fechaNacimiento || !usuario.telefono.length){
