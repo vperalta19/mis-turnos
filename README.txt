@@ -13,6 +13,7 @@ Informacion EXTRA
 -No permitimos la creacion desde la web de usuarios admin. El mismo ya se encuentra creado:
 dni: 12311	pass: 1234
 -Al registrarse y crear un turno, se le enviará un mail a la casilla con la cual se registró.
-
+-Se agregó su usuario al repo de github (sarasapaula). Repo:  https://github.com/vperalta19/mis-turnos.git
+Utilizar la rama "master".
 -----------------------------------------------------------
 Ante cualquier inconveniente, no dude en consultarnos. Muchas gracias.
