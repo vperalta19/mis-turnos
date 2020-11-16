@@ -16,7 +16,7 @@ export default class Usuario extends React.Component {
             nombre : datos.nombre,
             apellido: datos.apellido,
             email : datos.email,
-            tel : datos.tel,
+            telefono : datos.telefono,
             dni : datos.dni,
             ooss : datos.ooss,
             nroSocio : datos.nroSocio,
@@ -111,7 +111,7 @@ export default class Usuario extends React.Component {
                                         <span>Telefono: </span>
                                     </div>
                                     <div className="col-8 info">
-                                        <span>{this.state.tel}</span>
+                                        <span>{this.state.telefono}</span>
                                     </div>
                                 </div>
                             </div>
