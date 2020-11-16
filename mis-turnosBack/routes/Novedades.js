@@ -15,7 +15,7 @@ router.get('/getNovedades', (req,res)=> {
             if(result.length == 0){
                 return res.status(404).json({err:"Not found"});
             }
-            res.status(200).send(result); //Esto funciona????
+            res.status(200).send(result); 
         }
     });
 });
@@ -30,7 +30,7 @@ router.get('/getNovedad/:id', (req,res)=> {
             if(result.length == 0){
                 return res.status(404).json({err:"Not found"});
             }
-            res.status(200).send(result); //Esto funciona????
+            res.status(200).send(result); 
         }
     });
 });
@@ -45,7 +45,7 @@ router.post('/getNovedadesDesde', (req,res)=> {
             if(result.length == 0){
                 return res.status(404).json({err:"Not found"});
             }
-            res.status(200).send(result); //Esto funciona????
+            res.status(200).send(result); 
         }
     });
 });

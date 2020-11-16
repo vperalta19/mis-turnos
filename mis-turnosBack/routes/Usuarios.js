@@ -4,7 +4,6 @@ const router = express.Router();
 
 const con = require('../Database');
 
-// import {mailSend} from '../services/mailer';
 const mails = require('../services/mailer');
 //------------------------------------------------------------------------------------------------------------
 

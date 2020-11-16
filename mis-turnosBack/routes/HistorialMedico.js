@@ -15,7 +15,7 @@ router.get('/getHistoriales/:id',(req,res)=>{
             if(result.length == 0){
                 return res.status(404).json({err:"Not found"});
             }
-            res.status(200).send(result); //Esto funciona????
+            res.status(200).send(result); 
         }
     });
 });

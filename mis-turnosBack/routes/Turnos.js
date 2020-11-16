@@ -66,11 +66,9 @@ router.delete('/eliminarTurno/:id', function(req, res) {
 			if (err) {
 				throw err;
 			}
-			console.log(result[0]);
-			console.log(result[0].paciente)
+			
 			let dni = result[0].paciente;
 			let inicioDate = result[0].fechaInicio;
-			console.log("TODO : " + inicioDate);
 
 			mysqlConnection.query(
 				"SELECT email FROM Usuarios WHERE dni = " + dni,
