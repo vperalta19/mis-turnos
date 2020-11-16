@@ -67,7 +67,7 @@ router.post('/crearTurno', function(req, res) {
 				"SELECT email FROM Usuarios WHERE dni = " +  req.body.dni,
 				(err, row, field) => {
 					// mail(row[0].email, "Tienes un nuevo turno el día " + req.body.inicio.substring(0, 11), "Nuevo Turno");
-					let cuerpo = "<body>Tienes un nuevo turno el día " +req.body.inicio.substring(0, 11)+ "</body>";
+					let cuerpo = "<body>Tienes un nuevo turno el día " +req.body.inicio.substring(0, 11)+ " a las " + req.body.inicio.substring(11, 16) + "</body>";
 					mails.mailSend("¡Nuevo turno agregado! - Mis-turnos.com",row[0].email,cuerpo);
 				}
 			)
@@ -75,7 +75,7 @@ router.post('/crearTurno', function(req, res) {
 				'SELECT email FROM Usuarios WHERE rol = "medico"',
 				(err, row, field) => {
 					// mail(row[0].email, "Tienes un nuevo turno el día " + req.body.inicio.substring(0, 11), "Nuevo Turno");
-					let cuerpo = "<body>Tienes un nuevo turno el día " +req.body.inicio.substring(0, 11)+ "</body>";
+					let cuerpo = "<body>Tienes un nuevo turno el día " +req.body.inicio.substring(0, 11)+ " a las " + req.body.inicio.substring(11, 16) + "</body>";
 					mails.mailSend("¡Nuevo turno agregado! - Mis-turnos.com",row[0].email,cuerpo);
 				}
 			)
