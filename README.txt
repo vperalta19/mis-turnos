@@ -1,9 +1,11 @@
 Esta es la entrega del Trabajo Practico Obligatorio correspondiente a la materia "Aplicaciones Interactivas".
 -----------------------------------------------------------
 Pasos para levantar la WEB.
-1) Parandose desde "mis-turnosBack", ejecutar el siguiente comando: nodemon index.js
-2) Abrir un nuevo visual studio y pararse en "front". Luego, ejecutar el comando: npm start
-3) Al primero levantar el back y luego el front, podrás acceder al mismo mediante el siguiente link: http://localhost:3000
+1) Parandose desde "mis-turnosBack", ejecutar el siguiente comando: npm install
+2) Luego para levantarlo, ejecutar: nodemon index.js
+3) Abrir un nuevo visual studio y pararse en "front". Luego, ejecutar el comando: npm install
+4) Para levantar el servidor del front, ejecute: npm start
+5) Al primero levantar el back y luego el front, podrás acceder al mismo mediante el siguiente link: http://localhost:3000
 
 -----------------------------------------------------------
 Informacion EXTRA
