@@ -1,0 +1,203 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+  }
+
+a{
+    text-decoration: none;
+}
+
+button{
+    border:none;
+}
+
+.fondoLogSign {
+    background-color: #B8D0D9;
+    background-image: url('./../img/fondoLogIn.jpeg');
+    min-height: 100vh; /*100% of the viewport height (totalidad del navegador)*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*---------------------------------------------inicio contenedor de Log In---------------------------------------------*/
+  .fondoLogSign .contenedor .login{
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    margin-bottom: 10px;
+    box-shadow:20px 20px 50px #839cac; 
+}
+
+.contenedor .fil1 .titleLogIn{
+    margin-top: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+.fondoLogSign .contenedor .login span{
+    Width: 36px;
+    Height: 14px;
+    margin-left: 40px;
+    color:  #4F7E9B;
+
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.fondoLogSign .contenedor .login input{
+    width: 80%;
+    height: 49px;
+
+    background: #FFFFFF;
+    border: 3px solid #EAEAEA;
+    border-radius: 25px;
+    margin: 0 auto 10px auto
+}
+
+.fondoLogSign .contenedor .login .botones .sub{
+    background-color: #4F7E9B;
+    color:white;
+
+    Width : 114px;
+    Height : 25px;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 12px;
+
+    border: none;
+    margin-bottom: 5px;
+}
+
+.fondoLogSign .contenedor .login .botones .sub:hover {
+    background-color: white;
+    color:#4F7E9B;
+    border-color: #4F7E9B;
+    border: 1px solid;
+}
+
+.fondoLogSign .contenedor .login .botones .recovery{
+    border-bottom: 1px #4F7E9B;
+    background-color: rgb(255, 255, 255,0);
+    margin-bottom: 10px;
+    margin-right: 20px;
+    color: #4F7E9B;
+}
+
+.fondoLogSign .contenedor .login .botones .recovery:hover:after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+
+/*---------------------------------------------inicio contenedor de Sign Up---------------------------------------------*/
+
+.fondoLogSign .contenedor .signup{
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    text-align: center;
+    box-shadow:20px 20px 50px #839cac;
+}
+
+.contenedor .fil2 .titleSignup{
+    margin-top: 12px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+
+.contenedor .fil2 .textSignup{
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    
+    color: #FFFFFF;
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp {
+    background-color: #4F7E9B;
+    width: 209px;
+    height: 25px;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    
+    
+    margin-bottom: 12px;
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp a{
+    text-decoration: none;
+    color: white;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp a:hover{
+    color:#4F7E9B;
+}
+
+.fondoLogSign .contenedor .signup .buttonSignUp:hover {
+    background-color: white;
+    color:#4F7E9B;
+    border-color: #4F7E9B;
+    border: 1px solid;
+}
+
+/*---------------------------------------------inicio media querys---------------------------------------------*/
+@media (min-width: 991px) {
+    .fondoLogSign .contenedor{
+        padding-top: 160px;
+    }
+}
+
+@media (max-width: 991px) {
+    .fondoLogSign .contenedor{
+        padding-top: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fondoLogSign{
+        background-image: url('./../img/fondoLogIn_celu.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .fondoLogSign .contenedor{
+        padding-top: 200px;
+    }
+}
+
+@media (max-width: 575px) {
+    .fondoLogSign .contenedor{
+        padding-top: 150px;
+    }
+}
+
+@media (max-width: 360px) {
+    .fondoLogSign .contenedor{
+        padding-top: 120px;
+    }
+}
