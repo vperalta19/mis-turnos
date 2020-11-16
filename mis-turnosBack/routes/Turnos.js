@@ -5,7 +5,6 @@ const router = express.Router();
 
 const mysqlConnection = require('../Database');
 
-// import {mailSend} from '../services/mailer';
 const mails = require('../services/mailer');
 
 //------------------------------------------------------------------------------------------------------------
@@ -27,6 +26,8 @@ router.get('/getTurnosPaciente/:pacienteID', function(req, res) {
 		res.send(result);
 	});
 });
+
+//------------------------------------------------------------------------------------------------------------
 
 router.post('/crearTurno', function(req, res) {
 	mysqlConnection.query(
@@ -56,7 +57,37 @@ router.post('/crearTurno', function(req, res) {
 	);
 });
 
+//------------------------------------------------------------------------------------------------------------
+
 router.delete('/eliminarTurno/:id', function(req, res) {
+	mysqlConnection.query(
+		`SELECT * From Turnos WHERE idTurno = ${req.params.id}`,
+		function(err, result){
+			if (err) {
+				throw err;
+			}
+			console.log(result[0]);
+			console.log(result[0].paciente)
+			let dni = result[0].paciente;
+			let inicioDate = result[0].fechaInicio;
+			console.log("TODO : " + inicioDate);
+
+			mysqlConnection.query(
+				"SELECT email FROM Usuarios WHERE dni = " + dni,
+				(err, row, field) => {
+					let cuerpo = "<body>Se ha cancelado el turno del día " + inicioDate + "</body>";
+					mails.mailSend("Turno cancelado - Mis-turnos.com",row[0].email,cuerpo);
+				}
+			)
+			mysqlConnection.query(
+				'SELECT email FROM Usuarios WHERE rol = "medico"',
+				(err, row, field) => {
+					let cuerpo = "<body>Se ha cancelado el turno del día " + inicioDate + "</body>";
+					mails.mailSend("Turno cancelado - Mis-turnos.com",row[0].email,cuerpo);
+				}
+			)
+		}
+	);
 	mysqlConnection.query(
 		`DELETE From Turnos WHERE idTurno = ${req.params.id}`,
 		function(err, result){
@@ -64,20 +95,6 @@ router.delete('/eliminarTurno/:id', function(req, res) {
 				throw err;
 			}
 			res.send(result);
-			mysqlConnection.query(
-				"SELECT email FROM Usuarios WHERE dni = " +  req.body.dni,
-				(err, row, field) => {
-					let cuerpo = "<body>Se ha cancelado el turno del día " +req.body.inicio.substring(0, 11)+ " a las " + req.body.inicio.substring(11, 16) + "</body>";
-					mails.mailSend("Turno cancelado - Mis-turnos.com",row[0].email,cuerpo);
-				}
-			)
-			mysqlConnection.query(
-				'SELECT email FROM Usuarios WHERE rol = "medico"',
-				(err, row, field) => {
-					let cuerpo = "<body>Se ha cancelado el turno del día " +req.body.inicio.substring(0, 11)+ " a las " + req.body.inicio.substring(11, 16) + "</body>";
-					mails.mailSend("Turno cancelado - Mis-turnos.com",row[0].email,cuerpo);
-				}
-			)
 		}
 	);
 });
