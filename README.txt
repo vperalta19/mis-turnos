@@ -1,5 +1,4 @@
-Esta es la entrega del Trabajo Practico Obligatorio correspondiente a la materia "Aplicaciones Interactivas".
------------------------------------------------------------
+
 Pasos para levantar la WEB.
 1) Parandose desde "mis-turnosBack", ejecutar el siguiente comando: npm install
 2) Luego para levantarlo, ejecutar: nodemon index.js
